@@ -1,239 +1,1167 @@
-
-
-<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
-<script type="text/javascript">
-     var bhittani_plugin_kksr_js = {"nonce":"c550d5c5ed","grs":true,"ajaxurl":"https:\/\/thegioithoitrangbaby.vn\/wp-admin\/admin-ajax.php","func":"kksr_ajax","msg":"\u0110\u00e1nh gi\u00e1 n\u1ed9i dung","suffix_votes":false,"fuelspeed":400,"thankyou":"C\u00e1m \u01a1n b\u1ea1n \u0111\u00e3 \u0111\u00e1nh gi\u00e1","error_msg":"L\u1ed7i \u0111\u00e1nh gi\u00e1","tooltip":"1","tooltips":[{"tip":"","color":"#ffffff"},{"tip":"","color":"#ffffff"},{"tip":"","color":"#ffffff"},{"tip":"","color":"#ffffff"},{"tip":"","color":"#ffffff"}]};
-</script>
-
-{{-- <script type="text/javascript">
-   window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/thegioithoitrangbaby.vn\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.22"}};
-   !function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])?!1:!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55358,56760,9792,65039],[55358,56760,8203,9792,65039])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
-</script> --}}
-
+<link rel="preload" as="style" href="{{ asset('themes/frontend/home_files/css/css') }}">
+<link rel="stylesheet" href="{{ asset('themes/frontend/home_files/css/css') }}" media="all" onload="this.media=&#39;all&#39;">
+<noscript>
+   <link rel="stylesheet" href="{{ asset('themes/frontend/home_files/css/font.css') }}" />
+</noscript>
+<style type="text/css" id="cst_font_data">
+   @font-face {
+      font-family: 'rightman_signatureregular';
+      font-weight: 400;
+      src: url('https://grandrestaurantv6.b-cdn.net/grandrestaurantv6/wp-content/uploads/2024/02/rightmansignature-webfont-2.woff') format('woff');
+   }
+</style>
+<meta name="robots" content="max-image-preview:large">
+<link rel="dns-prefetch" href="https://grandrestaurantv6.b-cdn.net/">
+<link href="https://fonts.gstatic.com/" crossorigin="" rel="preconnect">
+<link href="https://grandrestaurantv6.b-cdn.net/" rel="preconnect">
+<link rel="alternate" type="application/rss+xml" title="Grand Restaurant WordPress Theme » Feed" href="https://themes.themegoods.com/grandrestaurantv6/feed/">
+<link rel="alternate" type="application/rss+xml" title="Grand Restaurant WordPress Theme » Comments Feed" href="https://themes.themegoods.com/grandrestaurantv6/comments/feed/">
 <style type="text/css">
    img.wp-smiley,
    img.emoji {
-   display: inline !important;
-   border: none !important;
-   box-shadow: none !important;
-   height: 1em !important;
-   width: 1em !important;
-   margin: 0 .07em !important;
-   vertical-align: -0.1em !important;
-   background: none !important;
-   padding: 0 !important;
+      display: inline !important;
+      border: none !important;
+      box-shadow: none !important;
+      height: 1em !important;
+      width: 1em !important;
+      margin: 0 0.07em !important;
+      vertical-align: -0.1em !important;
+      background: none !important;
+      padding: 0 !important;
    }
 </style>
-<link rel='stylesheet' id='dashicons-css' href="{{ asset('themes/frontend/shopquanao/css/dashicons.min.css') }}" type='text/css' media='all' />
-<link rel='stylesheet' id='menu-icons-extra-css'  href="{{ asset('themes/frontend/shopquanao/css/extra.min.css')}} " type='text/css' media='all' />
-<link rel='stylesheet' id='contact-form-7-css' href="{{ asset('themes/frontend/shopquanao/css/styles.css')}} " type='text/css' media='all' />
-<link rel='stylesheet' id='bhittani_plugin_kksr-css' href="{{ asset('themes/frontend/shopquanao/css/css.css')}} " type='text/css' media='all' />
-<link rel='stylesheet' id='muahangnhanh-css' href="{{ asset('themes/frontend/shopquanao/css/style.css')}} " type='text/css' media='all' />
-<link rel='stylesheet' id='ot-vertical-menu-css-css' href="{{ asset('themes/frontend/shopquanao/css/style121.css')}} " type='text/css' media='all' />
-<link rel='stylesheet' id='related-posts-by-taxonomy-css' href="{{ asset('themes/frontend/shopquanao/css/styles4922.css')}} " type='text/css' media='all' />
-<style id='woocommerce-inline-inline-css' type='text/css'>
-   .woocommerce form .form-row .required { visibility: visible; }
+<style id="classic-theme-styles-inline-css" type="text/css">
+   /*! This file is auto-generated */
+   .wp-block-button__link {
+      color: #fff;
+      background-color: #32373c;
+      border-radius: 9999px;
+      box-shadow: none;
+      text-decoration: none;
+      padding: calc(.667em + 2px) calc(1.333em + 2px);
+      font-size: 1.125em
+   }
+
+   .wp-block-file__button {
+      background: #32373c;
+      color: #fff;
+      text-decoration: none
+   }
 </style>
-<link rel='stylesheet' id='flatsome-icons-css' href="{{ asset('themes/frontend/shopquanao/css/fl-icons.css')}} " type='text/css' media='all' />
-<link rel='stylesheet' id='flatsome-main-css' href="{{ asset('themes/frontend/shopquanao/css/flatsome.css')}} " type='text/css' media='all' />
-<link rel='stylesheet' id='flatsome-shop-css' href="{{ asset('themes/frontend/shopquanao/css/flatsome-shop.css')}} " type='text/css' media='all' />
-<link rel='stylesheet' id='flatsome-style-css' href="{{ asset('themes/frontend/shopquanao/css/style3.css')}} " type='text/css' media='all' />
-<script type='text/javascript' src="{{ asset('themes/frontend/shopquanao/js/jquery.js')}} "></script>
-<script type='text/javascript' src="{{ asset('themes/frontend/shopquanao/js/jquery-migrate.min.js')}} "></script>
-<script type='text/javascript' src="{{ asset('themes/frontend/shopquanao/js/js.min.js')}} "></script>
-{{-- <script type='text/javascript'>
-   var the_ajax_script = {"ajaxurl":"https:\/\/thegioithoitrangbaby.vn\/wp-admin\/admin-ajax.php"};
-</script> --}}
-<script type='text/javascript' src="{{ asset('themes/frontend/shopquanao/js/verification.js')}} "></script>
+<link data-minify="1" rel="stylesheet" id="contact-form-7-css" href="{{ asset('themes/frontend/home_files/css/styles.css') }}" type="text/css" media="all">
+<link rel="stylesheet" id="wapf-frontend-css-css" href="{{ asset('themes/frontend/home_files/css/frontend.min.css') }}" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="woocommerce-layout-css" href="{{ asset('themes/frontend/home_files/css/woocommerce-layout.css') }}" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="woocommerce-smallscreen-css" href="{{ asset('themes/frontend/home_files/css/woocommerce-smallscreen.css') }}" type="text/css" media="only screen and (max-width: 768px)">
+<link data-minify="1" rel="stylesheet" id="woocommerce-general-css" href="{{ asset('themes/frontend/home_files/css/woocommerce.css') }}" type="text/css" media="all">
+<style id="woocommerce-inline-inline-css" type="text/css">
+   .woocommerce form .form-row .required {
+      visibility: visible;
+   }
+</style>
+<link data-minify="1" rel="stylesheet" id="reset-css" href="{{ asset('themes/frontend/home_files/css/reset.css') }}" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="wordpress-css" href="{{ asset('themes/frontend/home_files/css/wordpress.css') }}" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="animation-css" href="{{ asset('themes/frontend/home_files/css/animation.css') }}" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="modulobox-css" href="{{ asset('themes/frontend/home_files/css/modulobox.css') }}" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="jquery-ui-css" href="{{ asset('themes/frontend/home_files/css/custom.css') }}" type="text/css" media="all">
+<link rel="stylesheet" id="mediaelement-css" href="{{ asset('themes/frontend/home_files/css/mediaelementplayer-legacy.min.css') }}" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="flexslider-css" href="{{ asset('themes/frontend/home_files/css/flexslider.css') }}" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="tooltipster-css" href="{{ asset('themes/frontend/home_files/css/tooltipster.css') }}" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="odometer-theme-css" href="{{ asset('themes/frontend/home_files/css/odometer-theme-minimal.css') }}" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="hw-parallax-css" href="{{ asset('themes/frontend/home_files/css/hw-parallax.css') }}" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="screen-css" href="{{ asset('themes/frontend/home_files/css/screen.css') }}" type="text/css" media="all">
+<link rel="stylesheet" id="elementor-icons-shared-0-css-css" href="{{ asset('themes/frontend/home_files/css/fontawesome.min.css') }}" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="elementor-icons-fa-solid-css-css" href="{{ asset('themes/frontend/home_files/css/solid.min.css') }}" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="themify-icons-css" href="{{ asset('themes/frontend/home_files/css/themify-icons.css') }}" type="text/css" media="all">
+<link rel="stylesheet" id="loftloader-lite-animation-css" href="{{ asset('themes/frontend/home_files/css/loftloader.min.css') }}" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="elementor-icons-css" href="{{ asset('themes/frontend/home_files/css/elementor-icons.min.css') }}" type="text/css" media="all">
+<link rel="stylesheet" id="elementor-frontend-css" href="{{ asset('themes/frontend/home_files/css/frontend-lite.min.css') }}" type="text/css" media="all">
+<link rel="stylesheet" id="swiper-css" href="{{ asset('themes/frontend/home_files/css/swiper.min.css') }}" type="text/css" media="all">
+<link rel="stylesheet" id="elementor-post-24-css" href="{{ asset('themes/frontend/home_files/css/post-24.css') }}" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="animatedheadline-css" href="{{ asset('themes/frontend/home_files/css/animatedheadline.css') }}" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="justifiedGallery-css" href="{{ asset('themes/frontend/home_files/css/justifiedGallery.css') }}" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="flickity-css" href="{{ asset('themes/frontend/home_files/css/flickity.css') }}" type="text/css" media="all">
+<link rel="stylesheet" id="owl-carousel-theme-css" href="{{ asset('themes/frontend/home_files/css/owl.theme.default.min.css') }}" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="switchery-css" href="{{ asset('themes/frontend/home_files/css/switchery.css') }}" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="grandrestaurant-elementor-css" href="{{ asset('themes/frontend/home_files/css/grandrestaurant-elementor.css') }}" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="grandrestaurant-elementor-responsive-css" href="{{ asset('themes/frontend/home_files/css/grandrestaurant-elementor-responsive.css') }}" type="text/css" media="all">
+<link rel="stylesheet" id="elementor-post-3664-css" href="{{ asset('themes/frontend/home_files/css/post-3664.css') }}" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="responsive-css" href="{{ asset('themes/frontend/home_files/css/grid.css') }}" type="text/css" media="all">
+<link data-minify="1" rel="stylesheet" id="grandrestaurant-custom-css-css" href="{{ asset('themes/frontend/home_files/css/custom-css.css') }}" type="text/css" media="all">
 
-<style>.kk-star-ratings { width:120px; }.kk-star-ratings .kksr-stars a { width:24px; }.kk-star-ratings .kksr-stars, .kk-star-ratings .kksr-stars .kksr-fuel, .kk-star-ratings .kksr-stars a { height:24px; }.kk-star-ratings .kksr-star.gray { background-image: url(https://thegioithoitrangbaby.vn/wp-content/plugins/kk-star-ratings/gray.png); }.kk-star-ratings .kksr-star.yellow { background-image: url(https://thegioithoitrangbaby.vn/wp-content/plugins/kk-star-ratings/yellow.png); }.kk-star-ratings .kksr-star.orange { background-image: url(https://thegioithoitrangbaby.vn/wp-content/plugins/kk-star-ratings/orange.png); }</style>
-
-<style>.bg{opacity: 0; transition: opacity 1s; -webkit-transition: opacity 1s;} .bg-loaded{opacity: 1;}</style>
-
- <script type="text/javascript">
-   WebFontConfig = {
-     google: { families: [ "Roboto:regular,700","Roboto:regular,regular","Roboto+Condensed:regular,regular","Dancing+Script:regular,400", ] }
-   };
-   (function() {
-     var wf = document.createElement('script');
-     wf.src = 'http://localhost:8005/public/themes/frontend/webfont.js';
-     wf.type = 'text/javascript';
-     wf.async = 'true';
-     var s = document.getElementsByTagName('script')[0];
-     s.parentNode.insertBefore(wf, s);
-   })(); 
-</script>
-<style>.product-gallery img.lazy-load, .product-small img.lazy-load, .product-small img[data-lazy-srcset]:not(.lazyloaded){ padding-top: 100%;}</style>
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<script type="text/javascript" src="{{ asset('themes/frontend/home_files/js/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('themes/frontend/home_files/js/jquery-migrate.min.js') }}" id="jquery-migrate-js"></script>
+<link rel="https://api.w.org/" href="https://themes.themegoods.com/grandrestaurantv6/wp-json/">
+<link rel="alternate" type="application/json" href="https://themes.themegoods.com/grandrestaurantv6/wp-json/wp/v2/pages/3664">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://themes.themegoods.com/grandrestaurantv6/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 6.3.3">
+<meta name="generator" content="WooCommerce 8.2.1">
+<link rel="canonical" href="https://themes.themegoods.com/grandrestaurantv6/home-2/">
+<link rel="shortlink" href="https://themes.themegoods.com/grandrestaurantv6/?p=3664">
+<link rel="alternate" type="application/json+oembed" href="https://themes.themegoods.com/grandrestaurantv6/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fthemes.themegoods.com%2Fgrandrestaurantv6%2Fhome-2%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://themes.themegoods.com/grandrestaurantv6/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fthemes.themegoods.com%2Fgrandrestaurantv6%2Fhome-2%2F&amp;format=xml">
 <noscript>
-   <style>.woocommerce-product-gallery{ opacity: 1 !important; }</style>
+   <style>
+      .woocommerce-product-gallery {
+         opacity: 1 !important;
+      }
+   </style>
 </noscript>
-
-<style id="custom-css" type="text/css">:root {--primary-color: #0091bb;}.full-width .ubermenu-nav, .container, .row{max-width: 1220px}.row.row-collapse{max-width: 1190px}.row.row-small{max-width: 1212.5px}.row.row-large{max-width: 1250px}.header-main{height: 143px}#logo img{max-height: 143px}#logo{width:295px;}#logo img{padding:5px 0;}.header-bottom{min-height: 40px}.header-top{min-height: 35px}.transparent .header-main{height: 265px}.transparent #logo img{max-height: 265px}.has-transparent + .page-title:first-of-type,.has-transparent + #main > .page-title,.has-transparent + #main > div > .page-title,.has-transparent + #main .page-header-wrapper:first-of-type .page-title{padding-top: 345px;}.header.show-on-scroll,.stuck .header-main{height:70px!important}.stuck #logo img{max-height: 70px!important}.search-form{ width: 34%;}.header-bottom {background-color: #041133}.header-main .nav > li > a{line-height: 16px }.stuck .header-main .nav > li > a{line-height: 50px }.header-bottom-nav > li > a{line-height: 16px }@media (max-width: 549px) {.header-main{height: 70px}#logo img{max-height: 70px}}.nav-dropdown-has-arrow li.has-dropdown:before{border-bottom-color: #1E73BE;}.nav .nav-dropdown{border-color: #1E73BE }.nav-dropdown{font-size:94%}.nav-dropdown-has-arrow li.has-dropdown:after{border-bottom-color: #FFFFFF;}.nav .nav-dropdown{background-color: #FFFFFF}.header-top{background-color:#0091bb!important;}/* Color */.accordion-title.active, .has-icon-bg .icon .icon-inner,.logo a, .primary.is-underline, .primary.is-link, .badge-outline .badge-inner, .nav-outline > li.active> a,.nav-outline >li.active > a, .cart-icon strong,[data-color='primary'], .is-outline.primary{color: #0091bb;}/* Color !important */[data-text-color="primary"]{color: #0091bb!important;}/* Background Color */[data-text-bg="primary"]{background-color: #0091bb;}/* Background */.scroll-to-bullets a,.featured-title, .label-new.menu-item > a:after, .nav-pagination > li > .current,.nav-pagination > li > span:hover,.nav-pagination > li > a:hover,.has-hover:hover .badge-outline .badge-inner,button[type="submit"], .button.wc-forward:not(.checkout):not(.checkout-button), .button.submit-button, .button.primary:not(.is-outline),.featured-table .title,.is-outline:hover, .has-icon:hover .icon-label,.nav-dropdown-bold .nav-column li > a:hover, .nav-dropdown.nav-dropdown-bold > li > a:hover, .nav-dropdown-bold.dark .nav-column li > a:hover, .nav-dropdown.nav-dropdown-bold.dark > li > a:hover, .is-outline:hover, .tagcloud a:hover,.grid-tools a, input[type='submit']:not(.is-form), .box-badge:hover .box-text, input.button.alt,.nav-box > li > a:hover,.nav-box > li.active > a,.nav-pills > li.active > a ,.current-dropdown .cart-icon strong, .cart-icon:hover strong, .nav-line-bottom > li > a:before, .nav-line-grow > li > a:before, .nav-line > li > a:before,.banner, .header-top, .slider-nav-circle .flickity-prev-next-button:hover svg, .slider-nav-circle .flickity-prev-next-button:hover .arrow, .primary.is-outline:hover, .button.primary:not(.is-outline), input[type='submit'].primary, input[type='submit'].primary, input[type='reset'].button, input[type='button'].primary, .badge-inner{background-color: #0091bb;}/* Border */.nav-vertical.nav-tabs > li.active > a,.scroll-to-bullets a.active,.nav-pagination > li > .current,.nav-pagination > li > span:hover,.nav-pagination > li > a:hover,.has-hover:hover .badge-outline .badge-inner,.accordion-title.active,.featured-table,.is-outline:hover, .tagcloud a:hover,blockquote, .has-border, .cart-icon strong:after,.cart-icon strong,.blockUI:before, .processing:before,.loading-spin, .slider-nav-circle .flickity-prev-next-button:hover svg, .slider-nav-circle .flickity-prev-next-button:hover .arrow, .primary.is-outline:hover{border-color: #0091bb}.nav-tabs > li.active > a{border-top-color: #0091bb}.widget_shopping_cart_content .blockUI.blockOverlay:before { border-left-color: #0091bb }.woocommerce-checkout-review-order .blockUI.blockOverlay:before { border-left-color: #0091bb }/* Fill */.slider .flickity-prev-next-button:hover svg,.slider .flickity-prev-next-button:hover .arrow{fill: #0091bb;}/* Background Color */[data-icon-label]:after, .secondary.is-underline:hover,.secondary.is-outline:hover,.icon-label,.button.secondary:not(.is-outline),.button.alt:not(.is-outline), .badge-inner.on-sale, .button.checkout, .single_add_to_cart_button{ background-color:#041133; }[data-text-bg="secondary"]{background-color: #041133;}/* Color */.secondary.is-underline,.secondary.is-link, .secondary.is-outline,.stars a.active, .star-rating:before, .woocommerce-page .star-rating:before,.star-rating span:before, .color-secondary{color: #041133}/* Color !important */[data-text-color="secondary"]{color: #041133!important;}/* Border */.secondary.is-outline:hover{border-color:#041133}body{font-size: 100%;}@media screen and (max-width: 549px){body{font-size: 100%;}}body{font-family:"Roboto", sans-serif}body{font-weight: 0}body{color: #383838}.nav > li > a {font-family:"Roboto Condensed", sans-serif;}.nav > li > a {font-weight: 0;}h1,h2,h3,h4,h5,h6,.heading-font, .off-canvas-center .nav-sidebar.nav-vertical > li > a{font-family: "Roboto", sans-serif;}h1,h2,h3,h4,h5,h6,.heading-font,.banner h1,.banner h2{font-weight: 700;}h1,h2,h3,h4,h5,h6,.heading-font{color: #2B2B2B;}.alt-font{font-family: "Dancing Script", sans-serif;}.alt-font{font-weight: 400!important;}.header:not(.transparent) .header-bottom-nav.nav > li > a{color: #FFFFFF;}.header:not(.transparent) .header-bottom-nav.nav > li > a:hover,.header:not(.transparent) .header-bottom-nav.nav > li.active > a,.header:not(.transparent) .header-bottom-nav.nav > li.current > a,.header:not(.transparent) .header-bottom-nav.nav > li > a.active,.header:not(.transparent) .header-bottom-nav.nav > li > a.current{color: #0091bb;}.header-bottom-nav.nav-line-bottom > li > a:before,.header-bottom-nav.nav-line-grow > li > a:before,.header-bottom-nav.nav-line > li > a:before,.header-bottom-nav.nav-box > li > a:hover,.header-bottom-nav.nav-box > li.active > a,.header-bottom-nav.nav-pills > li > a:hover,.header-bottom-nav.nav-pills > li.active > a{color:#FFF!important;background-color: #0091bb;}a{color: #0091bb;}a:hover{color: #041133;}.tagcloud a:hover{border-color: #041133;background-color: #041133;}.widget a{color: #000000;}.widget a:hover{color: #041133;}.widget .tagcloud a:hover{border-color: #041133; background-color: #041133;}@media screen and (min-width: 550px){.products .box-vertical .box-image{min-width: 300px!important;width: 300px!important;}}.footer-2{background-color: #0091bb}.absolute-footer, html{background-color: #041133}.label-new.menu-item > a:after{content:"New";}.label-hot.menu-item > a:after{content:"Hot";}.label-sale.menu-item > a:after{content:"Sale";}.label-popular.menu-item > a:after{content:"Popular";}</style>
-<style type="text/css" id="wp-custom-css">
-   .khuyen-mai{border: 1px solid #bfbfbf;
-   padding: 8px;
-   font-size: 14px;
-   border-radius: 8px;
-   margin-bottom: 15px;
-   line-height: 18px;}
-   .khuyen-mai h4{color:red}
-   .khuyen-mai li{    list-style: none; margin-bottom: 5px}
-   .khuyen-mai li a{color:#00b9eb}
-   .khuyen-mai li.page-wrapper a:hover{color: gray}
-   .button-product{width:100%; display: block;padding: 0 9.8px 0px;}
-   .product-main .row-small>.col{padding: 0 9.8px 0px;}
-   .product-main .button{margin-bottom: 0}
-   .product-main{padding: 0px 0;}
-   #mega-menu-wrap{background: #0091BB;}
-   body{font-weight: normal}
-   .header:not(.transparent) .header-bottom-nav.nav > li > a{font-weight: normal}
-   #mega-menu-title{font-weight: normal}
-   #mega_menu li a{font-size: 15px;color: #404040;}
-   .header-main{background-image: url(https://thegioithoitrangbaby.vn/wp-content/uploads/2017/08/banner1.jpg);
-   background-repeat: no-repeat;
-   margin: 0 auto;}
-   input[type='search']{border-top-left-radius: 5px;    border: 1px solid #0092ff;    height: 39px;    font-size: 15px;
-   border-bottom-left-radius: 5px;}
-   .button.secondary:not(.is-outline){border-top-right-radius: 5px;
-   border-bottom-right-radius: 5px;background-color: #0092ff;
-   }
-   .page-wrapper {
-   padding-top: 30px;
-   padding-bottom: 10px;
-   }
-   #wide-nav > .flex-row > .flex-left{width: 25%;
-   max-width: 282px;
-   margin-right: 15px;}
-   #mega_menu > li > a{padding-left: 15px;}
-   .row .section{padding-left:0px; padding-right:0}
-   .product-main{padding-top: 10px}
-   .product-main .product-info .breadcrumbs {
-   font-size: 14px;
-   margin: 0 0 10px;
-   text-transform: none;
-   }
-   h1.product-title.entry-title{font-size:22px}
-   .is-divider{display:None}
-   .product-main .price-wrapper .price del{font-size: 15px; color: gray}
-   .product-main .price-wrapper .price ins span.amount{color: red}
-   .product-main .product-short-description{font-size:15px}
-   .product-main .badge-inner.on-sale{background-color: #0092ff;border-bottom-right-radius: 12px;}
-   .product-main .badge-container{margin-top: 5px;
-   }
-   .product-main .badge{    height: 30px;
-   width: 50px;}
-   .form-flat input:not([type="submit"]){border-radius:4px;font-size: 15px;}
-   button.btn.btn-default{background: orange;color: white;
-   border: 1px solid orange;
-   padding: 0px 10px;
-   color: white;
-   border-radius: 4px;}
-   .detailcall-1 span {
-   display: block;
-   margin-top: 0px;
-   color: white;
-   font-size: 14px;
-   }
-   .detailcall-1 h3{    margin-bottom: 0;}
-   .detailcall-1{padding: 3px 20px; box-shadow: 0 0px 0 0 #ffffff inset;}
-   .product-main  span.amount{color: red}
-   .box-vertical .box-text{padding-left: 8px; padding-right: 8px;vertical-align: top;}
-   .best-sale .text-center>div{text-align: right}
-   .best-sale .box-text p{margin-bottom: 10px;
-   font-size: 15px;}
-   .best-sale .price-wrapper .price ins{font-size: 22px;
-   display: block;
-   margin-top: 10px;}
-   .best-sale .price-wrapper .price ins span{color: red}
-   category uppercase is-smaller no-text-overflow product-cat op-7{font-size: 13px}
-   .badge-container{margin:0}
-   .badge{    height: 30px;
-   width: 50px;}
-   .badge-inner.on-sale{    background-color: #0092ff;
-   border-bottom-right-radius: 12px;}
-   .price-wrapper{font-size:22px;}
-   .price-wrapper span{color: red}
-   .price-wrapper del span{font-size:14px; color: gray}
-   .woocommerce-Price-currencySymbol{font-size:14px}
-   .product-info .price{font-size:22px}
-   .best-sale a{color: black}
-   .best-sale a:hover{color: #0092ff}
-   .title{background: whitesmoke;height: 35px;    border-bottom: 2px solid #0092ff;
-   margin-bottom: 15px;}
-   .title h3{    line-height: 33px;
-   border-left: 15px solid #0092ff;}
-   .title h3 a{
-   font-size: 15px; color:#0092ff; padding-left:10px; font-weight:normal}
-   .cat-title{
-   padding-top: 3px;    border-top-left-radius: 20px;
-   padding-bottom: 0px;margin:0}
-   .cat-title h3{margin: 0;
-   text-align: center;}
-   .cat-title h3 a{color: white;font-size: 15px;font-weight:normal;    line-height: 36px;}
-   .catelogy .cat-title{background: #ff0000;}
-   .col{    padding: 0 15px 10px;}
-   .has-shadow .box:not(.box-overlay):not(.box-shade){border-radius: 4px}
-   .box-vertical .box-image{width: 58%}
-   .row-small>.col{padding: 0 9.8px 10px;}
-   .box-text a:not(.button){margin-bottom: 10px}
-   .catelogy2 .cat-title{background: #0092ff;border-top-right-radius: 20px;border-top-left-radius: 0px;}
-   .catelogy3 .cat-title{background: #40c317;}
-   .no-text-overflow{overflow: initial;}
-   .nhan-tin-khuyen-mai p{margin:0}
-   .nhan-tin-khuyen-mai .form-flat input:not([type="submit"]){    border: 1px solid white;
-   background: rgba(0,0,0,0.05)}
-   .form-flat button, .form-flat input{    border-radius: 4px;}
-   .nhan-tin-khuyen-mai input[type='submit']:not(.is-form){background-color: #40c317;}
-   .nhan-tin-khuyen-mai .form-flat input:not([type="submit"]){color: white}
-   .footer-1 span.amount{color: red}
-   .footer-1 a{color: black; font-size: 15px}
-   .footer-1 a:hover{color: #0092FF}
-   .absolute-footer{font-size: 13px}
-   .widget a{font-size:15px}
-   .off-canvas .sidebar-inner{font-size: 15px;}
-   .product-footer .pt-half{display:none}
-   .badge.top{display:none}
-   .vi-header {
-   border-bottom: solid 1px #0091bb;
-   }
-   .vi-left-title {
-   width: auto;
-   background: #0091bb;
-   color: #fff;
-   padding: 3px 10px;
-   font-size: 18px;
-   position: relative;
-   margin: 0;
-   }
-   .pull-left {
-   float: left;
-   }
-   .pull-left {
-   margin-left: 0 !important;
-   }
-   .vi-left-title a {
-   color: #fff;
-   }
-   .vi-left-title:after {
-   border: 17px solid transparent;
-   border-left-color: #0091bb;
-   border-bottom-color: #0091bb;
-   position: absolute;
-   top: 0;
-   left: 100%;
-   content: "";
-   }
-   .vvi-left-title {
-   float: left;
-   font-size: 14px;
-   padding: 5px 25px;
-   }
-   .product-title a{color:#000 !important;}
-   .button.alt:not(.is-outline), .badge-inner.on-sale, .button.checkout, .single_add_to_cart_button{    background-color: #0091bb !important;}
-   .span-inline{
-   float: right;
-   display: inline-block;
-   padding-left: 10px
+<meta name="generator" content="Elementor 3.17.2; features: e_dom_optimization, e_optimized_assets_loading, e_optimized_css_loading, additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-auto">
+<style type="text/css">
+   .recentcomments a {
+      display: inline !important;
+      padding: 0 !important;
+      margin: 0 !important;
    }
 </style>
+<link rel="icon" href="https://grandrestaurantv6.b-cdn.net/grandrestaurantv6/wp-content/uploads/2020/12/cropped-cropped-TG-Thumb-192x192-1-32x32.png" sizes="32x32">
+<link rel="icon" href="https://grandrestaurantv6.b-cdn.net/grandrestaurantv6/wp-content/uploads/2020/12/cropped-cropped-TG-Thumb-192x192-1-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://grandrestaurantv6.b-cdn.net/grandrestaurantv6/wp-content/uploads/2020/12/cropped-cropped-TG-Thumb-192x192-1-180x180.png">
+<meta name="msapplication-TileImage" content="https://grandrestaurantv6.b-cdn.net/grandrestaurantv6/wp-content/uploads/2020/12/cropped-cropped-TG-Thumb-192x192-1-270x270.png">
+<style id="loftloader-lite-custom-bg-color">
+   #loftloader-wrapper .loader-section {
+      background: #ffffff;
+   }
+</style>
+<style id="loftloader-lite-custom-bg-opacity">
+   #loftloader-wrapper .loader-section {
+      opacity: 1;
+   }
+</style>
+<style id="loftloader-lite-custom-loader">
+   #loftloader-wrapper.pl-imgloading #loader {
+      width: 130px;
+   }
 
+   #loftloader-wrapper.pl-imgloading #loader span {
+      background-size: cover;
+      background-image: url(https://grandrestaurantv6.b-cdn.net/grandrestaurantv6/wp-content/uploads/2020/12/logo@2x.png);
+   }
+</style>
+<style type="text/css" id="wp-custom-css">
+   body.woocommerce-page #elementor-header .elementor-icon i {
+      width: 2em;
+      height: 2em;
+      line-height: 2em;
+      text-align: center;
+   }
+</style>
+<style id="kirki-inline-styles">
+   body,
+   input[type=text],
+   input[type=password],
+   input[type=email],
+   input[type=url],
+   input[type=date],
+   input[type=tel],
+   input.wpcf7-text,
+   .woocommerce table.cart td.actions .coupon .input-text,
+   .woocommerce-page table.cart td.actions .coupon .input-text,
+   .woocommerce #content table.cart td.actions .coupon .input-text,
+   .woocommerce-page #content table.cart td.actions .coupon .input-text,
+   select,
+   textarea,
+   .ui-widget input,
+   .ui-widget select,
+   .ui-widget textarea,
+   .ui-widget button,
+   .ui-widget label,
+   .ui-widget-header,
+   .zm_alr_ul_container,
+   .woocommerce .woocommerce-result-count,
+   .woocommerce .woocommerce-ordering select {
+      font-size: 16px;
+   }
+
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   h6,
+   h7,
+   .post_quote_title,
+   strong[itemprop="author"],
+   #page_content_wrapper .posts.blog li a,
+   .page_content_wrapper .posts.blog li a,
+   #filter_selected,
+   blockquote,
+   .sidebar_widget li.widget_products,
+   #footer ul.sidebar_widget li ul.posts.blog li a,
+   .woocommerce-page table.cart th,
+   table.shop_table thead tr th,
+   .testimonial_slider_content,
+   .pagination,
+   .pagination_detail,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-period .mpa-shortcode-title,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-cart .mpa-shortcode-title,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-checkout .mpa-shortcode-title,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-payment .mpa-shortcode-title,
+   #respond.comment-respond .comment-reply-title {
+      font-weight: 900;
+   }
+
+   h1 {
+      font-size: 36px;
+   }
+
+   h2 {
+      font-size: 32px;
+   }
+
+   h3 {
+      font-size: 28px;
+   }
+
+   h4 {
+      font-size: 24px;
+   }
+
+   h5 {
+      font-size: 20px;
+   }
+
+   h6 {
+      font-size: 18px;
+   }
+
+   blockquote {
+      font-size: 22px;
+      line-height: 1.8;
+   }
+
+   body {
+      background-color: #ffffff;
+   }
+
+   body,
+   .pagination a,
+   .slider_wrapper .gallery_image_caption h2,
+   .post_info a {
+      color: #333;
+   }
+
+   ::selection {
+      background-color: #333;
+   }
+
+   a {
+      color: #000000;
+   }
+
+   a:hover,
+   a:active,
+   .post_info_comment a i {
+      color: #cfa670;
+   }
+
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   pre,
+   code,
+   tt,
+   blockquote,
+   .post_header h5 a,
+   .post_header h3 a,
+   .post_header.grid h6 a,
+   .post_header.fullwidth h4 a,
+   .post_header h5 a,
+   blockquote,
+   .site_loading_logo_item i,
+   .menu_content_classic .menu_price {
+      color: #000000;
+   }
+
+   #social_share_wrapper,
+   hr,
+   #social_share_wrapper,
+   .post.type-post,
+   #page_content_wrapper .sidebar .content .sidebar_widget li h2.widgettitle,
+   h2.widgettitle,
+   h5.widgettitle,
+   .comment .right,
+   .widget_tag_cloud div a,
+   .meta-tags a,
+   .tag_cloud a,
+   #footer,
+   #post_more_wrapper,
+   .woocommerce ul.products li.product,
+   .woocommerce-page ul.products li.product,
+   .woocommerce ul.products li.product .price,
+   .woocommerce-page ul.products li.product .price,
+   #page_content_wrapper .inner .sidebar_content,
+   #page_caption,
+   #page_content_wrapper .inner .sidebar_content.left_sidebar,
+   .ajax_close,
+   .ajax_next,
+   .ajax_prev,
+   .portfolio_next,
+   .portfolio_prev,
+   .portfolio_next_prev_wrapper.video .portfolio_prev,
+   .portfolio_next_prev_wrapper.video .portfolio_next,
+   .separated,
+   .blog_next_prev_wrapper,
+   #post_more_wrapper h5,
+   #ajax_portfolio_wrapper.hidding,
+   #ajax_portfolio_wrapper.visible,
+   .tabs.vertical .ui-tabs-panel,
+   .woocommerce div.product .woocommerce-tabs ul.tabs li,
+   .woocommerce #content div.product .woocommerce-tabs ul.tabs li,
+   .woocommerce-page div.product .woocommerce-tabs ul.tabs li,
+   .woocommerce-page #content div.product .woocommerce-tabs ul.tabs li,
+   .woocommerce div.product .woocommerce-tabs .panel,
+   .woocommerce-page div.product .woocommerce-tabs .panel,
+   .woocommerce #content div.product .woocommerce-tabs .panel,
+   .woocommerce-page #content div.product .woocommerce-tabs .panel,
+   .woocommerce table.shop_table,
+   .woocommerce-page table.shop_table,
+   table tr td,
+   .woocommerce .cart-collaterals .cart_totals,
+   .woocommerce-page .cart-collaterals .cart_totals,
+   .woocommerce .cart-collaterals .shipping_calcuLator,
+   .woocommerce-page .cart-collaterals .shipping_calcuLator,
+   .woocommerce .cart-collaterals .cart_totals tr td,
+   .woocommerce .cart-collaterals .cart_totals tr th,
+   .woocommerce-page .cart-collaterals .cart_totals tr td,
+   .woocommerce-page .cart-collaterals .cart_totals tr th,
+   table tr th,
+   .woocommerce #payment,
+   .woocommerce-page #payment,
+   .woocommerce #payment ul.payment_methods li,
+   .woocommerce-page #payment ul.payment_methods li,
+   .woocommerce #payment div.form-row,
+   .woocommerce-page #payment div.form-row,
+   .ui-tabs li:first-child,
+   .ui-tabs .ui-tabs-nav li,
+   .ui-tabs.vertical .ui-tabs-nav li,
+   .ui-tabs.vertical.right .ui-tabs-nav li.ui-state-active,
+   .ui-tabs.vertical .ui-tabs-nav li:last-child,
+   #page_content_wrapper .inner .sidebar_wrapper ul.sidebar_widget li.widget_nav_menu ul.menu li.current-menu-item a,
+   .page_content_wrapper .inner .sidebar_wrapper ul.sidebar_widget li.widget_nav_menu ul.menu li.current-menu-item a,
+   .pricing_wrapper,
+   .pricing_wrapper li,
+   .ui-accordion .ui-accordion-header,
+   .ui-accordion .ui-accordion-content,
+   .woocommerce-page div.product .woocommerce-tabs {
+      border-color: #e1e1e1;
+   }
+
+   .appointment-form-shortcode label,
+   .appointment-form-widget>.widget-body label {
+      color: #000000;
+   }
+
+   div.flatpickr-current-month,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-cart .mpa-shortcode-title,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-checkout .mpa-shortcode-title,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-period .mpa-shortcode-title,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-service-form .mpa-shortcode-title,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-payment .mpa-shortcode-title,
+   .appointment-form-widget>.widget-body .mpa-booking-step.mpa-booking-step-cart .mpa-shortcode-title,
+   .appointment-form-widget>.widget-body .mpa-booking-step.mpa-booking-step-checkout .mpa-shortcode-title,
+   .appointment-form-widget>.widget-body .mpa-booking-step.mpa-booking-step-period .mpa-shortcode-title,
+   .appointment-form-widget>.widget-body .mpa-booking-step.mpa-booking-step-service-form .mpa-shortcode-title,
+   .appointment-form-widget>.widget-body .mpa-booking-step.mpa-booking-step-payment .mpa-shortcode-title,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-period .flatpickr-calendar .flatpickr-weekdays .flatpickr-weekday,
+   .appointment-form-widget>.widget-body .mpa-booking-step.mpa-booking-step-period .flatpickr-calendar .flatpickr-weekdays .flatpickr-weekday,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-period .flatpickr-calendar .flatpickr-day,
+   .appointment-form-widget>.widget-body .mpa-booking-step.mpa-booking-step-period .flatpickr-calendar .flatpickr-day {
+      color: #000000;
+   }
+
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-period .flatpickr-calendar .flatpickr-months .flatpickr-next-month:hover svg,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-period .flatpickr-calendar .flatpickr-months .flatpickr-prev-month:hover svg,
+   .appointment-form-widget>.widget-body .mpa-booking-step.mpa-booking-step-period .flatpickr-calendar .flatpickr-months .flatpickr-next-month:hover svg,
+   .appointment-form-widget>.widget-body .mpa-booking-step.mpa-booking-step-period .flatpickr-calendar .flatpickr-months .flatpickr-prev-month:hover svg {
+      fill: #000000;
+   }
+
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-period .flatpickr-calendar .flatpickr-months,
+   .appointment-form-widget>.widget-body .mpa-booking-step.mpa-booking-step-period .flatpickr-calendar .flatpickr-months,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-period .flatpickr-calendar .flatpickr-day:before,
+   .appointment-form-widget>.widget-body .mpa-booking-step.mpa-booking-step-period .flatpickr-calendar .flatpickr-day:before,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-cart .mpa-cart .mpa-cart-item {
+      background: #f9f9f9;
+   }
+
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-cart .mpa-cart .mpa-cart-item,
+   .appointment-form-widget>.widget-body .mpa-booking-step.mpa-booking-step-cart .mpa-cart .mpa-cart-item,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-booking,
+   .appointment-form-widget>.widget-body .mpa-booking-step.mpa-booking-step-booking {
+      background: #f9f9f9;
+   }
+
+   .menu_content_classic .menu_highlight,
+   .menu_content_classic .menu_order {
+      background-color: #cfa670;
+   }
+
+   label {
+      font-weight: 700;
+      text-transform: none;
+      color: #444444;
+   }
+
+   input[type=submit],
+   input[type=button],
+   a.button,
+   .button,
+   .woocommerce .page_slider a.button,
+   a.button.fullwidth,
+   .woocommerce-page div.product form.cart .button,
+   .woocommerce #respond input#submit.alt,
+   .woocommerce a.button.alt,
+   .woocommerce button.button.alt,
+   .woocommerce input.button.alt,
+   body .ui-dialog[aria-describedby="ajax-login-register-login-dialog"] .form-wrapper input[type="submit"],
+   body .ui-dialog[aria-describedby="ajax-login-register-dialog"] .form-wrapper input[type="submit"],
+   input[type=search] {
+      font-size: 16px;
+   }
+
+   input[type=text],
+   input[type=password],
+   input[type=email],
+   input[type=url],
+   input[type=tel],
+   input[type=date],
+   textarea,
+   select,
+   input[type=search],
+   .woocommerce #content .quantity input.qty,
+   .woocommerce .quantity input.qty,
+   .woocommerce-page #content .quantity input.qty,
+   .woocommerce-page .quantity input.qty {
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+   }
+
+   input[type=text],
+   input[type=password],
+   input[type=email],
+   input[type=url],
+   input[type=tel],
+   textarea,
+   .woocommerce .quantity input.qty,
+   select,
+   input[type=search] {
+      background-color: #ffffff;
+      color: #444444;
+      border-color: #e1e1e1;
+   }
+
+   input[type=text]:focus,
+   input[type=password]:focus,
+   input[type=email]:focus,
+   input[type=url]:focus,
+   textarea:focus,
+   .woocommerce .quantity input.qty:focus,
+   input[type=tel]:focus {
+      border-color: #222222;
+   }
+
+   input[type=submit],
+   input[type=button],
+   a.button,
+   .button,
+   .woocommerce .page_slider a.button,
+   a.button.fullwidth,
+   .woocommerce-page div.product form.cart .button,
+   .woocommerce #respond input#submit.alt,
+   .woocommerce a.button.alt,
+   .woocommerce button.button.alt,
+   .woocommerce input.button.alt,
+   body .ui-dialog[aria-describedby="ajax-login-register-login-dialog"] .form-wrapper input[type="submit"],
+   body .ui-dialog[aria-describedby="ajax-login-register-dialog"] .form-wrapper input[type="submit"],
+   button[type=submit],
+   .wp-block-search .wp-block-search__button,
+   #woocommerce-mini-cart-flyout .woocommerce-mini-cart__buttons a,
+   .woocommerce #page_content_wrapper a.button,
+   .woocommerce #respond input#submit,
+   .woocommerce a.button,
+   .woocommerce button.button,
+   .woocommerce input.button,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-period .mpa-time-wrapper .mpa-times .mpa-time-period,
+   .appointment-form-widget>.widget-body .mpa-booking-step.mpa-booking-step-period .mpa-time-wrapper .mpa-times .mpa-time-period {
+      font-family: Lato;
+      font-size: 16px;
+      text-transform: none;
+   }
+
+   input[type=submit],
+   input[type=button],
+   a.button,
+   .button,
+   .pagination a:hover,
+   .woocommerce .footer_bar .button,
+   .woocommerce .footer_bar .button:hover,
+   .woocommerce-page div.product form.cart .button,
+   .woocommerce #respond input#submit.alt,
+   .woocommerce a.button.alt,
+   .woocommerce button.button.alt,
+   .woocommerce input.button.alt,
+   .woocommerce a.button,
+   #reservation_submit_btn,
+   #toTop,
+   #woocommerce-mini-cart-flyout .woocommerce-mini-cart__buttons a,
+   .woocommerce #page_content_wrapper a.button,
+   .woocommerce #respond input#submit,
+   .woocommerce a.button,
+   .woocommerce button.button,
+   .woocommerce input.button {
+      padding-top: 0.9em;
+      padding-bottom: 0.9em;
+   }
+
+   input[type=submit],
+   input[type=button],
+   a.button,
+   .button,
+   .pagination a:hover,
+   .woocommerce .footer_bar .button,
+   .woocommerce .footer_bar .button:hover,
+   .woocommerce-page div.product form.cart .button,
+   .woocommerce #respond input#submit.alt,
+   .woocommerce a.button.alt,
+   .woocommerce button.button.alt,
+   .woocommerce input.button.alt,
+   .woocommerce a.button,
+   #reservation_submit_btn,
+   #toTop,
+   #woocommerce-mini-cart-flyout .woocommerce-mini-cart__buttons a,
+   .woocommerce #page_content_wrapper a.button,
+   .woocommerce #respond input#submit,
+   .woocommerce a.button,
+   .woocommerce button.button,
+   .woocommerce input.button,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-period .mpa-time-wrapper .mpa-times .mpa-time-period,
+   .appointment-form-widget>.widget-body .mpa-booking-step.mpa-booking-step-period .mpa-time-wrapper .mpa-times .mpa-time-period {
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+   }
+
+   input[type=submit],
+   input[type=button],
+   a.button,
+   .button,
+   .pagination span,
+   .pagination a:hover,
+   .woocommerce .footer_bar .button,
+   .woocommerce .footer_bar .button:hover,
+   .woocommerce-page div.product form.cart .button,
+   .woocommerce #respond input#submit.alt,
+   .woocommerce a.button.alt,
+   .woocommerce button.button.alt,
+   .woocommerce input.button.alt,
+   .woocommerce a.button,
+   #reservation_submit_btn,
+   #woocommerce-mini-cart-flyout .woocommerce-mini-cart__buttons a,
+   .woocommerce #page_content_wrapper a.button,
+   .woocommerce #respond input#submit,
+   .woocommerce a.button,
+   .woocommerce button.button,
+   .woocommerce input.button {
+      background-color: #cfa670;
+   }
+
+   .pagination span,
+   .pagination a:hover {
+      border-color: #cfa670;
+   }
+
+   input[type=submit],
+   input[type=button],
+   a.button,
+   .button,
+   .pagination a:hover,
+   .woocommerce .footer_bar .button,
+   .woocommerce .footer_bar .button:hover,
+   .woocommerce-page div.product form.cart .button,
+   .woocommerce #respond input#submit.alt,
+   .woocommerce a.button.alt,
+   .woocommerce button.button.alt,
+   .woocommerce input.button.alt,
+   .woocommerce a.button,
+   #reservation_submit_btn,
+   #woocommerce-mini-cart-flyout .woocommerce-mini-cart__buttons a,
+   .woocommerce #page_content_wrapper a.button,
+   .woocommerce #respond input#submit,
+   .woocommerce .cart .button {
+      color: #ffffff;
+      border-color: #cfa670;
+   }
+
+   input[type=button]:hover,
+   input[type=submit]:hover,
+   a.button:hover,
+   .button:hover,
+   .button.submit,
+   a.button.white:hover,
+   .button.white:hover,
+   a.button.white:active,
+   .button.white:active,
+   .black_bg input[type=submit],
+   .learnpress-page #page_content_wrapper .lp-button:hover,
+   .learnpress-page #learn-press-profile-basic-information button:hover,
+   .learnpress-page #profile-content-settings form button[type=submit]:hover,
+   body #checkout-payment #checkout-order-action button:hover,
+   button[type=submit]:hover,
+   .wp-block-search .wp-block-search__button:hover,
+   #learn-press-course .course-summary-sidebar .course-sidebar-preview .lp-course-buttons button:hover,
+   body .comment-respond .comment-form input[type=submit]:hover,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-cart .button-secondary:hover,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-checkout .button-secondary:hover,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-period .button-secondary:hover,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-service-form .button-secondary:hover,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-payment .button-secondary:hover,
+   .appointment-form-widget>.widget-body .mpa-booking-step.mpa-booking-step-cart .button-secondary:hover,
+   .appointment-form-widget>.widget-body .mpa-booking-step.mpa-booking-step-checkout .button-secondary:hover,
+   .appointment-form-widget>.widget-body .mpa-booking-step.mpa-booking-step-period .button-secondary:hover,
+   .appointment-form-widget>.widget-body .mpa-booking-step.mpa-booking-step-service-form .button-secondary:hover,
+   .appointment-form-widget>.widget-body .mpa-booking-step.mpa-booking-step-payment .button-secondary:hover,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-period .mpa-time-wrapper .mpa-times .mpa-time-period.mpa-time-period-selected,
+   .appointment-form-widget>.widget-body .mpa-booking-step.mpa-booking-step-period .mpa-time-wrapper .mpa-times .mpa-time-period.mpa-time-period-selected,
+   #woocommerce-mini-cart-flyout .woocommerce-mini-cart__buttons a:hover,
+   .woocommerce #page_content_wrapper a.button:hover,
+   .woocommerce #respond input#submit:hover,
+   .woocommerce a.button:hover,
+   .woocommerce button.button:hover,
+   .woocommerce input.button:hover {
+      background-color: #ffffff;
+   }
+
+   input[type=button]:hover,
+   input[type=submit]:hover,
+   a.button:hover,
+   .button:hover,
+   .button.submit,
+   a.button.white:hover,
+   .button.white:hover,
+   a.button.white:active,
+   .button.white:active,
+   .black_bg input[type=submit],
+   body.learnpress-page #page_content_wrapper .lp-button:hover,
+   .learnpress-page #learn-press-profile-basic-information button:hover,
+   .learnpress-page #profile-content-settings form button[type=submit]:hover,
+   body #checkout-payment #checkout-order-action button:hover,
+   button[type=submit]:hover,
+   .wp-block-search .wp-block-search__button:hover,
+   #learn-press-course .course-summary-sidebar .course-sidebar-preview .lp-course-buttons button:hover,
+   body .comment-respond .comment-form input[type=submit]:hover,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-period .mpa-time-wrapper .mpa-times .mpa-time-period.mpa-time-period-selected,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-period .mpa-time-wrapper .mpa-times .mpa-time-period:hover,
+   .appointment-form-widget>.widget-body .mpa-booking-step.mpa-booking-step-period .mpa-time-wrapper .mpa-times .mpa-time-period.mpa-time-period-selected,
+   .appointment-form-widget>.widget-body .mpa-booking-step.mpa-booking-step-period .mpa-time-wrapper .mpa-times .mpa-time-period:hover,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-period .button-secondary:hover,
+   #woocommerce-mini-cart-flyout .woocommerce-mini-cart__buttons a:hover,
+   .woocommerce #page_content_wrapper a.button:hover,
+   .woocommerce #respond input#submit:hover,
+   .woocommerce a.button:hover,
+   .woocommerce button.button:hover,
+   .woocommerce input.button:hover {
+      color: #cfa670;
+   }
+
+   input[type=button]:hover,
+   input[type=submit]:hover,
+   a.button:hover,
+   .button:hover,
+   .button.submit,
+   a.button.white:hover,
+   .button.white:hover,
+   a.button.white:active,
+   .button.white:active,
+   .black_bg input[type=submit],
+   .learnpress-page #learn-press-profile-basic-information button:hover,
+   .learnpress-page #profile-content-settings form button[type=submit]:hover,
+   button[type=submit]:hover,
+   .wp-block-search .wp-block-search__button:hover,
+   #learn-press-course .course-summary-sidebar .course-sidebar-preview .lp-course-buttons button:hover,
+   body .comment-respond .comment-form input[type=submit]:hover,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-period .mpa-time-wrapper .mpa-times .mpa-time-period.mpa-time-period-selected,
+   .appointment-form-widget>.widget-body .mpa-booking-step.mpa-booking-step-period .mpa-time-wrapper .mpa-times .mpa-time-period.mpa-time-period-selected,
+   .appointment-form-shortcode .mpa-booking-step.mpa-booking-step-period .button-secondary:hover,
+   #woocommerce-mini-cart-flyout .woocommerce-mini-cart__buttons a:hover,
+   .woocommerce #page_content_wrapper a.button:hover,
+   .woocommerce #respond input#submit:hover,
+   .woocommerce a.button:hover,
+   .woocommerce button.button:hover,
+   .woocommerce input.button:hover {
+      border-color: #cfa670;
+   }
+
+   .social_share_bubble {
+      background-color: #f0f0f0;
+   }
+
+   .post_share_bubble a.post_share {
+      color: #000000;
+   }
+
+   #menu_wrapper .nav ul li a,
+   #menu_wrapper div .nav li>a {
+      font-size: 12px;
+   }
+
+   .top_bar {
+      background-color: #ffffff;
+      border-color: #e1e1e1;
+   }
+
+   #menu_wrapper .nav ul li a,
+   #menu_wrapper div .nav li>a,
+   #tg_reservation,
+   #tg_reservation:hover,
+   #tg_reservation:active,
+   #mobile_nav_icon {
+      color: #222222;
+   }
+
+   #tg_reservation,
+   #tg_reservation:hover,
+   #tg_reservation:active,
+   #mobile_nav_icon {
+      border-color: #222222;
+   }
+
+   #menu_wrapper .nav ul li a.hover,
+   #menu_wrapper .nav ul li a:hover,
+   #menu_wrapper div .nav li a.hover,
+   #menu_wrapper div .nav li a:hover {
+      color: #cfa670;
+   }
+
+   #menu_wrapper div .nav>li.current-menu-item>a,
+   #menu_wrapper div .nav>li.current-menu-parent>a,
+   #menu_wrapper div .nav>li.current-menu-ancestor>a {
+      color: #cfa670;
+   }
+
+   #menu_wrapper .nav ul li ul li a,
+   #menu_wrapper div .nav li ul li a {
+      font-family: Lato;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: none;
+      color: #cccccc;
+   }
+
+   #menu_wrapper .nav ul li ul li a:hover,
+   #menu_wrapper div .nav li ul li a:hover,
+   #menu_wrapper div .nav li.current-menu-parent ul li a:hover,
+   #menu_wrapper .nav ul li.megamenu ul li ul li a:hover,
+   #menu_wrapper div .nav li.megamenu ul li ul li a:hover,
+   #menu_wrapper .nav ul li.megamenu ul li ul li a:active,
+   #menu_wrapper div .nav li.megamenu ul li ul li a:active,
+   #menu_wrapper div .nav li.megamenu ul li>a,
+   #menu_wrapper div .nav li.megamenu ul li>a:hover,
+   #menu_wrapper div .nav li.megamenu ul li>a:active {
+      color: #ffffff;
+   }
+
+   #menu_wrapper .nav ul li ul li a:hover,
+   #menu_wrapper div .nav li ul li a:hover,
+   #menu_wrapper div .nav li.current-menu-parent ul li a:hover,
+   #menu_wrapper .nav ul li.megamenu ul li ul li a:hover,
+   #menu_wrapper div .nav li.megamenu ul li ul li a:hover,
+   #menu_wrapper .nav ul li.megamenu ul li ul li a:active,
+   #menu_wrapper div .nav li.megamenu ul li ul li a:active {
+      background: #333333;
+   }
+
+   #menu_wrapper .nav ul li ul,
+   #menu_wrapper div .nav li ul {
+      background: #000000;
+   }
+
+   #menu_wrapper div .nav li.megamenu ul li,
+   #menu_wrapper .nav ul li ul li,
+   #menu_wrapper div .nav li ul li {
+      border-color: #333333;
+   }
+
+   #menu_wrapper div .nav li.megamenu ul li>a,
+   #menu_wrapper div .nav li.megamenu ul li>a:hover,
+   #menu_wrapper div .nav li.megamenu ul li>a:active {
+      font-size: 13px;
+   }
+
+   #menu_wrapper div .nav li.megamenu ul li {
+      border-color: #333333;
+   }
+
+   .above_top_bar {
+      background: #cfa670;
+   }
+
+   .above_top_bar,
+   #top_menu li a,
+   .top_contact_info i,
+   .top_contact_info a,
+   .top_contact_info {
+      color: #ffffff;
+   }
+
+   .above_top_bar .social_wrapper ul li a,
+   .above_top_bar .social_wrapper ul li a:hover {
+      color: #ffffff;
+   }
+
+   .mobile_menu_wrapper #searchform {
+      background: #333333;
+   }
+
+   .mobile_menu_wrapper #searchform input[type=text],
+   .mobile_menu_wrapper #searchform button i,
+   .mobile_menu_wrapper #close_mobile_menu i {
+      color: #ffffff;
+   }
+
+   .mobile_main_nav li a,
+   #sub_menu li a {
+      font-weight: 700;
+      text-transform: none;
+   }
+
+   .mobile_menu_wrapper {
+      background-color: #000000;
+   }
+
+   .mobile_main_nav li a,
+   #sub_menu li a,
+   .mobile_menu_wrapper .sidebar_wrapper a,
+   .mobile_menu_wrapper .sidebar_wrapper,
+   #tg_sidemenu_reservation {
+      color: #777777;
+   }
+
+   #tg_sidemenu_reservation {
+      border-color: #777777;
+   }
+
+   .mobile_main_nav li a:hover,
+   .mobile_main_nav li a:active,
+   #sub_menu li a:hover,
+   #sub_menu li a:active,
+   .mobile_menu_wrapper .sidebar_wrapper h2.widgettitle,
+   .mobile_main_nav li.current-menu-item a,
+   #tg_sidemenu_reservation:hover {
+      color: #ffffff;
+   }
+
+   #tg_sidemenu_reservation:hover {
+      border-color: #ffffff;
+   }
+
+   #page_caption {
+      background-color: #ffffff;
+      padding-top: 60px;
+      padding-bottom: 10px;
+   }
+
+   #page_caption h1,
+   .ppb_title {
+      font-size: 70px;
+      font-weight: 900;
+   }
+
+   .ppb_title_first {
+      font-weight: 400;
+   }
+
+   #page_caption.hasbg {
+      height: 70vh;
+   }
+
+   h2.ppb_title {
+      font-family: Lato;
+      font-size: 60px;
+      font-weight: 700;
+      line-height: 1;
+      text-transform: uppercase;
+      color: #222222;
+   }
+
+   .page_header_sep {
+      border-color: #cfa670;
+   }
+
+   #page_caption.hasbg .post_detail,
+   #page_caption.hasbg .post_detail a,
+   #page_caption.hasbg .post_detail a:hover,
+   #page_caption.hasbg .post_detail a:active,
+   .page_tagline {
+      font-family: Lato;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      line-height: 1.8;
+      text-transform: uppercase;
+      color: #424242;
+   }
+
+   #page_content_wrapper .sidebar .content .sidebar_widget li h2.widgettitle,
+   h2.widgettitle,
+   h5.widgettitle,
+   h5.related_post,
+   .fullwidth_comment_wrapper h5.comment_header,
+   .author_label,
+   #respond h3,
+   .about_author,
+   .related.products h2,
+   .cart_totals h2,
+   .shipping_calcuLator h2,
+   .upsells.products h2,
+   .cross-sells h2,
+   .woocommerce div.product .woocommerce-tabs ul.tabs li a,
+   .sidebar .content .sidebar_widget li.widget_block h2 {
+      font-size: 20px;
+      letter-spacing: 0px;
+      text-transform: none;
+   }
+
+   #page_content_wrapper .inner .sidebar_wrapper .sidebar .content,
+   .page_content_wrapper .inner .sidebar_wrapper .sidebar .content,
+   .woocommerce div.product .woocommerce-tabs ul.tabs li a,
+   .woocommerce div.product .woocommerce-tabs ul.tabs li.active a,
+   .woocommerce-page div.product .woocommerce-tabs ul.tabs li.active a {
+      color: #222222;
+   }
+
+   .woocommerce div.product .woocommerce-tabs ul.tabs li.active a,
+   .woocommerce-page div.product .woocommerce-tabs ul.tabs li.active a {
+      border-color: #222222;
+   }
+
+   #page_content_wrapper .inner .sidebar_wrapper a,
+   .page_content_wrapper .inner .sidebar_wrapper a {
+      color: #222222;
+   }
+
+   #page_content_wrapper .inner .sidebar_wrapper a:hover,
+   #page_content_wrapper .inner .sidebar_wrapper a:active,
+   .page_content_wrapper .inner .sidebar_wrapper a:hover,
+   .page_content_wrapper .inner .sidebar_wrapper a:active {
+      color: #cfa670;
+   }
+
+   #page_content_wrapper .sidebar .content .sidebar_widget li h2.widgettitle,
+   h2.widgettitle,
+   h5.widgettitle,
+   h5.related_post,
+   .fullwidth_comment_wrapper h5.comment_header,
+   .author_label,
+   #respond h3,
+   .about_author {
+      color: #222222;
+   }
+
+   .footer_bar {
+      background-color: #262626;
+   }
+
+   #footer,
+   #copyright {
+      color: #999999;
+   }
+
+   #copyright a,
+   #copyright a:active,
+   .social_wrapper ul li a,
+   #footer a,
+   #footer a:active,
+   #footer_before_widget_text a,
+   #footer_before_widget_text a:active,
+   #footer .sidebar_widget li h2.widgettitle {
+      color: #ffffff;
+   }
+
+   #copyright a:hover,
+   #footer a:hover,
+   .social_wrapper ul li a:hover,
+   #footer_before_widget_text a:hover {
+      color: #cfa670;
+   }
+
+   .footer_bar_wrapper {
+      border-color: #444444;
+      background: #1b1b1b;
+   }
+
+   .footer_bar_wrapper .social_wrapper ul li a {
+      color: #ffffff;
+   }
+
+   #copyright,
+   #footer_menu li a {
+      font-weight: 400;
+   }
+
+   a#toTop {
+      background: rgba(0, 0, 0, 0.1);
+      color: #ffffff;
+   }
+
+   body.single-post #page_caption h1 {
+      font-weight: 700;
+   }
+
+   body.single-post #page_caption .post_detail {
+      font-weight: 400;
+   }
+
+   .post_header:not(.single) h5,
+   body.single-post .post_header_title h1,
+   #post_featured_slider li .slider_image .slide_post h2,
+   #autocomplete li strong,
+   .post_related strong,
+   #footer ul.sidebar_widget .posts.blog li a,
+   body.single-post #page_caption h1 {
+      font-family: Lato;
+      font-weight: 700;
+      letter-spacing: 0px;
+      text-transform: none;
+   }
+
+   h1.product_title {
+      font-weight: 700;
+   }
+
+   .single-product.woocommerce-page div.product p.price span.amount {
+      font-family: Lato;
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.8;
+      text-transform: none;
+      color: #444444;
+   }
+
+   .woocommerce ul.products li.product .price ins,
+   .woocommerce-page ul.products li.product .price ins,
+   .woocommerce ul.products li.product .price,
+   .woocommerce-page ul.products li.product .price,
+   p.price ins span.amount,
+   p.price span.amount,
+   .woocommerce #content div.product p.price,
+   .woocommerce #content div.product span.price,
+   .woocommerce div.product p.price,
+   .woocommerce div.product span.price,
+   .woocommerce-page #content div.product p.price,
+   .woocommerce-page #content div.product span.price,
+   .woocommerce-page div.product p.price,
+   .woocommerce-page div.product span.price {
+      color: #000000;
+   }
+
+   .woocommerce ul.products li.product h2.woocommerce-loop-product__title,
+   .woocommerce-page ul.products li.product h2.woocommerce-loop-product__title {
+      font-weight: 700;
+   }
+
+   .woocommerce ul.products li.product .price,
+   .woocommerce-page ul.products li.product .price {
+      font-family: Lato;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.8;
+      text-transform: none;
+      color: #444444;
+   }
+
+   .checkout h3 {
+      font-weight: 700;
+   }
+
+   /* latin-ext */
+   @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(https://grandrestaurantv6.b-cdn.net/grandrestaurantv6/wp-content/fonts/lato/S6uyw4BMUTPHjxAwWCWtFCfQ7A.woff) format('woff');
+      unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+   }
+
+   /* latin */
+   @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(https://grandrestaurantv6.b-cdn.net/grandrestaurantv6/wp-content/fonts/lato/S6uyw4BMUTPHjx4wWCWtFCc.woff) format('woff');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+   }
+
+   /* latin-ext */
+   @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url(https://grandrestaurantv6.b-cdn.net/grandrestaurantv6/wp-content/fonts/lato/S6u9w4BMUTPHh6UVSwaPHw3q5d0N7w.woff) format('woff');
+      unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+   }
+
+   /* latin */
+   @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url(https://grandrestaurantv6.b-cdn.net/grandrestaurantv6/wp-content/fonts/lato/S6u9w4BMUTPHh6UVSwiPHw3q5d0.woff) format('woff');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+   }
+
+   /* latin-ext */
+   @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(https://grandrestaurantv6.b-cdn.net/grandrestaurantv6/wp-content/fonts/lato/S6uyw4BMUTPHjxAwWCWtFCfQ7A.woff) format('woff');
+      unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+   }
+
+   /* latin */
+   @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(https://grandrestaurantv6.b-cdn.net/grandrestaurantv6/wp-content/fonts/lato/S6uyw4BMUTPHjx4wWCWtFCc.woff) format('woff');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+   }
+
+   /* latin-ext */
+   @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url(https://grandrestaurantv6.b-cdn.net/grandrestaurantv6/wp-content/fonts/lato/S6u9w4BMUTPHh6UVSwaPHw3q5d0N7w.woff) format('woff');
+      unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+   }
+
+   /* latin */
+   @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url(https://grandrestaurantv6.b-cdn.net/grandrestaurantv6/wp-content/fonts/lato/S6u9w4BMUTPHh6UVSwiPHw3q5d0.woff) format('woff');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+   }
+</style><noscript>
+   <style id="rocket-lazyload-nojs-css">
+      .rll-youtube-player,
+      [data-lazy-src] {
+         display: none !important;
+      }
+   </style>
+</noscript>

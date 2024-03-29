@@ -206,7 +206,30 @@
 							</div>
 						</div>
                     </div>
-					
+                  <div class="col-xs-6">
+                    <div class="form-group">
+                      <label>@lang('Menu type') <small class="text-red">*</small></label>
+                      <select name="noibat" id="noibat" class="form-control select2" required>
+                        <option value="">@lang('Please select')</option>
+                        @foreach (App\Consts::MENUS as $key => $value)
+                          <option value="{{ $key }}" {{ old('noibat') == $key ? 'selected' : '' }}>
+                            {{ __($value) }}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-xs-6">
+                    <div class="form-group">
+                      <label>@lang('Loại mệnh giá') <small class="text-red">*</small></label>
+                      <select name="donvitien" id="donvitien" class="form-control select2" required>
+                        <option value="">@lang('Please select')</option>
+                        @foreach (App\Consts::MONEY as $key => $value)
+                          <option value="{{ $key }}" {{ old('donvitien') == $key ? 'selected' : '' }}>
+                            {{ __($value) }}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
 					<div class="form-group hidden">
 						<label>@lang('Image thumb')</label>
 						  <div class="input-group">

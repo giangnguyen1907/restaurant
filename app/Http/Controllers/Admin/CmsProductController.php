@@ -91,6 +91,9 @@ class CmsProductController extends Controller
         $cmsProduct->alias               = $params['alias'];
         $cmsProduct->taxonomy_id         = $params['taxonomy_id'];
         $cmsProduct->hienthi             = $params['hienthi'];
+        $cmsProduct->noibat             = $params['noibat'];
+        $cmsProduct->donvitien             = $params['donvitien'];
+
         $cmsProduct->image               = $params['image'];
         $cmsProduct->gia                 = $params['gia'];
         $cmsProduct->giakm               = $params['giakm'];
@@ -190,6 +193,9 @@ class CmsProductController extends Controller
         $cmsProduct->alias               = $params['alias'];
         $cmsProduct->taxonomy_id         = $params['taxonomy_id'];
         $cmsProduct->hienthi             = $params['hienthi'];
+        $cmsProduct->noibat             = $params['noibat'];
+        $cmsProduct->donvitien             = $params['donvitien'];
+
         $cmsProduct->image               = $params['image'];
         $cmsProduct->gia                 = $params['gia'];
         $cmsProduct->giakm               = $params['giakm'];

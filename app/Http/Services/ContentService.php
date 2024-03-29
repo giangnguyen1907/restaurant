@@ -100,6 +100,12 @@ class ContentService
 			if (!empty($params['status'])) {
 				$query->where('tb_products.status', $params['status']);
 			}
+            if (!empty($params['status'])) {
+				$query->where('tb_products.status', $params['status']);
+			}
+            if (!empty($params['hienthi'])) {
+                $query->whereRaw("FIND_IN_SET('{$params['hienthi']}', tb_products.hienthi)");
+            }
 			
 			if (!empty($params['order_by'])) {
 				if (is_array($params['order_by'])) {
@@ -276,6 +282,9 @@ class ContentService
             })
             ->when(!empty($params['is_featured']), function ($query) use ($params) {
                 return $query->where('tb_cms_taxonomys.is_featured', $params['is_featured']);
+            })
+            ->when(!empty($params['hienthi']), function ($query) use ($params) {
+                return $query->whereRaw("FIND_IN_SET('{$params['hienthi']}', tb_products.hienthi)");
             })
             ->when(!empty($params['news_position']), function ($query) use ($params) {
                 return $query->where('tb_cms_taxonomys.news_position', $params['news_position']);

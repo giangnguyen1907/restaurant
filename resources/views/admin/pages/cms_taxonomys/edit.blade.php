@@ -222,20 +222,19 @@
                     </select>
                 </div>
 					
-					{{-- @php 
+				 @php 
 					$hienthi = explode(';',trim($detail->hienthi,';'));
 					@endphp
 					<div class="form-group">
 						<label>Vị trí hiển thị</label>
 						<div class="form-control">
 							<input type="checkbox" id="hienthi_0" name="hienthi[]" <?php if(in_array('0',$hienthi)) echo 'checked'; ?> value="0">
-							<label for="vehicle1"> Menu chính</label>
+							<label for="vehicle1"> Nửa trái</label>
 							<input type="checkbox" class="ml-15" id="hienthi_1" name="hienthi[]" value="1" <?php if(in_array('1',$hienthi)) echo 'checked'; ?>>
-							<label for="vehicle1"> Menu trái</label>
-							<input type="checkbox" class="ml-15" id="hienthi_2" name="hienthi[]" value="2" <?php if(in_array('2',$hienthi)) echo 'checked'; ?>>
-							<label for="vehicle1"> Menu footer</label>
+							<label for="vehicle1"> Nửa phải</label>
+							
 						</div>
-                    </div> --}}
+                    </div> 
                   </div>
 
                   <div class="col-md-12 hidden">

@@ -85,6 +85,18 @@ class Consts
         //'reporting' => 'Tường thuật trực tiếp',
         //'exchange' => 'Giao lưu trực tuyến',
     ];
+
+    const MENUS = [
+        '0' => 'Normal',
+        '1' => 'Recommended',
+        '2' => 'Healthy',
+        '3' => 'NEW'
+    ];
+    const MONEY = [
+        'VNĐ' => 'VNĐ',
+        'Dollar' => 'Dollar',
+        'Euro' => 'Euro',
+    ];
     // Thể loại taxonomy
     const CATEGORY = [
         'profile' => 'profile',

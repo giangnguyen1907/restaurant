@@ -17,6 +17,10 @@ class CmsController extends Controller
     {
         // code...
     }
+    public function aboutUs(Request $request)
+    {
+        return $this->responseView('frontend.pages.about_us');
+    }
     public function countdownload(Request $request)
     {
         $id = request('id') ?? '';

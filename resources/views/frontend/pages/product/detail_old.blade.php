@@ -1,594 +1,446 @@
-@extends('frontend.layouts.default')
+<!DOCTYPE html>
+<html lang="vi" class="loading-site no-js">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+ <head>
 
-@php
-$title = $detail->title ?? $detail->title;
-$brief = $detail->mota ?? null;
-$content = $detail->chitiet ?? null;
-$image = $detail->image != '' ? $detail->image : null;
-$image_thumb = $detail->image_thumb != '' ? $detail->image_thumb : null;
-$date = date('H:i d/m/Y', strtotime($detail->created_at));
+    @php
+      $title = $detail->title ?? $detail->title;
+      $brief = $detail->mota ?? null;
+      $content = $detail->chitiet ?? null;
+      $image = $detail->image != '' ? $detail->image : null;
+      $image_thumb = $detail->image_thumb != '' ? $detail->image_thumb : null;
+      $date = date('H:i d/m/Y', strtotime($detail->created_at));
 
-$url_taxonomy = route('frontend.cms.product_category', ['alias' => $detail->url_part]) . '.html';
+      $url_taxonomy = route('frontend.cms.product_category', ['alias' => $detail->url_part]) . '.html';
 
-$title_taxonomy = $detail->taxonomy_title ?? $detail->taxonomy_title;
+      $title_taxonomy = $detail->taxonomy_title ?? $detail->taxonomy_title;
 
-$seo_title = $detail->meta_title ?? $title;
-$seo_keyword = $detail->meta_keyword ?? null;
-$seo_description = $detail->meta_description ?? $brief;
-$seo_image = $image ?? ($image_thumb ?? null);
+      $seo_title = $detail->meta_title ?? $title;
+      $seo_keyword = $detail->meta_keyword ?? null;
+      $seo_description = $detail->meta_description ?? $brief;
+      $seo_image = $image ?? ($image_thumb ?? null);
+    @endphp
+    <title>{{ $title }}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index, follow" />
+    <meta http-equiv="Content-Language" content="vi" />
+    <meta name="copyright" content="Copyright" />
+    <meta name="description" content="{{ $seo_description }}" />
+    <meta name="keywords" content="{{ $seo_keyword }}" />
+    <meta name="DC.title" content="{{ $seo_title }}" />
+    <meta property="og:type" name="ogtype" content="Website" />
+    <meta property="og:title" name="ogtitle" content="{{ $seo_title }}" />
+    <meta property="og:image" name="ogimage" content="{{ $web_information->image->logo_header ?? '' }}" />
+    <meta property="og:sitename" content="{{ Request::fullUrl() }}" />
+    <link rel="canonical" href="{{ Request::fullUrl() }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ $web_information->image->favicon ?? '' }}" />
 
-@endphp
+    @include('frontend.panels.styles')
+    
+ </head>
+ <body data-rsssl=1 class="product-template-default single single-product postid-2228 ot-vertical-menu woocommerce woocommerce-page woocommerce-js lightbox nav-dropdown-has-arrow has-lightbox">
+    <a class="skip-link screen-reader-text" href="#main">Skip to content</a>
+    <div id="wrapper">
 
-@section('content')
-  <section id="content">
+      @include('frontend.element.header')
 
-<div class="breadcrumb full-width">
-    <div class="background-breadcrumb"></div>
-    <div class="background">
-        <div class="shadow"></div>
-        <div class="pattern">
+      <main id="main" class="">
+         <div class="shop-container">
             <div class="container">
-                <div class="clearfix">
-                    <ul class="breadcrumb" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
-                       <li class="item"><a itemprop="url" title="Trang chủ" href="{{ route('frontend.home') }}"><span itemprop="title">Trang chủ</span></a></li><li class="item"><span itemprop="title"><a itemprop="url" href="{{ $url_taxonomy }}" title="{{ $title_taxonomy }}">{{ $title_taxonomy }}</a></span></li>
-                    </ul>
-                </div>
+               <div class="woocommerce-notices-wrapper"></div>
             </div>
-        </div>
-    </div>
-</div>
-
-<div class="main-content full-width inner-page">
-    <div class="background-content"></div>
-    <div class="background">
-        <div class="shadow"></div>
-        <div class="pattern">
-            <div class="container">
-                <div class="col-md-9">
-                    <div class="row">
-                        <div class="col-md-12 center-column " id="content">
-                            <div class="prbox_detail">
-                                <span class="hidden"></span>
-                                <div class="product-info">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="row" id="quickview_product">
-                                                <script>
-                                                    function initZoom5da422ecf0d11() {
-                                                        $('.zoomContainer').remove();
-                                                        $('#image').removeData('elevateZoom');
-                                                        $('#image').removeData('zoomImage');
-
-
-                                                        $('#image').elevateZoom({
-                                                            tint: true,
-                                                            tintOpacity: 0.5,
-                                                            zoomTintFadeIn: 500,
-                                                            zoomTintFadeOut: 500,
-                                                            zoomWindowFadeIn: 500,
-                                                            zoomWindowFadeOut: 500,
-                                                            zoomWindowOffetx: 20,
-                                                            zoomWindowOffety: -1,
-                                                            scrollZoom: true,
-                                                            easing: true,
-                                                        });
-
-                                                        setTimeout(function () { $('.rtl .zoomContainer').addClass('zoom-left') }, 500);
-                                                    }
-                                                    $(document).ready(function () {
-                                                        if ($(window).width() > 992) {
-
-                                                            initZoom5da422ecf0d11();
-                                                            var z_index = 0;
-
-                                                            $('.thumbnails a, .thumbnails-carousel a').click(function () {
-                                                                var smallImage = $(this).attr('data-image');
-                                                                var largeImage = $(this).attr('data-zoom-image');
-                                                                var ez = $('#image').data('elevateZoom');
-                                                                $('#ex1').attr('href', largeImage);
-                                                                ez.swaptheimage(smallImage, largeImage);
-                                                                $('#image').attr('data-zoom-image', largeImage);
-                                                                z_index = $(this).index('.thumbnails a, .thumbnails-carousel a');
-                                                                initZoom5da422ecf0d11();
-                                                                return false;
-                                                            });
-                                                        } else {
-                                                            
-                                                        }
-                                                    });
-                                                </script>
-                                                <div class="col-sm-6 popup-gallery">
-
-                                                    <div class="row">
-
-                                                        <div class="col-sm-12">
-                                                            <div class="product-image cloud-zoom">
-                                                                <a href="{{ $image }}" id="ex1" class="open-popup-image_">
-																<img src="{{ $image }}" title="{{ $title }}" alt="CHC NEW LIVERFORTE" id="image" data-zoom-image="{{ $image }}"></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="col-sm-6 product-center clearfix">
-                                                    <div class="product-name">
-                                                        {{ $title }}
-                                                    </div>
-                                                    <div class="meta-status">
-                                                        <div class="availability">
-                                                            Tình trạng: <span class="available">{{ $detail->tinhtrang == 1 ? "Còn hàng" : "Hết hàng" }}</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="meta-desc">
-													{{ $brief }}
-                                                    </div>
-                                                    <div class="price">
-                                                        <label>Giá:</label>
-
-                                                        <span class="price-new"><span id="price-old">&nbsp;{{ $detail->giakm !='' ? $detail->giakm : $detail->gia ?? 'Liên hệ' }}</span></span>
-
-                                                    </div>
-                                                    <div class="button-call">
-                                                        <a href="tel:{{ $web_information->information->hotline }}" title="{{ $web_information->information->hotline }}"><i class="fa fa-volume-off"></i> Đặt hàng</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
+            <!-- /.container -->
+            <div id="product-2228" class="product type-product post-2228 status-publish first instock product_cat-ao-thun-be-trai product_cat-quan-ao-be-trai product_cat-thoi-trang-tre-em product_tag-ao-thun-be-trai product_tag-at11 product_tag-quan-ao-be-trai-viet-nam has-post-thumbnail shipping-taxable purchasable product-type-variable">
+               <div class="product-main">
+                  <div class="row content-row row-divided row-large">
+                     <div id="product-sidebar" class="col large-3 hide-for-medium shop-sidebar ">
+                        <aside id="woocommerce_products-2" class="widget woocommerce widget_products">
+                           <span class="widget-title shop-sidebar">Sản phẩm nổi bật</span>
+                           <div class="is-divider small"></div>
+                           <ul class="product_list_widget">
+                              @foreach($posts as $item)
+                              @php
+                                 $hienthi = trim($item->hienthi,';');
+                                 $vitrihienthi = explode(';',$hienthi);       
+                              @endphp
+                                 @if(in_array('1',$vitrihienthi))
+                                    <li>
+                                       <a href="/chi-tiet-sp/{{ $item->alias }}.html">
+                                          <img width="100" height="100" src="{{ $item->image }}" class="attachment-woocommerce_gallery_thumbnail size-woocommerce_gallery_thumbnail" alt="{{ $item->title }}" sizes="(max-width: 100px) 100vw, 100px" />     
+                                          <span class="product-title">{{ $item->title }}</span>
+                                       </a>
+                                       <span class="woocommerce-Price-amount amount">{{ number_format($item->giakm ? $item->giakm : $item->gia) }}<span class="woocommerce-Price-currencySymbol">&#8363;</span></span>
+                                    </li>
+                                 @endif
+                              @endforeach
+                           </ul>
+                        </aside>
+                        @php
+                           $params['status'] = 'active';
+                           $params['order_by'] = 'created_at';
+                           $items_left = App\Http\Services\ContentService::getCmsPost($params)->limit(6)
+                           ->get();
+                        @endphp
+                        @isset($items_left)
+                        <aside id="flatsome_recent_posts-3" class="widget flatsome_recent_posts">
+                           <span class="widget-title shop-sidebar">Bài viết mới nhất</span>
+                           <div class="is-divider small"></div>
+                           <ul>
+                              @foreach($items_left as $item)
+                              <li class="recent-blog-posts-li">
+                                 <div class="flex-row recent-blog-posts align-top pt-half pb-half">
+                                    <div class="flex-col mr-half">
+                                       <div class="badge post-date  badge-square">
+                                          <div class="badge-inner bg-fill" style="background: url({{ $item->image }}); border:0;">
+                                          </div>
+                                       </div>
                                     </div>
-                                </div>
-
-
-                                <div id="tabs" class=" htabs">
-                                    <a href="#tab-description" class="selected">Chi tiết sản phẩm</a>
-                                    <a href="#giaohang_thanhtoan">Danh sách điểm bán</a>
-                                    <a href="#camket">Giấy tờ sản phẩm</a>
-                                    <a href="#tab-review">Đánh giá</a>
-                                </div>
-                                <div id="tab-description" class="tab-content" style="display: block;">
-                                    <div class="meta-row">
-									{!! $detail->chitiet !!}
+                                    <div class="flex-col flex-grow">
+                                       <a href="/chi-tiet/{{ $item->url_part }}.html" title="{{ $item->title }}">{{ $item->title }}</a>
                                     </div>
-                                </div>
-                                <div id="giaohang_thanhtoan" class="tab-content" style="display: none;">
-                                    {!! $detail->diemban !!}
-                                </div>
-                                <div id="camket" class="tab-content" style="display: none;">
-                                    {!! $detail->giayto !!}
-                                </div>
-                                <div id="tab-review" class="tab-content" style="display: none;">
-                                    <div id="ratingproduct">
-                                        <div id="frm_rating">
-                                            <div>
-                                                <p class="headTitleRating">
-                                                    Chia sẽ nhận xét của bạn về sản phẩm <b>( {{ $title }})</b>
-                                                </p>
-
-                                                <div id="fb-root"></div>
-												<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0" nonce="NGstfdSt"></script>
-												<div class="fb-comments" data-href="{{ $url_link = route('frontend.cms.product', ['alias_detail'=>$detail->alias]). '.html' }}" data-width="100%" data-numposts="5"></div>
-												<div class="clear"></div>
-                                            </div>
-                                        </div>
+                                 </div>
+                              </li>
+                              @endforeach
+                           </ul>
+                        </aside>
+                        @endisset
+                     </div>
+                     <!-- col large-3 -->
+                     <div class="col large-9">
+                        <div class="row">
+                           @isset($list_image)
+                           <div class="large-6 col">
+                              <div class="product-images relative mb-half has-hover woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images" data-columns="4">
+                                 <div class="badge-container is-larger absolute left top z-1"></div>
+                                 <div class="image-tools absolute top show-on-hover right z-3">
+                                 </div>
+                                 <figure class="woocommerce-product-gallery__wrapper product-gallery-slider slider slider-nav-small mb-half"
+                                    data-flickity-options='{
+                                    "cellAlign": "center",
+                                    "wrapAround": true,
+                                    "autoPlay": false,
+                                    "prevNextButtons":true,
+                                    "adaptiveHeight": true,
+                                    "imagesLoaded": true,
+                                    "lazyLoad": 1,
+                                    "dragThreshold" : 15,
+                                    "pageDots": false,
+                                    "rightToLeft": false       }'>
+                                    @foreach($list_image as $item)
+                                    <div data-thumb="{{ $item->link_image }}" class="woocommerce-product-gallery__image slide @if ($loop->first) first @endif">
+                                       <a href="{{ $item->link_image }}">
+                                          <img width="600" height="600" src="{{ $item->link_image }}" class="wp-post-image skip-lazy" alt="" title="{{ $detail->title }}" data-caption="" data-src="{{ $item->link_image }}" data-large_image="{{ $item->link_image }}" data-large_image_width="960" data-large_image_height="960" sizes="(max-width: 600px) 100vw, 600px" />
+                                       </a>
                                     </div>
-                                </div>
+                                    @endforeach
+                                 </figure>
+                                 <div class="image-tools absolute bottom left z-3">
+                                    <a href="#product-zoom" class="zoom-button button is-outline circle icon tooltip hide-for-small" title="Zoom">
+                                    <i class="icon-expand" ></i>    </a>
+                                 </div>
+                              </div>
+                              <div class="product-thumbnails thumbnails slider-no-arrows slider row row-small row-slider slider-nav-small small-columns-4"
+                                 data-flickity-options='{
+                                 "cellAlign": "left",
+                                 "wrapAround": false,
+                                 "autoPlay": false,
+                                 "prevNextButtons": true,
+                                 "asNavFor": ".product-gallery-slider",
+                                 "percentPosition": true,
+                                 "imagesLoaded": true,
+                                 "pageDots": false,
+                                 "rightToLeft": false,
+                                 "contain": true
+                                 }'
+                                 >
+                                 @foreach($list_image as $k => $items)
+                                 <div class="col @if ($loop->first) first is-selected is-nav-selected @endif ">
+                                    <a>
+                                       <img src="{{ $items->link_image }}" alt="" width="300" height="300" class="attachment-woocommerce_thumbnail" />        
+                                    </a>
+                                 </div>
+                                 @endforeach
+                              </div>
 
+                           </div>
+                           @endisset
+                           <div class="product-info summary entry-summary col col-fit product-summary form-flat">
+                              <nav class="woocommerce-breadcrumb breadcrumbs"><a href="/">Trang chủ</a> <span class="divider">&#47;</span> <a href="/{{ $taxonomy->taxonomy }}/{{ $taxonomy->url_part }}.html">{{ $taxonomy->title }}</a></nav>
+                              <h1 class="product-title product_title entry-title">
+                                 {{ $detail->title }}
+                              </h1>
+                              <div class="is-divider small"></div>
+                              <div class="price-wrapper">
+                                 <p class="price product-page-price price-on-sale">
+                                    @if($detail->giakm != 0)
+                                    <del>
+                                       <span class="woocommerce-Price-amount amount">{{ number_format($detail->gia) }}<span class="woocommerce-Price-currencySymbol">₫</span></span>
+                                    </del>
+                                    <ins>
+                                       <span class="woocommerce-Price-amount amount">{{ number_format($detail->giakm) }}<span class="woocommerce-Price-currencySymbol">₫</span></span>
+                                    </ins>
+                                    @else
+                                    <ins>
+                                       <span class="woocommerce-Price-amount amount">{{ number_format($detail->gia) }}<span class="woocommerce-Price-currencySymbol">₫</span></span>
+                                    </ins>
+                                    @endif
+                                 </p>
+                              </div>
+                              <div class="product-short-description">
+                                 <p>{{ $detail->mota }}</p>
+                              </div>
+                              <div class="khuyen-mai">
+                                 <h4>Giá sỉ: Liên hệ {{ $web_information->information->hotline }}</h4>
+                              </div>
 
+                              <div class="single_variation_wrap">
+                                 <div class="woocommerce-variation single_variation"></div>
+                                 <div class="woocommerce-variation-add-to-cart variations_button">
+                                    @if($detail->soluongconlai > 0 && $detail->tinhtrang == 1)
+                                       <div class="quantity buttons_added">
+                                          <input type="button" value="-" class="minus button is-form">      
+                                          <label class="screen-reader-text">{{ $detail->title }}</label>
+                                          <input
+                                             type="number"
+                                             id="quantity"
+                                             class="input-text qty text"
+                                             step="1"
+                                             min="1"
+                                             max="9999"
+                                             name="quantity"
+                                             value="1"
+                                             title="SL"
+                                             size="4"
+                                             inputmode="numeric" />
+                                          <input type="button" value="+" class="plus button is-form"> 
+                                       </div>
+                                       <input type="hidden" name="id_product" id="id_product" value="{{ $detail->id }}">
+                                       <button onclick="addCart()" type="button" class="single_add_to_cart_button button alt">Đặt hàng</button>
+                                    @else
+                                       <button href="#" class="single_add_to_cart_button button alt">Tạm hết hàng</button>
+                                    @endif
+                                 </div>
+                              </div>
+                              <script type="text/javascript">
+                                 function addCart(){
 
-                            </div>
+                                    var quantity = document.getElementById('quantity').value;
 
+                                    var id = document.getElementById('id_product').value;
 
-                            <script type="text/javascript">
-                                $.fn.tabs = function () {
-                                    var selector = this;
+                                    var f = "?quantity=" + quantity + "&id=" + id;
+                                     
+                                    var _url = "/add-to-cart" + f;
 
-                                    this.each(function () {
-                                        var obj = $(this);
-
-                                        $(obj.attr('href')).hide();
-
-                                        $(obj).click(function () {
-                                            $(selector).removeClass('selected');
-
-                                            $(selector).each(function (i, element) {
-                                                $($(element).attr('href')).hide();
-                                            });
-
-                                            $(this).addClass('selected');
-
-                                            $($(this).attr('href')).show();
-
-                                            return false;
-                                        });
+                                    jQuery.ajax({
+                                       type: "GET",
+                                       url: _url,
+                                       data: f,
+                                       cache: false,
+                                       context: document.body,
+                                       success: function(data) {
+                                          if(data == 1){
+                                             alert('Số lượng còn lại không đủ để đặt hàng! Vui lòng chọn số lượng thấp hơn !');
+                                          }else{
+                                             alert('Đặt hàng thành công');
+                                          }
+                                       }
                                     });
-
-                                    $(this).show();
-
-                                    $(this).first().click();
-                                };
-                            </script>
-
-                            <script type="text/javascript">$('#tabs a').tabs();</script>
-
-                            <script type="text/javascript" src="/themes/frontend/duocpham/js/jquery.elevateZoom-3.0.3.min.js"></script>
-                        </div>
-
-                    </div>
-                </div>
-                
-				@include('frontend.element.menuleft')
-                
-				@include('frontend.element.spnoibat')
-
-            </div>
-        </div>
-    </div>
-</div>
-<div class="main-content full-width inner-page">
-    <div class="background-content"></div>
-    <div class="background">
-        <div class="shadow"></div>
-        <div class="pattern">
-            <div class="container">
-                <div class="col-md-12">
-                    <div class="col_full nobottommargin" id="product-related-products">
-                        <h4 class="title_block-c">Sản phẩm cùng nhóm</h4>
-                        <div class="box-content products">
-                        <div class="box-product">
-                            <div id="myCarousel30733470">
-                                <!-- Carousel items -->
-                                <div class="carousel-inner">
-                                    <div class="active item">
-                                        <div class="product-grid">
-                                            <div class="row">
-                                                @foreach ($posts as $item)
-												@php
-												$title = $item->title;
-												$mota = $item->mota ?? $item->mota;
-												$image = $item->image ?? ($item->image ?? null);
-												
-												$url_link = route('frontend.cms.product', ['alias_detail'=>$item->alias]). '.html';
-												@endphp
-												<div class="block col-sm-3 col-xs-6 col-mobile-12  ">
-													<!-- Product -->
-													<div id="idpr_{{$item->id}}" class="product product_wg clearfix product-hover">
-														<div class="left">
-															<div class="image ">
-																<a class="sss" href="{{ $url_link }}" title="{{ $title }}">
-																	<img src="{{ $image }}" title="{{ $title }}" alt="{{ $title }}" class="">
-																</a>
-															</div>
-														</div>
-														<div class="right">
-															<div class="name" style="height: 32px;">
-																<div class="label-discount green saleclear">
-																</div>
-																<a href="{{ $url_link }}" title="{{ $title }}">{{ $title }}</a>
-															</div>
-														</div>
-													</div>
-												</div>
-                                                @endforeach
-                                            </div>
-                                        </div>
+                                 }
+                              </script>
+                              <div class="row row-small">
+                                 <div class="col medium-6 small-12 large-6"  >
+                                    <div class="col-inner"  >
+                                       <a rel="noopener noreferrer" href="{{ $web_information->social->messenger }}" target="_blank" class="button primary expand" style="border-radius:6px;">
+                                       <i class="icon-facebook" ></i>  
+                                       <span>CHAT FACEBOOK</span>
+                                       </a>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<style>
-   .list-item-rating{clear:both;
-clear: both;
-margin-top: 50px;
-float: left;
-width: 100%;
-}
-.listrote {
-    border-top: 1px solid #ddd;
-    padding: 30px 12px;
-    vertical-align: middle;
-    overflow: hidden;
-}
-.customer, .customercm, .customerrate, .listrote::before {
-    display: inline-block;
-    vertical-align: middle;
-}
-.customercm {
-    width: 60%;
-    float: left;
-    margin-top: 10px;
-}
-.customerrate {
-    width: 17%;
-    float: left;
-    text-align: center;
-    font-size: 18px;
-    color: #2b2b2b;
-    line-height: 1.5;
-}
-.spPer5 {
-    font-size: 0.6em;
-    font-weight: 600;
-}
-.nameauthor {
-    font-size: 14px;
-    color: #333;
-    font-weight: 600;
-}
-.italic, .quote, .snippet-posts .post-link {
-    font-style: italic;
-}
-.listrote .customer {
-    width: 15%;
-    float: left;
-    font-size: 12px;
-    display: inline-block;
-vertical-align: middle;
-}.list_start{ display: inline-block;
-padding: 10px;}
-#msg_star{color: #ff0000;
-text-align: left;
-float: left;
-}
-.headTitleRating{color: #333333}
-.star{
-    background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAABQCAYAAAAZQFV3AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABOFJREFUeNrsmEFoHFUYx9/MdHfTJRKzUhBaFiL1YghZCFQUIV6UQJuLWCgr8eKpIoiFSqsHQYrmYj14KHqxKAl6MbA5eCgKRVAMBhpCwIJQCETRQzTsNtnO7s74+17fbGc3M7OzZhUsHfjzdvd97/++973vff99Y/m+rwb5WL0Idz60h2nckTc8Nw2hncLmAnhtIB7i3VGan8VD8Dhebh+U8FOaX8Bh4EB48R8TQlai+QnkgMTxD/AYpFt9EULk0EyBD8Dn4BPT9TZ4CrwD6Wos4V+XrUdpXzQk4tUEkAFXwNUu+1fAWWO7anADLDLJTkCYpf0K3DQe3Ui5oUI6B8ShlyBstZfMMiXoX4MV8GZKQgnJcXA6nKPtGJoE/gZ8Cy6mIJPwnIJsL3ZTIB2h+U6WANZjyE6Aj8Cz3WT7TooJ7HUwneDdc+BaFFnc0SuCzQTCTWOT+iwfN6cjWJ6clo9NzOS5Bcb6IZTZj5pU+syEYNV8XzA2Y6lOCptyhGbDeDFPnJa6TlGZ5rxJ/nxkSRPCACR5EUyHf4sCNjOgENVn/ecVe+CEy8vLWgJmZ2fd1IRra2vxSbe5eYlmu1gsXo6zmZycTKcpkEn6vC61kM+FQYiUeDdvauP5Ay0ZjyIlgKVv9bVkiBwQVJRX2YwWkKLxrhxB+qYSPaxUKrESANHVrh2PlQAzqSbskAA6UkkA5B0SICvRSzb5ddrMWu4jh8umSLwckLVjSKClWJ6SwsrM76fwLpCAM4x1I9OGjhrN8+AkAyYSyGTDnhEHjCPxeYhBagmIIvtXJOBQkgSY5Z01/76umAy4lbpiG5IqzQuG6Alz9LLmf+IP5hh+AfmxnoSQdUgAg5a6JuuQgMiSFi7fJHkR9JQAbGbA/SoBi4uLWgLK5XIqCdBpkyQBZne3sTm4BGxsbLQlgM+DkYBsNjucyWQKaSXATvCuZFnWHIQqlxMVUOeMx/0RMsgBWgIgcyBVgqwwIwH0JUvAwsJChwQwuOQ4jrJtO/CsfQBc11We56lWqyXfOySALNgJdlmuWzNSB/P5vBKyyJnxMjxBs9mc2tvbEye+DN1l7uYhuaZvAXg1LaQyOOkRL3d3d8XLishHOEd1DMfHx7UEYLjCrCop2aXP2Mht4QxjoyWADi0BxGddZm80GjpWYSL5TfpkYnHAOBK/yxhoCZAl1et1PbharWrUajX9m/SJBESRJUlAr6fvW0CvZyyxOIQPN4kbnv1mlwQERGPhMbHli/Q5Yv5lSdDnSYelrlLWIQGRJS1cvjk1RdBTArCZAferBPT7IkjvcuP7t3pKADaxEpB5+r10FXv3x3kKqqUlgM+DkQB76OFhKzdycAnAo5KynTlraFTZQ4/gqH3ursd9EjLIAVoC7KGCAxFWNqSjWgLoS5aAfS+C7EzJcrLKOjSkrNwoFu0ToPz6n8pv3dFQXjPyRdA9CbDsk/ZDx5SQxWiAsg4X7vE361NedQsn/P0SELwIgmzaHiZMtpMcKK+pWlUuVF6j0v0iSMcw/+QFLQF+y13xbv/GpF4CWUt5tV+FTEsAY6MlgA4tASxlnaUo362yLGLlh2Lo1iCjj4nFAeNI/H9sDHbYxesEfcK//XvSoq9Fkf0/JCDqDWfV3I+TJGCLne19CzAvgtoS8OBF0APC6OdvAQYAj2xzC/IfXBsAAAAASUVORK5CYII=');
-    background-position:left -2px;
-    display:block;
-    width:20px;
-    height:16px;
-    line-height:16px;
-    float:left;
-    cursor: pointer;
-    zoom:1;
-}
-
-.fullStar{
-    background-position:left -59px;
-}
-
-.stars{
-    overflow: hidden;
-}
-
-.tmp_es{
-    background-position:left -21px;
-}
-
-.tmp_fs{
-    background-position:left -40px;
-}
-</style>
-<script>
-    $(document).ready(function () {
-        $(".frmcomment").hide();
-        $(".cmtr").click(function () {
-            $(".frmcomment").hide();
-            var id_content = $(this).attr("id_content");
-            var id_comment = $(this).attr("id_comment");
-            $("#id_comment").val(id_comment);
-            $("#id_content").val(id_content);
-            $(this).parents(".comment-body").append($(".frmcomment"));
-            $(".frmcomment").slideDown();
-            $(".frmcomment").show();
-        })
-    });
-    $("#send").on('click', function () {
-        var name = $("#fullname").val();
-        var id = $("#id_sanpham").val();
-        var email = $("#email_contact").val();
-        var content = $("#contentRating").val();
-        var userid = "-1";
-        var username = "";
-        var ipar = "-1";
-        var rate = $("#voterating").val();
-        if (name.length == 0) {
-            $(".commentmess").html("<span style='color:#f00'>Xin mời nhập họ tên</span>");
-            return;
-        }
-        if (email.length == 0) {
-            $(".commentmess").html("<span style='color:#f00'>Xin mời nhập email</span>");
-            return;
-        }
-        if (content.length == 0) {
-            $(".commentmess").html("<span style='color:#f00'>Xin mời nhập nội dung</span>");
-            return;
-        }
-        $.ajax({
-            type: "POST",
-            url: "/webservices/srv.asmx/SendRate",
-            data: "{ ipar: '" + ipar + "', id: '" + id + "',userid: '" + userid + "',username: '" + username + "',name: '" + name + "',email: '" + email + "',content: '" + content + "',rate: '" + rate + "'}",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-
-                if (data.d == "1") {
-                    $(".commentmess").html("<span style='color:#06f'>Nhận xét đã được gửi thành công</span>");
-                    $("#fullname").val("");
-                    $("#email_contact").val("");
-                    $("#contentRating").val("");
-                }
-            },
-            error: function (data) {
-            }
-        });
-    });
-</script>
-
-
-    </div></section>
-  
-  
-  {{--
-  <section id="page-title" class="page-title-pattern" style="background-image: url({{ $image_background }});">
-    <div class="container clearfix">
-      <h1>{{ $title }}</h1>
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('frontend.home') }}">@lang('Home')</a></li>
-        <li class="breadcrumb-item"><a href="{{ $taxonomy_url_link }}">{{ $taxonomy_title }}</a></li>
-        <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
-      </ol>
-    </div>
-  </section>
-
-  <section id="content">
-    <div class="content-wrap">
-      <div class="container clearfix">
-        @if ($detail)
-          <div class="row gutter-30 ">
-
-            <div class="postcontent col-lg-9">
-
-              <div class="single-product">
-                <div class="product">
-                  <div class="row gutter-40">
-
-                    <div class="col-md-6">
-                      <div class="product-image">
-                        <div class="fslider" data-pagi="false" data-arrows="false" data-thumbs="true">
-                          <div class="flexslider">
-                            <div class="slider-wrap" data-lightbox="gallery">
-                              <div class="slide" data-thumb="{{ $image_thumb }}">
-                                <a href="{{ $image }}" title="{{ $title }}" data-lightbox="gallery-item">
-                                  <img src="{{ $image }}" alt="{{ $title }}">
-                                </a>
+                                 </div>
+                                 <div class="col medium-6 small-12 large-6"  >
+                                    <div class="col-inner"  >
+                                       <a rel="noopener noreferrer" href="tel:{{ $web_information->information->hotline }}" target="_blank" class="button success expand"  style="border-radius:6px;">
+                                       <i class="icon-phone" ></i>  <span>{{ $web_information->information->hotline }}</span>
+                                       </a>
+                                    </div>
+                                 </div>
+                                 <style scope="scope">
+                                 </style>
                               </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-md-6 product-desc">
-
-                      <div class="d-flex align-items-center justify-content-between">
-                        <div class="product-price ">
-                          <ins class="text-danger">
-                            @lang('Price'):
-                            {{ isset($detail->json_params->price) && $detail->json_params->price > 0 ? number_format($detail->json_params->price) . ' ' . $detail->json_params->price_currency : __('Contact') }}
-                          </ins>
-                        </div>
-                      </div>
-
-                      <div class="line"></div>
-
-                      <form class="cart mb-0 d-flex justify-content-between align-items-center">
-                        <div class="quantity clearfix">
-                          <input type="button" value="-" class="minus">
-                          <input type="number" step="1" min="1" name="quantity" value="1"
-                            id="quantity" title="Qty" class="qty" />
-                          <input type="button" value="+" class="plus">
-                        </div>
-                        <button type="button" class="add-to-cart button m-0 add-to-cart" data-id="{{ $detail->id }}">
-                          @lang('Add to cart')
-                        </button>
-                      </form>
-
-                      <div class="line"></div>
-
-                      <p>
-                        {{ $brief }}
-                      </p>
-
-                    </div>
-
-                    <div class="w-100"></div>
-
-                    <div class="col-12 mt-3">
-                      <div class="tabs clearfix mb-0" id="tab-1">
-                        <div class="tab-container">
-                          <div class="tab-content clearfix" id="tabs-1">
-                            {!! $content !!}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="line"></div>
-              @if (count($posts) > 0)
-                <div class="w-100">
-
-                  <h4>@lang('Related Products')</h4>
-
-                  <div class="owl-carousel product-carousel carousel-widget" data-margin="30" data-pagi="false"
-                    data-autoplay="5000" data-items-xs="1" data-items-md="2" data-items-lg="3" data-items-xl="3">
-
-                    @foreach ($posts as $item)
-                      @php
-                        $title = $item->json_params->title->{$locale} ?? $item->title;
-                        $brief = $item->json_params->brief->{$locale} ?? $item->brief;
-                        $image = $item->image_thumb ?? ($item->image ?? null);
-                        $date = date('H:i d/m/Y', strtotime($item->created_at));
-                        // Viet ham xu ly lay alias bai viet
-                        $alias_category = Str::slug($item->taxonomy_title);
-                        $alias_detail = Str::slug($title);
-                        $url_link = route('frontend.cms.product', ['alias_category' => $alias_category, 'alias_detail' => $alias_detail]) . $str_alias . $item->id;
-                        $taxonomy_url_link = route('frontend.cms.product_category', ['alias' => $alias_category]) . $str_alias . $item->taxonomy_id;
-                      @endphp
-                      <div class="oc-item">
-                        <div class="product">
-                          <div class="product-image">
-                            <a href="{{ $url_link }}">
-                              <img src="{{ $image }}" alt="{{ $title }}">
-                            </a>
-                            <div class="bg-overlay">
-                              <div class="bg-overlay-content align-items-end justify-content-between"
-                                data-hover-animate="fadeIn" data-hover-speed="400">
-                                <a href="javascript:void(0);" class="btn btn-dark me-2 add-to-cart"
-                                  data-id="{{ $item->id }}" data-quantity="1" title="@lang('Add to cart')">
-                                  <i class="icon-shopping-cart"></i>
-                                </a>
-                                <a href="{{ $url_link }}" class="btn btn-dark" title="@lang('View detail')">
-                                  <i class="icon-line-expand"></i>
-                                </a>
+                              <div class='clearfix'></div>
+                              {{-- <a data-popup-open='muahangnhanh' href='#'>
+                                 <div class='detailcall-1'>
+                                    <h3>ĐẶT HÀNG NHANH</h3>
+                                    <span>Giao hàng tận nơi miễn phí nội thành!</span>
+                                 </div>
+                              </a>
+                              <div class='popup' data-popup='muahangnhanh'>
+                                 <div class='popup-inner'>
+                                    <div id='contact_form_pop'>
+                                       <div class='form-title'>
+                                          <h3>Đặt hàng nhanh</h3>
+                                          <p>Giao hàng tân nơi, miễn phí giao hàng toàn quốc</p>
+                                          <hr>
+                                       </div>
+                                       <div class='form-content'>
+                                          <div class='cottrai'>
+                                             <img src="https://thegioithoitrangbaby.vn/wp-content/uploads/2018/09/ao-thun-be-trai-Austin-AT11-thegioithoitrangbaby-a.jpg">
+                                             <div class='title-wrapper'>Áo Thun Bé Trai Thời Trang AT11</div>
+                                             <span class="woocommerce-Price-amount amount">149.000<span class="woocommerce-Price-currencySymbol">&#8363;</span></span>
+                                             <p style='margin-top:10px; font-size:14px; color: black; padding: 0;'>Bạn vui lòng nhập đúng thông tin đặt hàng gồm: Họ tên, SĐT, Email, Địa chỉ để chúng tôi được phục vụ bạn tốt nhất !</p>
+                                          </div>
+                                          <div class='cotphai'>
+                                             <div class='form-group'>
+                                                <input type='text' class='form-control' placeholder='Họ tên:' name='name' required>
+                                             </div>
+                                             <div class='form-group'>
+                                                <input type='text' class='form-control' placeholder='Số điện thoại:' name='sdt' required>
+                                             </div>
+                                             <div class='form-group'>
+                                                <input type='email' class='form-control' placeholder='Email của bạn:' name='email' required>
+                                             </div>
+                                             <div class='form-group'>
+                                                <input type='text' class='form-control' placeholder='Địa chỉ nhận hàng:' name='address' required>
+                                             </div>
+                                             <div class='form-group'>
+                                                <input type='number' class='form-control' placeholder='Số lượng mua hàng' name='qty' value='1' required min='1'>
+                                             </div>
+                                             <div class='form-group'>
+                                                <input type='text' class='form-control' disabled name='total' required>
+                                             </div>
+                                             <button type='submit' class='btn btn-default' name='submit'>ĐẶT HÀNG</button>
+                                             <div class='web79loading' style='display:inline-block'></div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <a class='popup-close' data-popup-close='muahangnhanh' href='#'>x</a>
+                                 </div>
                               </div>
-                              <div class="bg-overlay-bg bg-transparent"></div>
-                            </div>
-                          </div>
-                          <div class="product-desc">
-                            <div class="product-title">
-                              <h3><a href="{{ $url_link }}">{{ Str::limit($title, 30) }}</a></h3>
-                            </div>
-                            <div class="product-price text-danger">
-                              @lang('Price'):
-                              {{ isset($item->json_params->price) && $item->json_params->price > 0 ? number_format($item->json_params->price) . ' ' . $item->json_params->price_currency : __('Contact') }}
-                            </div>
-                            <p>
-                              {{ Str::limit($brief, 100) }}
-                            </p>
-                          </div>
+                              <script>var price = '149000';
+                                 var from = 'Thế Giới Thời Trang Baby - Thiên Đường Quần Áo Trẻ Em Cao Cấp';
+                                 var blog_url = 'https://thegioithoitrangbaby.vn';
+                                 var to = 'giuselethien@gmail.com'; 
+                              </script>   --}}  
+                              <div class="product_meta">
+                                 {{-- <span class="sku_wrapper">Mã: <span class="sku">AT11</span></span> --}}
+                                 <span class="posted_in">Danh mục: <a href="/{{ $taxonomy->taxonomy }}/{{ $taxonomy->url_part }}.html" rel="tag">{{ $taxonomy->title }}</a></span>
+                                 {{-- <span class="tagged_as">Từ khóa: <a href="https://thegioithoitrangbaby.vn/tu-khoa/ao-thun-be-trai/" rel="tag">áo thun bé trai</a>, <a href="https://thegioithoitrangbaby.vn/tu-khoa/at11/" rel="tag">AT11</a>, <a href="https://thegioithoitrangbaby.vn/tu-khoa/quan-ao-be-trai-viet-nam/" rel="tag">quần áo bé trai việt nam</a></span> --}}
+                              </div>
+                              
+                           </div>
+
                         </div>
-                      </div>
-                    @endforeach
+                        <!-- .row -->
+                        <div class="product-footer">
+                           <div class="woocommerce-tabs wc-tabs-wrapper container tabbed-content">
+                              <ul class="tabs wc-tabs product-tabs small-nav-collapse nav nav-uppercase nav-line-grow nav-left" role="tablist">
+                                 <li class="description_tab active" id="tab-title-description" role="tab" aria-controls="tab-description">
+                                    <a href="#tab-description">Mô tả</a>
+                                 </li>
+                                 {{-- <li class="additional_information_tab " id="tab-title-additional_information" role="tab" aria-controls="tab-additional_information">
+                                    <a href="#tab-additional_information">Thông tin bổ sung</a>
+                                 </li> --}}
+                              </ul>
+                              <div class="tab-panels">
+                                 <div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content active" id="tab-description" role="tabpanel" aria-labelledby="tab-title-description">
+                                    {!! $detail->chitiet !!}
+
+                                    {{-- <div id="wpdevar_comment_1" style="width:100%;text-align:left;">
+                                       <span style="padding: 10px;font-size:16px;font-family:Arial,Helvetica Neue,Helvetica,sans-serif;color:#000000;">Facebook Comments</span>
+                                       <div class="fb-comments" data-href="https://thegioithoitrangbaby.vn/san-pham/ao-thun-be-trai-thoi-trang-at11/" data-order-by="social" data-numposts="5" data-width="100%" style="display:block;"></div>
+                                    </div>
+                                    <style>#wpdevar_comment_1 span,#wpdevar_comment_1 iframe{width:100% !important;}</style>
+                                    <br clear="both" /> --}}
+
+                                 </div>
+                                 {{-- <div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--additional_information panel entry-content " id="tab-additional_information" role="tabpanel" aria-labelledby="tab-title-additional_information">
+                                    <table class="woocommerce-product-attributes shop_attributes">
+                                       <tr class="woocommerce-product-attributes-item woocommerce-product-attributes-item--attribute_pa_can-nang">
+                                          <th class="woocommerce-product-attributes-item__label">Cân Nặng</th>
+                                          <td class="woocommerce-product-attributes-item__value">
+                                             <p>10kg, 11kg, 12kg, 13kg, 14kg, 15kg, 16kg, 17kg, 18kg, 19kg, 20kg, 21kg, 22kg, 23kg, 24kg, 9kg</p>
+                                          </td>
+                                       </tr>
+                                       <tr class="woocommerce-product-attributes-item woocommerce-product-attributes-item--attribute_pa_mau-sac">
+                                          <th class="woocommerce-product-attributes-item__label">Màu Sắc</th>
+                                          <td class="woocommerce-product-attributes-item__value">
+                                             <p>Xanh</p>
+                                          </td>
+                                       </tr>
+                                    </table>
+                                 </div> --}}
+                              </div>
+                              <!-- .tab-panels -->
+                           </div>
+                           <!-- .tabbed-content -->
+                           @isset($posts)
+                           <div class="related related-products-wrapper product-section">
+                              <h3 class="product-section-title container-width product-section-title-related pt-half pb-half uppercase">
+                                 Sản phẩm tương tự    
+                              </h3>
+                              <div class="row large-columns-4 medium-columns- small-columns-2 row-small slider row-slider slider-nav-reveal slider-nav-push"  data-flickity-options='{"imagesLoaded": true, "groupCells": "100%", "dragThreshold" : 5, "cellAlign": "left","wrapAround": true,"prevNextButtons": true,"percentPosition": true,"pageDots": false, "rightToLeft": false, "autoPlay" : false}'>
+                                 @foreach($posts as $item)
+                                 <div class="product-small col has-hover product type-product post-{{ $item->id }} status-publish instock product_cat-do-bo-be-trai product_cat-quan-ao-be-trai product_cat-thoi-trang-tre-em product_tag-b09 product_tag-do-bo-be-trai product_tag-quan-ao-be-trai-viet-nam has-post-thumbnail shipping-taxable purchasable product-type-variable">
+                                    <div class="col-inner">
+                                       <div class="badge-container absolute left top z-1"></div>
+                                       <div class="product-small box ">
+                                          <div class="box-image">
+                                             <div class="image-none">
+                                                <a href="/chi-tiet-sp/{{ $item->alias }}.html">
+                                                   <img width="300" height="300" src="{{ $item->image }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt=""sizes="(max-width: 300px) 100vw, 300px" />            
+                                                </a>
+                                             </div>
+                                             {{-- <div class="image-tools is-small top right show-on-hover">
+                                             </div>
+                                             <div class="image-tools is-small hide-for-small bottom left show-on-hover">
+                                             </div>
+                                             <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
+                                                <a class="quick-view" data-prod="{{ $item->id }}" href="#quick-view">XEM NHANH</a>       
+                                             </div> --}}
+                                          </div>
+                                          <!-- box-image -->
+                                          <div class="box-text box-text-products text-center grid-style-2">
+                                             <div class="title-wrapper">
+                                                <p class="name product-title"><a href="/chi-tiet-sp/{{ $item->alias }}.html">{{ $item->title }}</a></p>
+                                             </div>
+                                             <div class="price-wrapper">
+                                                <span class="price"><span class="woocommerce-Price-amount amount">{{ number_format($item->giakm ? $item->giakm : $item->gia) }}<span class="woocommerce-Price-currencySymbol">&#8363;</span></span></span>
+                                             </div>
+                                             <div class="add-to-cart-button"><a href="/chi-tiet-sp/{{ $item->alias }}.html" rel="nofollow" data-product_id="{{ $item->id }}" class=" add_to_cart_button product_type_variable button primary is-gloss mb-0 is-small">Xem sản phẩm</a></div>
+                                          </div>
+                                          <!-- box-text -->
+                                       </div>
+                                       <!-- box -->
+                                    </div>
+                                    <!-- .col-inner -->
+                                 </div>
+                                 <!-- col -->
+                                 @endforeach
+                              </div>
+                           </div>
+                           @endisset
+                        </div>
+                     </div>
+                     <!-- col large-9 -->
                   </div>
-                </div>
-              @endif
+                  <!-- .row -->
+               </div>
+               <!-- .product-main -->
             </div>
+         </div>
+         <!-- shop container -->
+      </main>
 
-            <div class="sidebar col-lg-3">
-              @include('frontend.components.sidebar.product')
-            </div>
+       @include('frontend.element.footer')
 
-          </div>
-        @else
-          <div class="row">
-            <div class="col-12">
-              <p>@lang('not_found')</p>
-            </div>
-          </div>
-        @endif
-      </div>
     </div>
-  </section>
 
---}}
-@endsection
+    @include('frontend.element.menu_mobile')
+
+    @include('frontend.element.login_popup')
+
+    @include('frontend.panels.stylefooter')
+    
+ </body>
+</html>

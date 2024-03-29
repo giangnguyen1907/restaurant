@@ -23,8 +23,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::namespace('FrontEnd')->group(function () {
   Route::get('/convert', 'CmsController@convert');
-  Route::get('/saveuser', 'OrderController@saveuser');
-  Route::post('/vnpay_payment', 'OrderController@vnpayPayment');
+   
+  Route::get('/about-us', 'CmsController@aboutUs');
+
   Route::get('/countdownload', 'CmsController@countdownload');
   Route::get('/search_document', 'CmsController@search_document');
   
@@ -78,12 +79,16 @@ Route::namespace('FrontEnd')->group(function () {
   Route::post('order-service', 'OrderController@storeOrderService')->name('frontend.order.store.service');
   // Cart
   // Route::post('add-to-cart', 'OrderController@addToCart')->name('frontend.order.add_to_cart');
-  Route::get('add-to-cart', 'OrderController@addToCart')->name('frontend.order.add_to_cart');
+  Route::get('add-to-cart', 'OrderController@addToCart')->name('frontend.order.add_to_cart'); 
   Route::get('remove-from-cart', 'OrderController@removeCart')->name('frontend.order.cart.remove');
   Route::get('update-cart', 'OrderController@updateCart')->name('frontend.order.cart.update');
   Route::get('gio-hang', 'OrderController@cart')->name('frontend.order.cart');
+  Route::get('thanh-toan', 'OrderController@checkout')->name('frontend.order.cart.checkout');
   // Route::patch('update-cart', 'OrderController@updateCart')->name('frontend.order.cart.update');
   // Route::delete('remove-from-cart', 'OrderController@removeCart')->name('frontend.order.cart.remove');
+  Route::get('/saveuser', 'OrderController@saveuser');
+  Route::post('/vnpay_payment', 'OrderController@vnpayPayment');
+
   Route::post('order-product', 'OrderController@storeOrderProduct')->name('frontend.order.store.product');
 
   Route::get('/{alias}', 'PageController@index')->name('frontend.page');

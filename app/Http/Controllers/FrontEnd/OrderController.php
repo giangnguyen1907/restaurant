@@ -88,7 +88,7 @@ class OrderController extends Controller
 
 
             $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-            $vnp_Returnurl = "http://localhost:8005/gio-hang";
+            $vnp_Returnurl = "http://127.0.0.1:8000/thanh-toan";
             $vnp_TmnCode = "MDH116ZV";//Mã website tại VNPAY 
             $vnp_HashSecret = "RKTPTYJOPWSRZPSTTBVPGTDLQXALEJOK"; //Chuỗi bí mật
 
@@ -253,21 +253,68 @@ class OrderController extends Controller
         return $this->responseView('frontend.pages.cart.index');
     }
 
-    public function addToCart(Request $request)
+    public function checkout()
     {
+        if(isset($_REQUEST['vnp_TransactionStatus'])){
+
+            if($_REQUEST['vnp_TransactionStatus'] == '00'){
+
+                $cart = session()->get('cart', []);
+
+                if (empty($cart)) {
+                    return redirect()->back()->with('errorMessage', __('Cart is empty!'));
+                }
+                $user = session()->get('user');
+                $order_params['name'] = $user['user']['name'];
+                $order_params['email'] = $user['user']['email'];
+                $order_params['phone'] = $user['user']['phone'];
+                $order_params['address'] = $user['user']['address'];
+                $order_params['customer_note'] = $user['user']['customer_note'];
+                $order_params['is_type'] = Consts::ORDER_TYPE['product'];
+                $order = Order::create($order_params);
+
+                $data = [];
+                foreach ($cart as $id => $details) {
+                    // Check and store order_detail
+                    $order_detail_params['order_id'] = $order->id;
+                    $order_detail_params['item_id'] = $id;
+                    $order_detail_params['quantity'] = $details['quantity'] ?? 1;
+                    $order_detail_params['price'] = $details['price'] ?? null;
+                    array_push($data, $order_detail_params);
+
+                    $product = CmsProduct::findOrFail($id);
+                    $quantity = $details['quantity'];
+                    $soluongconlai = $product->soluongconlai - $quantity;
+                    $product->soluongconlai = $soluongconlai;
+                    $product->save();
+                }
+                OrderDetail::insert($data);
+                DB::commit();
+                session()->forget('cart');
+
+                echo"<script>alert('Đặt hàng thành công, chúng tôi sẽ gửi hàng đến bạn trong thời gian sớm nhất!');window.location.href='/gio-hang';</script>";
+            }
+
+        }
+        return $this->responseView('frontend.pages.cart.checkout');
+    }
+
+    public function addToCart(Request $request)
+    {  
         $quantity = request('quantity') ?? '1';
 
-        $id = request('id') ?? '';
-
+        $id = request('id_product') ?? '';
+        $customer_note = request('customer_note') ?? '';
         $product = CmsProduct::findOrFail($id);
-
+        //dd($product);
         $soluongconlai = $product->soluongconlai ?? '0';
 
         $soluongban = $product->soluongconlai;
 
         if($quantity > $soluongban){
             //số lượng không đủ
-            echo 1;
+            // echo 1;
+            echo "<script>alert('Số lượng còn lại không đủ để đặt hàng! Vui lòng chọn số lượng thấp hơn !'); window.location.href = '{$_SERVER['HTTP_REFERER']}';</script>";
 
         }else{
 
@@ -283,12 +330,14 @@ class OrderController extends Controller
                     "quantity" => $quantity,
                     "price" => $price,
                     "image" => $product->image,
-                    "image_thumb" => $product->image_thumb
+                    "image_thumb" => $product->image_thumb,
+                    "customer_note" => $customer_note
                 ];
             }
             session()->put('cart', $cart);
 
-            echo 2;
+            // echo 2;
+            echo "<script>alert('Thêm vào giỏ hàng thành công!'); window.location.href = '{$_SERVER['HTTP_REFERER']}';</script>";
 
         }
 

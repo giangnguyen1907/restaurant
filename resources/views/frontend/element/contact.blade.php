@@ -1,0 +1,43 @@
+@php
+foreach($blocksContent as $bl){
+if($bl->block_code=="contact"){
+$contact = $bl;
+break;
+}
+};
+@endphp
+<section class="elementor-section elementor-top-section elementor-element elementor-element-692a2d2 elementor-section-height-min-height elementor-section-stretched elementor-section-boxed elementor-section-height-default elementor-section-items-middle jarallax" data-id="692a2d2" data-element_type="section" data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;,&quot;background_background&quot;:&quot;classic&quot;,&quot;grandrestaurant_ext_is_background_parallax&quot;:&quot;true&quot;,&quot;shape_divider_top&quot;:&quot;split&quot;,&quot;grandrestaurant_ext_is_background_parallax_speed&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0.8000000000000000444089209850062616169452667236328125,&quot;sizes&quot;:[]},&quot;grandrestaurant_ext_is_background_backdrop&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_is_background_on_scroll&quot;:&quot;false&quot;}" style="background-image: none; width: 1857px; left: -343.5px;">
+	<div class="elementor-background-overlay"></div>
+	<div class="elementor-shape elementor-shape-top" data-negative="false">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 20" preserveAspectRatio="none">
+			<path class="elementor-shape-fill" d="M0,0v3c0,0,393.8,0,483.4,0c9.2,0,16.6,7.4,16.6,16.6c0-9.1,7.4-16.6,16.6-16.6C606.2,3,1000,3,1000,3V0H0z"></path>
+		</svg>
+	</div>
+	<div class="elementor-container elementor-column-gap-default">
+		<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-0591d0b" data-id="0591d0b" data-element_type="column" data-settings="{&quot;grandrestaurant_ext_link_reservation&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_link_sidemenu&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_link_fullmenu&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_link_closed_fullmenu&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_is_scrollme&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_is_smoove&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_is_parallax_mouse&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_is_infinite&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_is_fadeout_animation&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_mobile_static&quot;:&quot;false&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated smooved" style="perspective: 1000px;">
+				<div class="elementor-element elementor-element-db13d49 elementor-align-center elementor-widget elementor-widget-button init-smoove smooved" data-id="db13d49" data-element_type="widget" data-settings="{&quot;grandrestaurant_ext_link_reservation&quot;:&quot;true&quot;,&quot;grandrestaurant_ext_is_smoove&quot;:&quot;true&quot;,&quot;grandrestaurant_ext_smoove_disable&quot;:&quot;769&quot;,&quot;grandrestaurant_ext_smoove_duration&quot;:1000,&quot;grandrestaurant_ext_smoove_translatey&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:39,&quot;sizes&quot;:[]},&quot;grandrestaurant_ext_link_sidemenu&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_link_fullmenu&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_link_closed_fullmenu&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_is_scrollme&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_smoove_scalex&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:1,&quot;sizes&quot;:[]},&quot;grandrestaurant_ext_smoove_scaley&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:1,&quot;sizes&quot;:[]},&quot;grandrestaurant_ext_smoove_rotatex&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;grandrestaurant_ext_smoove_rotatey&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;grandrestaurant_ext_smoove_rotatez&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;grandrestaurant_ext_smoove_translatex&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;grandrestaurant_ext_smoove_translatez&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;grandrestaurant_ext_smoove_skewx&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;grandrestaurant_ext_smoove_skewy&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;grandrestaurant_ext_smoove_perspective&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:1000,&quot;sizes&quot;:[]},&quot;grandrestaurant_ext_is_parallax_mouse&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_is_infinite&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_is_fadeout_animation&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_mobile_static&quot;:&quot;false&quot;}" data-widget_type="button.default" style="transition-duration: 1000ms; opacity: 1;">
+					<div class="elementor-widget-container">
+						<div class="elementor-button-wrapper">
+							<a class="elementor-button elementor-button-link elementor-size-md" href="https://themes.themegoods.com/grandrestaurantv6/home-2/?fbclid=IwAR38DbSCcwm2Jl4UqIzT9hYhZcU3qsGliuzODixxHMe5p0naCU9xZHlexHE#">
+								<span class="elementor-button-content-wrapper">
+									<span class="elementor-button-text">{{ $contact->title }}</span>
+								</span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="elementor-element elementor-element-47ab28f elementor-widget elementor-widget-heading init-smoove smooved" data-id="47ab28f" data-element_type="widget" data-settings="{&quot;grandrestaurant_ext_is_smoove&quot;:&quot;true&quot;,&quot;grandrestaurant_ext_smoove_disable&quot;:&quot;769&quot;,&quot;grandrestaurant_ext_smoove_duration&quot;:1000,&quot;grandrestaurant_ext_smoove_translatey&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:40,&quot;sizes&quot;:[]},&quot;grandrestaurant_ext_link_reservation&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_link_sidemenu&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_link_fullmenu&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_link_closed_fullmenu&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_is_scrollme&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_smoove_scalex&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:1,&quot;sizes&quot;:[]},&quot;grandrestaurant_ext_smoove_scaley&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:1,&quot;sizes&quot;:[]},&quot;grandrestaurant_ext_smoove_rotatex&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;grandrestaurant_ext_smoove_rotatey&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;grandrestaurant_ext_smoove_rotatez&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;grandrestaurant_ext_smoove_translatex&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;grandrestaurant_ext_smoove_translatez&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;grandrestaurant_ext_smoove_skewx&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;grandrestaurant_ext_smoove_skewy&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;grandrestaurant_ext_smoove_perspective&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:1000,&quot;sizes&quot;:[]},&quot;grandrestaurant_ext_is_parallax_mouse&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_is_infinite&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_is_fadeout_animation&quot;:&quot;false&quot;,&quot;grandrestaurant_ext_mobile_static&quot;:&quot;false&quot;}" data-widget_type="heading.default" style="transition-duration: 1000ms; opacity: 1;">
+					<div class="elementor-widget-container">
+						<h2 class="elementor-heading-title elementor-size-default">
+							<a href="tel:{{ $contact->brief }}" style="color:#fff;">or call us {{ $contact->brief }}</a>
+						</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="jarallax-container-2" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; z-index: -100;">
+		<img class="jarallax-img" src="{{ $contact->image }}" style="object-fit: cover; object-position: 50% 50%; max-width: none; position: absolute; top: 0px; left: 0px; width: 1857px; height: 633.75px; overflow: hidden; pointer-events: none; transform-style: preserve-3d; backface-visibility: hidden; will-change: transform, opacity; margin-top: 149.125px; transform: translate3d(0px, -334.438px, 0px);">
+	</div>
+</section>

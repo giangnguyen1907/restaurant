@@ -1,43 +1,72 @@
-<!-- Mobile Sidebar -->
-    <div id="main-menu" class="mobile-sidebar no-scrollbar mfp-hide">
-       <div class="sidebar-menu no-scrollbar ">
-          <ul class="nav nav-sidebar  nav-vertical nav-uppercase">
-             <div id="mega-menu-wrap"
-                class="ot-vm-click">
-                <div id="mega-menu-title">
-                   <i class="icon-menu"></i> Danh mục sản phẩm                
-                </div>
-                @php
-                     $array_categorymb = array();
-                     foreach ($taxonomy_sanpham as $categorymb) {
-                        if ($categorymb->parent_id != '') {
-                           $array_categorymb[$categorymb->parent_id] = $categorymb->parent_id;
-                        }
-                     }
-                  @endphp
+<div class="mobile_menu_wrapper">
+   <a id="close_mobile_menu" href="javascript:;">
+      <span class="ti-close"></span>
+   </a>
 
-                  <ul id="mega_menu" class="sf-menu sf-vertical">
-                     <?php foreach($taxonomy_sanpham as $taxonomymb){
-                        if(in_array($taxonomymb->id,$array_categorymb)) {
-                     ?>
-                        <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children">
-                           <a href="/{{ $taxonomymb->taxonomy }}/{{ $taxonomymb->url_part }}.html">{{ $taxonomymb->title }}</a>
-                              <ul class="sub-menu">
-                                 <?php
-                                 foreach($taxonomy_sanpham as $sub_taxonomymb){ 
-                                    if($sub_taxonomymb->parent_id == $taxonomymb->id){
-                                 ?>
-                                       <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat "><a href="/{{ $sub_taxonomymb->taxonomy }}/{{ $sub_taxonomymb->url_part }}.html">{{ $sub_taxonomymb->title }}</a></li>
-                                    <?php } } ?>
-                              </ul>
+
+   <div class="menu-main-menu-container">
+                              @php
+											
+											$main_menu = $menu->first(function ($item, $key) {
+											return $item->menu_type == 'header' && ($item->parent_id == NULL || $item->parent_id == 0);
+											});
+											$array_cate = array();
+											foreach ($menu as $cate) {
+											if ($cate->parent_id != '') {
+											$array_cate[$cate->parent_id] = $cate->parent_id;
+											}
+											}
+										@endphp
+      <ul id="mobile_main_menu" class="mobile_main_nav">
+      <?php foreach($menu as $item){
+                     					   		if($item->parent_id == $main_menu->id){
+													if(in_array($item->id,$array_cate)) {
+                     						?>
+         <li id="menu-item-13" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home current-menu-ancestor current-menu-parent menu-item-has-children menu-item-13">
+            <a href="{{ $item->url_link }}">{{ $item->name }}</a>
+            <ul class="sub-menu">
+                            <?php
+											foreach($menu as $sub_taxonomy){ 
+												if($sub_taxonomy->parent_id == $item->id){
+									 ?>    
+                           <li id="menu-item-3676" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-3676">
+                              <a href="{{ $sub_taxonomy->url_link }}">{{ $sub_taxonomy->name }}</a>
+                           </li>
+                                
+                           <?php }
+                           } ?>
+               
+            </ul>
+         </li>
+         <?php } else { ?>
+                     
+                        <li id="menu-item-5390" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5390">
+                           <a href="{{ $item->url_link }}">{{ $item->name }}</a>
                         </li>
-                     <?php } else { ?>
-                        <?php if($taxonomymb->parent_id == '') { ?>
-                        <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat"><a href="/{{ $taxonomymb->taxonomy }}/{{ $taxonomymb->url_part }}.html">{{ $taxonomymb->title }}</a></li>
-                     <?php } } } ?>
-                   </ul>
-             </div>
-          </ul>
-       </div>
-       <!-- inner -->
-    </div>
+               <?php }
+                  }
+               } ?>
+       
+      </ul>
+   </div>
+   <!-- Begin Reservation -->
+   <a href="javascript:;" id="tg_sidemenu_reservation" class="button ">Reservation</a>
+   <!-- End Reservation -->
+
+   <!-- Begin side menu sidebar -->
+   <div class="page_content_wrapper">
+      <div class="sidebar_wrapper">
+         <div class="sidebar">
+
+            <div class="content">
+
+               <ul class="sidebar_widget">
+               </ul>
+
+            </div>
+
+         </div>
+      </div>
+   </div>
+   <!-- End side menu sidebar -->
+</div>
