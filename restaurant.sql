@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2023 at 07:13 AM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.4.28
+-- Generation Time: Mar 29, 2024 at 02:29 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `shopquanao`
+-- Database: `restaurant`
 --
 
 -- --------------------------------------------------------
@@ -34,13 +34,13 @@ CREATE TABLE `admins` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `role` int(11) NOT NULL,
-  `json_information` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
-  `is_super_admin` tinyint(1) NOT NULL DEFAULT '0',
+  `json_information` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `is_super_admin` tinyint(1) NOT NULL DEFAULT 0,
   `status` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `login_at` datetime DEFAULT NULL,
-  `admin_created_id` bigint(20) UNSIGNED DEFAULT '1',
-  `admin_updated_id` bigint(20) UNSIGNED DEFAULT '1',
+  `admin_created_id` bigint(20) UNSIGNED DEFAULT 1,
+  `admin_updated_id` bigint(20) UNSIGNED DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `gender` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'M' COMMENT 'Giới tính M: nam',
@@ -58,7 +58,7 @@ CREATE TABLE `admins` (
 
 INSERT INTO `admins` (`id`, `name`, `email`, `password`, `avatar`, `role`, `json_information`, `is_super_admin`, `status`, `remember_token`, `login_at`, `admin_created_id`, `admin_updated_id`, `created_at`, `updated_at`, `gender`, `birthday`, `phone`, `address`, `department_id`, `function_id`, `degree_id`) VALUES
 (1, 'Thắng Nguyễn', 'huuthangb2k50@gmail.com', '$2y$10$YAZxnGGJPJfmHh.y1L0tv.eZfz9VvqbzH8EKQKx3q6S0FrlXgOUGS', '/themes/frontend/biz9/images/user.png', 1, NULL, 1, 'active', NULL, '2023-04-14 09:43:00', 1, 1, '2021-09-24 01:48:18', '2023-04-14 02:43:00', 'M', NULL, NULL, NULL, 1, NULL, NULL),
-(2, 'Admin', 'admin@gmail.com', '$2y$10$A2ZVxBeus6Xo9UcoHdrAKektpW94OFmGr.duSN3ePepBlidSboPNC', NULL, 1, NULL, 1, 'active', NULL, '2023-06-03 14:12:50', 1, 1, '2022-09-23 09:44:45', '2023-06-03 07:12:50', 'M', NULL, NULL, NULL, 1, NULL, NULL),
+(2, 'Admin', 'admin@gmail.com', '$2y$10$A2ZVxBeus6Xo9UcoHdrAKektpW94OFmGr.duSN3ePepBlidSboPNC', NULL, 1, NULL, 1, 'active', NULL, '2024-03-28 16:25:59', 1, 1, '2022-09-23 09:44:45', '2024-03-28 09:25:59', 'M', NULL, NULL, NULL, 1, NULL, NULL),
 (3, 'Nguyen Duong', 'duongnt04@gmail.com', '$2y$10$2pZ/j9fodiWd6w1GeeHh/..tWR7ycGS.9BF17VfNFG4Oh/FnuchGW', NULL, 1, NULL, 0, 'active', NULL, '2023-03-10 09:07:50', 1, 1, '2022-10-03 03:29:02', '2023-03-10 02:07:50', 'M', NULL, NULL, NULL, 1, NULL, NULL),
 (4, 'Linh Lê', 'linhle@gmail.com', '$2y$10$s72A27skdsUWrN2A7WD53.GER3nPrLoQvxFWlB3f6VEoARFHx5qPq', NULL, 2, NULL, 0, 'active', NULL, NULL, 1, 1, '2022-10-03 03:33:00', '2022-10-03 03:33:00', 'M', NULL, NULL, NULL, 2, NULL, NULL),
 (5, 'Hoàng Long', 'haduong@gmail.com', '$2y$10$UjF3ABKSt0uKl4w3fmQ2iO2rdIHItolkLKmKPi4nML4EF6Q/o0V4S', '/public/data/cms-image/huuthangb2k50/a7b75f828ce04da9a9e45cc8e67a2949%20(1).png', 1, NULL, 0, 'active', NULL, NULL, 1, 1, '2022-10-03 03:33:44', '2022-11-28 03:52:05', 'M', NULL, NULL, NULL, 2, NULL, NULL);
@@ -75,7 +75,7 @@ CREATE TABLE `failed_jobs` (
   `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -199,16 +199,16 @@ INSERT INTO `tb_admin_menus` (`id`, `parent_id`, `name`, `icon`, `url_link`, `io
 (52, 69, 'Quản lý danh mục / thể loại', 'fa fa-bars', 'cms_taxonomys', 1, 'active', 'deactive', NULL, 1, 1, '2022-05-30 01:46:51', '2023-01-17 07:19:30'),
 (53, 51, 'Tin tức', 'fa fa-newspaper-o', 'cms_posts', 1, 'active', 'active', NULL, 1, 1, '2022-05-30 02:56:47', '2023-02-10 07:37:11'),
 (55, 51, 'Tin giới thiệu', 'fa fa-twitch', 'introduction', 9, 'deactive', 'deactive', NULL, 1, 1, '2022-05-30 02:57:21', '2023-04-01 04:11:10'),
-(58, 13, 'Quản lý mã nhúng CSS - JS', NULL, 'web_source', NULL, 'deactive', 'deactive', NULL, 1, 2, '2022-06-06 19:41:52', '2023-06-03 04:39:04'),
+(58, 13, 'Quản lý mã nhúng CSS - JS - MAP', NULL, 'web_source', NULL, 'active', 'deactive', NULL, 1, 2, '2022-06-06 19:41:52', '2024-03-24 18:06:41'),
 (66, 69, 'Bình luận', 'fa fa-comment', 'comment', 9, 'deactive', 'deactive', NULL, 1, 1, '2022-09-19 04:41:50', '2022-11-28 03:51:08'),
 (67, 10, 'Quản lý độc giả', 'fa fa-users', 'users', NULL, 'deactive', 'deactive', NULL, 1, 1, '2022-10-07 04:45:16', '2022-10-28 10:35:37'),
 (69, NULL, 'Sản phẩm - Danh mục', 'fa fa-cog', NULL, 1, 'active', 'deactive', NULL, 1, 1, '2022-10-11 07:40:32', '2023-02-10 07:36:50'),
 (80, 69, 'Quản lý khối nội dung', 'fa fa-object-group', 'block_contents', 9, 'active', 'deactive', NULL, 1, 1, '2022-10-28 08:47:09', '2023-02-02 10:43:37'),
 (84, 69, 'Quản lý sản phẩm', 'fa fa-bitbucket', 'cms_products', NULL, 'active', 'active', NULL, 1, 2, '2023-01-12 15:24:15', '2023-05-10 04:52:34'),
-(85, 10, 'Quản lý blocks', NULL, 'blocks', NULL, 'deactive', 'deactive', NULL, 1, 2, '2023-03-31 04:22:37', '2023-06-03 07:02:47'),
+(85, 10, 'Quản lý blocks', NULL, 'blocks', NULL, 'active', 'deactive', NULL, 1, 2, '2023-03-31 04:22:37', '2024-03-22 08:02:38'),
 (86, 51, 'Đội ngũ bác sĩ', 'fa fa-user-plus', 'profile', NULL, 'deactive', 'deactive', NULL, 1, 2, '2023-03-31 09:35:30', '2023-06-03 04:31:30'),
 (87, 51, 'Media', 'fa fa-file-video-o', 'cms_media', NULL, 'deactive', 'deactive', NULL, 2, 2, '2023-04-28 08:56:06', '2023-06-03 04:31:23'),
-(88, 51, 'Đặt lịch', 'fa fa-calendar', 'contacts', NULL, 'deactive', 'deactive', NULL, 2, 2, '2023-05-05 03:13:32', '2023-06-03 04:31:18'),
+(88, 51, 'Đặt bàn', 'fa fa-calendar', 'contacts', NULL, 'active', 'deactive', NULL, 2, 2, '2023-05-05 03:13:32', '2024-03-24 18:19:27'),
 (89, 69, 'Quản lý đơn hàng', NULL, 'order_products', NULL, 'active', 'deactive', NULL, 2, 2, '2023-05-29 04:59:31', '2023-05-29 07:01:15');
 
 -- --------------------------------------------------------
@@ -220,10 +220,10 @@ INSERT INTO `tb_admin_menus` (`id`, `parent_id`, `name`, `icon`, `url_link`, `io
 CREATE TABLE `tb_blocks` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `block_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
-  `is_config` tinyint(1) NOT NULL DEFAULT '1',
+  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `is_config` tinyint(1) NOT NULL DEFAULT 1,
   `iorder` int(11) DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
@@ -239,13 +239,16 @@ CREATE TABLE `tb_blocks` (
 INSERT INTO `tb_blocks` (`id`, `name`, `description`, `block_code`, `json_params`, `is_config`, `iorder`, `status`, `admin_created_id`, `admin_updated_id`, `created_at`, `updated_at`) VALUES
 (30, 'Khối nội dung slide', NULL, 'slide', NULL, 1, NULL, 'active', 1, 1, '2023-03-31 04:23:32', '2023-03-31 04:23:32'),
 (31, 'Khối nội dung đầu trang', NULL, 'header', NULL, 1, NULL, 'active', 2, 2, '2023-04-28 01:33:50', '2023-04-28 01:40:58'),
-(32, 'Khối nội dung dịch vụ nổi bật', NULL, 'service', NULL, 1, NULL, 'active', 2, 2, '2023-04-28 01:34:05', '2023-04-28 01:34:05'),
-(33, 'Khối nội dung đội ngũ bác sĩ', NULL, 'doctor', NULL, 1, NULL, 'active', 2, 2, '2023-04-28 01:37:30', '2023-04-28 01:37:30'),
+(32, 'Khối nội dung món ăn nổi bật', NULL, 'food', NULL, 1, NULL, 'active', 2, 2, '2023-04-28 01:34:05', '2024-03-22 08:49:33'),
+(33, 'Khối nội dung thực đơn tiêu biểu', NULL, 'thuc_don', NULL, 1, NULL, 'active', 2, 2, '2023-04-28 01:37:30', '2024-03-22 08:49:47'),
 (34, 'Khối nội dung giới thiệu', NULL, 'introduce', NULL, 1, NULL, 'active', 2, 2, '2023-04-28 01:37:53', '2023-04-28 01:37:53'),
 (35, 'Khối nội dung video', NULL, 'video', NULL, 1, NULL, 'active', 2, 2, '2023-04-28 01:39:14', '2023-04-28 01:39:14'),
-(36, 'Khối nội dung tin tức nổi bật', NULL, 'hot-news', NULL, 1, NULL, 'active', 2, 2, '2023-04-28 01:39:36', '2023-04-28 01:40:17'),
-(37, 'Khối nội dung tin tức mới nhất', NULL, 'latest-news', NULL, 1, NULL, 'active', 2, 2, '2023-04-28 01:40:11', '2023-04-28 01:40:11'),
-(38, 'khối nội dung chân trang', NULL, 'footer', NULL, 1, NULL, 'active', 2, 2, '2023-04-28 01:40:51', '2023-04-28 01:40:51');
+(36, 'Khối nội dung tin tức nổi bật', NULL, 'hot-news', NULL, 1, NULL, 'deactive', 2, 2, '2023-04-28 01:39:36', '2024-03-24 16:19:42'),
+(37, 'Khối nội dung liên hệ', NULL, 'contact', NULL, 1, NULL, 'active', 2, 2, '2023-04-28 01:40:11', '2024-03-24 16:20:08'),
+(38, 'khối nội dung chân trang', NULL, 'footer', NULL, 1, NULL, 'active', 2, 2, '2023-04-28 01:40:51', '2023-04-28 01:40:51'),
+(39, 'Khối nội dung giới thiệu về chúng tôi', NULL, 'about_story', NULL, 1, NULL, 'active', 2, 2, '2024-03-26 17:29:27', '2024-03-26 17:29:27'),
+(40, 'Khối nội dung giới thiệu về nhà hàng', NULL, 'about_res', NULL, 1, NULL, 'active', 2, 2, '2024-03-26 17:30:44', '2024-03-26 17:30:44'),
+(41, 'Khối nội dung giờ hoạt động', NULL, 'time', NULL, 1, NULL, 'active', 2, 2, '2024-03-28 04:36:08', '2024-03-28 04:36:08');
 
 -- --------------------------------------------------------
 
@@ -257,10 +260,10 @@ CREATE TABLE `tb_block_contents` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `parent_id` int(11) DEFAULT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `brief` text COLLATE utf8mb4_unicode_ci,
-  `content` longtext COLLATE utf8mb4_unicode_ci,
+  `brief` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `block_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image_background` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `icon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -270,7 +273,7 @@ CREATE TABLE `tb_block_contents` (
   `system_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `iorder` int(11) DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
-  `link_iframe` text COLLATE utf8mb4_unicode_ci,
+  `link_iframe` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -282,9 +285,21 @@ CREATE TABLE `tb_block_contents` (
 --
 
 INSERT INTO `tb_block_contents` (`id`, `parent_id`, `title`, `brief`, `content`, `block_code`, `json_params`, `image`, `image_background`, `icon`, `url_link`, `url_link_title`, `position`, `system_code`, `iorder`, `status`, `link_iframe`, `admin_created_id`, `admin_updated_id`, `created_at`, `updated_at`) VALUES
-(109, NULL, 'SLIDE', 'Bao gồm các hình ảnh slide', NULL, 'slide', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 'active', NULL, 1, 2, '2023-03-31 04:28:03', '2023-04-28 02:50:04'),
-(110, 109, 'Ảnh slide 1', NULL, NULL, 'slide', NULL, '/public/upload/admin/slide1.jpg', '/public/upload/admin/slider3.jpg', NULL, '#', NULL, NULL, NULL, NULL, 'active', NULL, 1, 2, '2023-03-31 04:31:21', '2023-05-10 03:25:57'),
-(111, 109, 'Ảnh slide 2', NULL, NULL, 'slide', NULL, '/public/upload/admin/silde2.png', '/public/upload/admin/slider2.jpg', NULL, '#', NULL, NULL, NULL, NULL, 'active', NULL, 1, 2, '2023-03-31 04:31:55', '2023-05-10 03:25:44');
+(109, NULL, 'Grand Restaurant', 'Making the delicious premium food since', '<p>1990</p>', 'header', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'active', NULL, 1, 2, '2023-03-31 04:28:03', '2024-03-20 18:39:09'),
+(110, 109, 'Ảnh slide 1', NULL, NULL, 'slide', NULL, '/public/upload/admin/slide1.jpg', '/public/upload/admin/slider3.jpg', NULL, '#', NULL, NULL, NULL, NULL, 'delete', NULL, 1, 2, '2023-03-31 04:31:21', '2024-03-20 18:29:48'),
+(111, 109, 'Ảnh slide 2', NULL, NULL, 'slide', NULL, '/public/upload/admin/silde2.png', '/public/upload/admin/slider2.jpg', NULL, '#', NULL, NULL, NULL, NULL, 'delete', NULL, 1, 2, '2023-03-31 04:31:55', '2024-03-20 18:29:51'),
+(112, NULL, 'About us', 'John Phillipe', '<p>Lorem ipsum dosectetur adipisicing elit, sed do.Lorem ipsum dolor sit amet, consectetur Nulla fringilla purus at leo dignissim congue. Mauris elementum accumsan leo vel tempor. Sit amet cursus nisl aliquam. Aliquam et elit eu nunc rhoncus viverra quis at felis. Sed do</p>', 'introduce', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 'active', NULL, 2, 2, '2024-03-20 19:33:01', '2024-03-22 08:05:34'),
+(113, NULL, 'Our', 'Menus', NULL, 'food', NULL, '/public/upload/admin/image/asian-assorted-food-set-ERZSHTC-1.jpg', NULL, NULL, NULL, NULL, NULL, NULL, 3, 'active', NULL, 2, 2, '2024-03-22 08:05:13', '2024-03-22 08:50:15'),
+(114, NULL, 'Our Chef', 'Main Course', NULL, 'thuc_don', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, 'active', NULL, 2, 2, '2024-03-22 08:51:49', '2024-03-22 08:51:57'),
+(115, NULL, 'Make an Online Reservation', '0912345678', NULL, 'contact', NULL, '/public/upload/admin/logo/interior-view-ofa-city-restaurant-PTWGQXH.jpg', NULL, NULL, NULL, NULL, NULL, NULL, 5, 'active', NULL, 2, 2, '2024-03-24 16:23:14', '2024-03-24 17:32:35'),
+(116, NULL, 'About', 'OUR STORY', '<p><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi.&nbsp;</span></p>', 'about_story', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7, 'active', NULL, 2, 2, '2024-03-26 17:31:46', '2024-03-26 17:31:46'),
+(117, NULL, 'Visit Our', 'RESTAURANT', '<p><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi.&nbsp;</span></p>', 'about_res', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 6, 'active', NULL, 2, 2, '2024-03-26 17:32:25', '2024-03-26 17:32:33'),
+(118, 116, 'image 1', NULL, NULL, 'about_story', NULL, '/public/upload/admin/about/eiliv-sonas-aceron-cWqxHoa3zXk-unsplash-768x1152.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', NULL, 2, 2, '2024-03-26 17:34:31', '2024-03-26 17:50:54'),
+(119, 116, 'image 2', NULL, NULL, 'about_story', NULL, '/public/upload/admin/about/nataliya-solomakha-CUPAGFmg7eI-unsplash-768x1152.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', NULL, 2, 2, '2024-03-26 17:36:13', '2024-03-26 17:51:59'),
+(120, 117, 'image visit 1', NULL, NULL, 'about_res', NULL, '/public/upload/admin/about/volkan-vardar-1H30uRC1plc-unsplash-768x1159.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', NULL, 2, 2, '2024-03-26 17:36:55', '2024-03-26 17:52:46'),
+(121, 117, 'image visit 2', NULL, NULL, 'about_res', NULL, '/public/upload/admin/about/image-from-rawpixel-id-442928-jpeg-768x1152.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', NULL, 2, 2, '2024-03-26 17:37:20', '2024-03-26 17:53:12'),
+(122, NULL, 'Lunch Time', 'Monday to Sunday', '<p><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">10.30am - 3:00pm</span></p>', 'time', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', NULL, 2, 2, '2024-03-28 04:36:59', '2024-03-28 04:36:59'),
+(123, NULL, 'Dinner Time', 'Monday to Sunday', '<p><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">5.30pm - 11:00pm</span></p>', 'time', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', NULL, 2, 2, '2024-03-28 04:37:35', '2024-03-28 04:37:35');
 
 -- --------------------------------------------------------
 
@@ -297,38 +312,38 @@ CREATE TABLE `tb_cms_posts` (
   `taxonomy_id` bigint(20) UNSIGNED DEFAULT NULL,
   `is_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'post',
   `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `brief` text COLLATE utf8mb4_unicode_ci,
-  `content` longtext COLLATE utf8mb4_unicode_ci,
-  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `brief` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image_thumb` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'waiting',
   `author` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `url_coppy` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `url_part` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `torder` int(11) DEFAULT '1',
-  `iorder` int(11) DEFAULT '1',
-  `news_position` int(11) DEFAULT '0',
+  `torder` int(11) DEFAULT 1,
+  `iorder` int(11) DEFAULT 1,
+  `news_position` int(11) DEFAULT 0,
   `number_like` int(11) DEFAULT NULL,
   `number_comment` int(11) DEFAULT NULL,
   `number_view` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '0',
   `number_download` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '0',
-  `nhuanbut` int(11) DEFAULT '0',
-  `aproved_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `nhuanbut` int(11) DEFAULT 0,
+  `aproved_date` datetime DEFAULT current_timestamp(),
   `rating` double(18,2) DEFAULT NULL,
-  `category` text COLLATE utf8mb4_unicode_ci,
-  `cms_tag` text COLLATE utf8mb4_unicode_ci,
-  `relation` text COLLATE utf8mb4_unicode_ci,
+  `category` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cms_tag` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `relation` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `comment_status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'open',
   `seo_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `seo_keyword` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `seo_description` text COLLATE utf8mb4_unicode_ci,
+  `seo_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL COMMENT 'tài khoản người dùng',
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `iframe_video` text COLLATE utf8mb4_unicode_ci
+  `iframe_video` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -336,8 +351,8 @@ CREATE TABLE `tb_cms_posts` (
 --
 
 INSERT INTO `tb_cms_posts` (`id`, `taxonomy_id`, `is_type`, `title`, `brief`, `content`, `json_params`, `image`, `image_thumb`, `status`, `author`, `url_coppy`, `url_part`, `torder`, `iorder`, `news_position`, `number_like`, `number_comment`, `number_view`, `number_download`, `nhuanbut`, `aproved_date`, `rating`, `category`, `cms_tag`, `relation`, `comment_status`, `seo_title`, `seo_keyword`, `seo_description`, `user_id`, `admin_updated_id`, `admin_created_id`, `created_at`, `updated_at`, `iframe_video`) VALUES
-(695, 70, 'post', 'Đôi Nét Về Thông Tin Showroom Thế Giới Thời Trang Baby', 'Showrooom Thế Giới Thời Trang Baby là viên gạch đầu tiên trong chiến dịch phủ sóng thị trường bán lẻ, sau 3 năm hoạt động trong mảng bỏ sỉ quần áo trẻ em tại Việt Nam', '<p><span style=\"color:rgb(128,0,0);\">❖</span><span style=\"color:rgb(0,0,0);\"> Showrooom </span><a href=\"https://thegioithoitrangbaby.vn/\"><span style=\"color:rgb(0,51,102);\"><strong>Thế Giới Thời Trang Baby Tân Bình</strong></span></a><span style=\"color:rgb(0,0,0);\"> là viên gạch đầu tiên trong chiến dịch phủ sóng thị trường bán lẻ, sau 3 năm hoạt động trong mảng bỏ sỉ quần áo trẻ em tại Việt Nam. Với những gì đã đạt được trong lĩnh vực bán sỉ và niềm tin của hàng triệu khách hàng đã dành cho Thế Giới Thời Trang Baby. Hy vọng với sự ra đời mảng lẻ chúng tôi sẽ mang lại những lợi ích cao nhất dành cho khách hàng.</span></p><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2018/09/cua-hang-the-gioi-thoi-trang-baby.jpg\" alt=\"\" srcset=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2018/09/cua-hang-the-gioi-thoi-trang-baby.jpg 600w, https://thegioithoitrangbaby.vn/wp-content/uploads/2018/09/cua-hang-the-gioi-thoi-trang-baby-300x169.jpg 300w\" sizes=\"100vw\" width=\"600\"></figure><p style=\"text-align:center;\"><span style=\"color:rgb(0,0,0);\"><i>Một góc tại Showroom Thế Giới Thời Trang Baby Tân Bình</i></span></p><p>&nbsp;</p><p><span style=\"color:rgb(128,0,0);\">❖</span><span style=\"color:rgb(0,0,0);\"> Toạ lạc Showroom Thế Giới Thời Trang Baby nằm tại 126 Trần Văn Quang, P.10, Q.Tân Bình, TP Hồ Chí Minh. Đây là con đường cầu nối giữa 2 tuyến đường trung tâm nhất của quận Tân Bình đó là Âu Cơ và Lạc Long Quân.</span></p><p><span style=\"color:rgb(128,0,0);\">❖</span><span style=\"color:rgb(0,0,0);\"> Showroom Thế Giới Thời Trang Baby có tổng diện tích hơn 100m2, được thiết kế theo phong cách hiện đại đạt chuẩn châu Âu nhằm tạo ra không gian thực nhất giúp cho Quý khách hàng có thể dễ dàng chiêm ngưỡng và lựa chọn cho mình những bộ quần áo đẹp nhất dành cho bé yêu nhà mình.</span></p><p><span style=\"color:rgb(128,0,0);\">❖</span><span style=\"color:rgb(0,0,0);\"> Bên trong Showroom Thế Giới Thời Trang Baby sẽ được trưng bày gần 1000 mẫu mã sản phẩm các loại từ </span><a href=\"https://thegioithoitrangbaby.vn/danh-muc/quan-ao-so-sinh/\"><span style=\"color:rgb(0,51,102);\"><strong>quần áo sơ sinh</strong></span></a><span style=\"color:rgb(0,0,0);\"> (3-6 tháng tuổi) cho đến những mẫu quần áo thời trang dành cho bé từ (1 đến 13 tuổi), cùng với đó là hàng trăm mẫu phụ kiện cực xinh để phối cùng với trang phục cho bé.</span></p><p>&nbsp;</p><blockquote><p><span style=\"color:rgb(0,0,0);\"><i><strong>Thông tin về Công ty Thế Giới Thời Trang Baby</strong></i></span></p><p><span style=\"color:rgb(255,0,0);\"><i>❁</i></span><span style=\"color:rgb(0,0,0);\"><i> Thế Giới thời Trang Baby được thành lập vào 12 tháng 7 năm 2016. Tuy có “tuổi đời” non trẻ nhưng hiện nay đã có hàng triệu trẻ em Việt Nam đang sở hữu những mẫu </i></span><a href=\"https://thegioithoitrangbaby.com/\"><span style=\"color:rgb(0,51,102);\"><i><strong>quần áo trẻ em</strong></i></span></a><span style=\"color:rgb(0,0,0);\"><i>&nbsp;chất lượng từ Thế Giới Thời Trang Baby.</i></span></p><p><span style=\"color:rgb(255,0,0);\"><i>❁</i></span><span style=\"color:rgb(0,0,0);\"><i> Không chỉ là nơi được những khách hàng buôn sỉ, đại lý shop, đại lý bán hàng online,…tin dùng để lấy sỉ. Chúng tôi cũng đang nổi lực để xây dựng và phát triển chuỗi hệ thống cửa hàng quần áo trẻ em AN TOÀN dành cho trẻ em Việt Nam.</i></span></p><p><span style=\"color:rgb(255,0,0);\"><i>❁</i></span><span style=\"color:rgb(0,0,0);\"><i> Hiện tại, chúng tôi đang cung cấp hơn 5 ngàn sản phẩm <strong>AN TOÀN</strong>,<strong> TIỆN ÍCH</strong>, được chứng nhận an toàn cho cho trẻ em, không chỉ giúp bé yêu đẹp mà còn khỏe mạnh.</i></span></p><p><span style=\"color:rgb(255,0,0);\"><i>❁</i></span><span style=\"color:rgb(0,0,0);\"><i> Thế Giới Thời Trang Baby mong muốn sẽ trở thành người bạn đồng hành đáng tin cậy của hàng triệu bà mẹ trẻ năng động trên khắp Việt Nam.</i></span></p><p style=\"text-align:right;\"><span style=\"color:rgb(0,0,0);\"><i>Thế Giới Thời Trang Baby – Nơi Thiên Thần Tỏa Sáng</i></span></p></blockquote>', NULL, 'https://thegioithoitrangbaby.vn/wp-content/uploads/2018/09/cua-hang-the-gioi-thoi-trang-baby.jpg', NULL, 'active', NULL, NULL, 'doi-net-ve-thong-tin-showroom-the-gioi-thoi-trang-baby', 1, 1, 0, NULL, NULL, '9', '0', 0, '2023-05-11 16:10:11', NULL, NULL, NULL, NULL, 'open', NULL, NULL, NULL, NULL, 2, 2, '2023-05-11 09:10:11', '2023-06-03 07:09:46', NULL),
-(696, 70, 'post', 'Phương Thức Thanh Toán Và Cách Thức Vận Chuyển Khi Mua Hàng', 'Quý khách hàng mua sản phẩm tại Thế Giới Thời Trang Baby, có thể dễ dàng thanh toán bằng nhiều hình thức khác nhau và đảm bảo thời gian vận chuyển tối ưu nhất dành cho khách hàng.', '<h3><span style=\"color:rgb(0,0,0);\"><strong>Phương thức thanh toán:</strong></span></h3><p><span style=\"color:rgb(0,0,0);\">? Thanh toán trực tiếp: Khi Quý hàng mua tại Showroom có thể thanh toán trực tiếp bằng tiền mặc hoặc thẻ tín dụng.</span></p><p><span style=\"color:rgb(0,0,0);\">? Thanh toán COD: Với những kháhc hàng ở xa mua Online có thể áp dụng chế độ thanh toán COD, chúng tôi sẽ giao hàng và nhận thanh toán khi Quý khách kiểm tra hàng xong.</span></p><p><span style=\"color:rgb(0,0,0);\">? Thánh toán qua hình thức chuyển khoản: Đối với những khách hàng mua hàng Online, thì có thể chuyển khoản qua tài khoản ngân hàng của chúng tôi.</span></p><h3><span style=\"color:rgb(0,0,0);\"><strong>&nbsp;Cách thức vận chuyển:</strong></span></h3><p><span style=\"color:rgb(0,0,0);\">&nbsp;Tất cả các khách hàng khi đặt hàng sẽ được vận chuyển đến tận nhà thông qua hình thức liên kết với các đơn vị giao hàng lớn hiện nay như Bưu điện, ViettelPost, Giaohangnhanh, Giaohangtietkiem,…</span></p><p><span style=\"color:rgb(0,0,0);\">&nbsp;Còn đối với những khách sỉ ở tỉnh, thì chúng tôi sẽ miễn phí vận chuyển hàng đến chành xe gần nhất của Quý khách.</span></p>', NULL, '/public/upload/admin/7-ly-do-nen-chon-the-gioi-thoi-trang-baby-300x168.jpg', NULL, 'active', NULL, NULL, 'phuong-thuc-thanh-toan-va-cach-thuc-van-chuyen-khi-mua-hang', 1, 1, 0, NULL, NULL, '8', '0', 0, '2023-05-11 16:11:55', NULL, NULL, NULL, NULL, 'open', NULL, NULL, NULL, NULL, 2, 2, '2023-05-11 09:11:55', '2023-06-03 07:09:30', NULL),
+(695, 70, 'post', 'Đôi Nét Về Thông Tin Showroom Thế Giới Thời Trang Baby', 'Showrooom Thế Giới Thời Trang Baby là viên gạch đầu tiên trong chiến dịch phủ sóng thị trường bán lẻ, sau 3 năm hoạt động trong mảng bỏ sỉ quần áo trẻ em tại Việt Nam', '<p><span style=\"color:rgb(128,0,0);\">❖</span><span style=\"color:rgb(0,0,0);\"> Showrooom </span><a href=\"https://thegioithoitrangbaby.vn/\"><span style=\"color:rgb(0,51,102);\"><strong>Thế Giới Thời Trang Baby Tân Bình</strong></span></a><span style=\"color:rgb(0,0,0);\"> là viên gạch đầu tiên trong chiến dịch phủ sóng thị trường bán lẻ, sau 3 năm hoạt động trong mảng bỏ sỉ quần áo trẻ em tại Việt Nam. Với những gì đã đạt được trong lĩnh vực bán sỉ và niềm tin của hàng triệu khách hàng đã dành cho Thế Giới Thời Trang Baby. Hy vọng với sự ra đời mảng lẻ chúng tôi sẽ mang lại những lợi ích cao nhất dành cho khách hàng.</span></p><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2018/09/cua-hang-the-gioi-thoi-trang-baby.jpg\" alt=\"\" srcset=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2018/09/cua-hang-the-gioi-thoi-trang-baby.jpg 600w, https://thegioithoitrangbaby.vn/wp-content/uploads/2018/09/cua-hang-the-gioi-thoi-trang-baby-300x169.jpg 300w\" sizes=\"100vw\" width=\"600\"></figure><p style=\"text-align:center;\"><span style=\"color:rgb(0,0,0);\"><i>Một góc tại Showroom Thế Giới Thời Trang Baby Tân Bình</i></span></p><p>&nbsp;</p><p><span style=\"color:rgb(128,0,0);\">❖</span><span style=\"color:rgb(0,0,0);\"> Toạ lạc Showroom Thế Giới Thời Trang Baby nằm tại 126 Trần Văn Quang, P.10, Q.Tân Bình, TP Hồ Chí Minh. Đây là con đường cầu nối giữa 2 tuyến đường trung tâm nhất của quận Tân Bình đó là Âu Cơ và Lạc Long Quân.</span></p><p><span style=\"color:rgb(128,0,0);\">❖</span><span style=\"color:rgb(0,0,0);\"> Showroom Thế Giới Thời Trang Baby có tổng diện tích hơn 100m2, được thiết kế theo phong cách hiện đại đạt chuẩn châu Âu nhằm tạo ra không gian thực nhất giúp cho Quý khách hàng có thể dễ dàng chiêm ngưỡng và lựa chọn cho mình những bộ quần áo đẹp nhất dành cho bé yêu nhà mình.</span></p><p><span style=\"color:rgb(128,0,0);\">❖</span><span style=\"color:rgb(0,0,0);\"> Bên trong Showroom Thế Giới Thời Trang Baby sẽ được trưng bày gần 1000 mẫu mã sản phẩm các loại từ </span><a href=\"https://thegioithoitrangbaby.vn/danh-muc/quan-ao-so-sinh/\"><span style=\"color:rgb(0,51,102);\"><strong>quần áo sơ sinh</strong></span></a><span style=\"color:rgb(0,0,0);\"> (3-6 tháng tuổi) cho đến những mẫu quần áo thời trang dành cho bé từ (1 đến 13 tuổi), cùng với đó là hàng trăm mẫu phụ kiện cực xinh để phối cùng với trang phục cho bé.</span></p><p>&nbsp;</p><blockquote><p><span style=\"color:rgb(0,0,0);\"><i><strong>Thông tin về Công ty Thế Giới Thời Trang Baby</strong></i></span></p><p><span style=\"color:rgb(255,0,0);\"><i>❁</i></span><span style=\"color:rgb(0,0,0);\"><i> Thế Giới thời Trang Baby được thành lập vào 12 tháng 7 năm 2016. Tuy có “tuổi đời” non trẻ nhưng hiện nay đã có hàng triệu trẻ em Việt Nam đang sở hữu những mẫu </i></span><a href=\"https://thegioithoitrangbaby.com/\"><span style=\"color:rgb(0,51,102);\"><i><strong>quần áo trẻ em</strong></i></span></a><span style=\"color:rgb(0,0,0);\"><i>&nbsp;chất lượng từ Thế Giới Thời Trang Baby.</i></span></p><p><span style=\"color:rgb(255,0,0);\"><i>❁</i></span><span style=\"color:rgb(0,0,0);\"><i> Không chỉ là nơi được những khách hàng buôn sỉ, đại lý shop, đại lý bán hàng online,…tin dùng để lấy sỉ. Chúng tôi cũng đang nổi lực để xây dựng và phát triển chuỗi hệ thống cửa hàng quần áo trẻ em AN TOÀN dành cho trẻ em Việt Nam.</i></span></p><p><span style=\"color:rgb(255,0,0);\"><i>❁</i></span><span style=\"color:rgb(0,0,0);\"><i> Hiện tại, chúng tôi đang cung cấp hơn 5 ngàn sản phẩm <strong>AN TOÀN</strong>,<strong> TIỆN ÍCH</strong>, được chứng nhận an toàn cho cho trẻ em, không chỉ giúp bé yêu đẹp mà còn khỏe mạnh.</i></span></p><p><span style=\"color:rgb(255,0,0);\"><i>❁</i></span><span style=\"color:rgb(0,0,0);\"><i> Thế Giới Thời Trang Baby mong muốn sẽ trở thành người bạn đồng hành đáng tin cậy của hàng triệu bà mẹ trẻ năng động trên khắp Việt Nam.</i></span></p><p style=\"text-align:right;\"><span style=\"color:rgb(0,0,0);\"><i>Thế Giới Thời Trang Baby – Nơi Thiên Thần Tỏa Sáng</i></span></p></blockquote>', NULL, 'https://thegioithoitrangbaby.vn/wp-content/uploads/2018/09/cua-hang-the-gioi-thoi-trang-baby.jpg', NULL, 'active', NULL, NULL, 'doi-net-ve-thong-tin-showroom-the-gioi-thoi-trang-baby', 1, 1, 0, NULL, NULL, '10', '0', 0, '2023-05-11 16:10:11', NULL, NULL, NULL, NULL, 'open', NULL, NULL, NULL, NULL, 2, 2, '2023-05-11 09:10:11', '2024-03-24 19:48:01', NULL),
+(696, 70, 'post', 'Phương Thức Thanh Toán Và Cách Thức Vận Chuyển Khi Mua Hàng', 'Quý khách hàng mua sản phẩm tại Thế Giới Thời Trang Baby, có thể dễ dàng thanh toán bằng nhiều hình thức khác nhau và đảm bảo thời gian vận chuyển tối ưu nhất dành cho khách hàng.', '<h3><span style=\"color:rgb(0,0,0);\"><strong>Phương thức thanh toán:</strong></span></h3><p><span style=\"color:rgb(0,0,0);\">? Thanh toán trực tiếp: Khi Quý hàng mua tại Showroom có thể thanh toán trực tiếp bằng tiền mặc hoặc thẻ tín dụng.</span></p><p><span style=\"color:rgb(0,0,0);\">? Thanh toán COD: Với những kháhc hàng ở xa mua Online có thể áp dụng chế độ thanh toán COD, chúng tôi sẽ giao hàng và nhận thanh toán khi Quý khách kiểm tra hàng xong.</span></p><p><span style=\"color:rgb(0,0,0);\">? Thánh toán qua hình thức chuyển khoản: Đối với những khách hàng mua hàng Online, thì có thể chuyển khoản qua tài khoản ngân hàng của chúng tôi.</span></p><h3><span style=\"color:rgb(0,0,0);\"><strong>&nbsp;Cách thức vận chuyển:</strong></span></h3><p><span style=\"color:rgb(0,0,0);\">&nbsp;Tất cả các khách hàng khi đặt hàng sẽ được vận chuyển đến tận nhà thông qua hình thức liên kết với các đơn vị giao hàng lớn hiện nay như Bưu điện, ViettelPost, Giaohangnhanh, Giaohangtietkiem,…</span></p><p><span style=\"color:rgb(0,0,0);\">&nbsp;Còn đối với những khách sỉ ở tỉnh, thì chúng tôi sẽ miễn phí vận chuyển hàng đến chành xe gần nhất của Quý khách.</span></p>', NULL, '/public/upload/admin/7-ly-do-nen-chon-the-gioi-thoi-trang-baby-300x168.jpg', NULL, 'active', NULL, NULL, 'phuong-thuc-thanh-toan-va-cach-thuc-van-chuyen-khi-mua-hang', 1, 1, 0, NULL, NULL, '9', '0', 0, '2023-05-11 16:11:55', NULL, NULL, NULL, NULL, 'open', NULL, NULL, NULL, NULL, 2, 2, '2023-05-11 09:11:55', '2024-03-19 17:35:15', NULL),
 (697, 70, 'post', '5 Cách Phối Phụ Kiện Cùng Đầm Maxi Cho Bé Gái', 'Mỗi khi đi du lịch cùng với gia đình, nhất là khi đi du lịch tại các vùng biển thì sự lựa chọn đầu tiên của các bà mẹ dành cho con gái chính là những chiếc đầm maxi dịu dàng và thướt tha.', '<p>&nbsp;</p><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-ph%E1%BB%A5-kien.jpg\" alt=\"\" srcset=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-phụ-kien.jpg 721w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-phụ-kien-300x238.jpg 300w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-phụ-kien-600x475.jpg 600w\" sizes=\"100vw\" width=\"600\"></figure><p style=\"text-align:center;\"><br><i>Đầm Maxi cho bé gái trang phục không thể thiếu trong mùa hè</i></p><p style=\"text-align:justify;\">Việc phối những phụ kiện thời trang với đầm maxi cho bé gái sao cho hợp thời trang và bắt kịp xu hướng không phải là việc mà ai cũng có thể làm được. Tuy nhiên điều đó sẽ trở nên dễ dàng hơn nếu bạn biết và tận dụng những cách sau đây, thì việc phối những món phụ kiện với đầm maxi cho bé gái không còn là điều khó khăn nữa.</p><h2><strong>5 Cách Phối Phụ Kiện Cùng Đầm Maxi Cho Bé Gái</strong></h2><h3><strong>1.Đôi giày sadal</strong></h3><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-phu-kien.jpg\" alt=\"\" srcset=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-phu-kien.jpg 800w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-phu-kien-150x150.jpg 150w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-phu-kien-300x300.jpg 300w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-phu-kien-768x768.jpg 768w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-phu-kien-600x600.jpg 600w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-phu-kien-100x100.jpg 100w\" sizes=\"100vw\" width=\"500\"></figure><p style=\"text-align:center;\"><br><i>Giày Sadal </i><a href=\"https://thegioithoitrangbaby.vn/danh-muc/phu-kien-cho-be/\"><span style=\"color:rgb(0,51,102);\"><i><strong>phụ kiện cho bé</strong></i></span></a><i> mang đến sự tinh tế</i></p><p>✥ Giày sadal luôn thể hiện sự năng động và hòa nhã của người mặc được biệt những đôi giày sadal là món phụ kiện rất phù hợp với những chiếc đầm maxi mà hầu hết mọi người ai cũng lựa chọn.</p><h4><strong>Với những chiếc đầm maxi ngắn.</strong></h4><p>✥ Những đôi giày sadal dây chiến binh hoặc có đế cao sẽ rất phù với những chiếc đầm maxi ngắn, bởi những loại giày này sẽ tôn lên được vẻ đẹp các tính và thời trang cho bé gái của bạn.</p><p>✥ Tuy nhiên thì bạn đừng nên chọn những đôi giày quá cao hay quá nhiều gây sẽ khiến bé trông già hơn so với độ tuổi và đặc biệt còn rất nguy hiểm cho bé.<br>Với những chiếc đầm maxi dài</p><h4><strong>Với những chiếc đầm maxi dài</strong></h4><p>✥ Những chiếc đầm maxi dài sẽ vô cùng phù hợp với những đôi giày sadal đế bằng, có quai ngang hoặc quai kẹp , sẽ giúp có một vẻ đẹp diệu dàng và trong sáng.</p><p>✥ Các mẹ nên chọn những đôi giày không quá cầu kì và có những chi tiết đơn giản dễ mang khi mang vào bé cảm thấy thoải mái.</p><h3><strong>2. Mũ rộng vành</strong></h3><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-phu-kien-5.jpg\" alt=\"\" srcset=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-phu-kien-5.jpg 550w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-phu-kien-5-300x218.jpg 300w\" sizes=\"100vw\" width=\"550\"></figure><p style=\"text-align:center;\"><br>Chiếc mũ này là phụ kiện ăn ý với những chiếc váy maxi</p><p>✥ Mũ rộng vành sẽ là sự kết hợp vô cùng tuyệt vời với đầm maxi cho bé gái, không chỉ giúp bé hạn chế được những tia nắng tiếp xúc vào da mà còn giúp chiếc đầm trở nên thời trang và phong cách hơn.</p><p>✥ Các mẹ có thể chọn kiểu dáng của chiếc mũ tùy theo ý thích của mình. Tùy vào hình dáng cơ thể của bé và độ dài của chiếc đầm mà các mẹ chọn lựa sao cho thật phù hợp</p><p>✥ Nếu bé có khuôn mặt và thân hình nhỏ nhắn thì bạn đừng nên chọn những chiếc mũ quá rộng, điều này rất dễ gây vướng víu và khó chịu cho bé, bên cạnh có tổng thể bộ trang phục lại không được hài hòa.</p><p>✥Ngược lại nếu bé có khuôn mặt tròn trịa, mũm mĩm thì bạn nên chọn những chiếc có vành rộng,sẽ giúp khuôn mặt của bé trở nên thon thả hơn.</p><p>✥Vậy nên các mẹ nhớ cân nhắc hình dáng của bé trước khi chọn cho bé một chiếc mũ rộng vành nhé. Nếu làm tốt việc này thì bé của bạn sẽ có một vẻ đẹp vừa yêu kiều vừa tao nhã &nbsp;với chiếc mũ đấy.</p><h3><strong>3 Kính mát</strong></h3><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-phu-kien-4.jpg\" alt=\"\" srcset=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-phu-kien-4.jpg 640w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-phu-kien-4-150x150.jpg 150w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-phu-kien-4-300x300.jpg 300w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-phu-kien-4-600x600.jpg 600w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-phu-kien-4-100x100.jpg 100w\" sizes=\"100vw\" width=\"500\"></figure><p style=\"text-align:center;\"><i>Kính mát và đầm maxi cũng là cặp đôi hoàn hảo</i></p><p>✥ Kính mát và đầm maxi là cặp đôi hoàn hảo giúp bé thành quý cô đáng yêu và đầy thu hút.</p><p>✥ Chiếc mắt kính còn có tác dụng che bớt những tia nắng mặt trời tiếp xúc vào mắt của bé làm ảnh hưởng tới thị lực của Bé.</p><p>✥ Với những cô bé thì bạn nên chọn gọng mảnh có phần mắt gọn gàng và màu sắc nhẹ nhàng sẽ rất phù hợp và sang trọng.</p><p>✥ Nếu chiếc đầm maxi của bé là màu trắng thì bạn có thể phối với những đôi kính mát tùy màu mà bạn thích.</p><p>✥ Còn đối với những chiếc váy maxi có nhiều màu sắc thì bạn nên chọn cặp kính màu đen hoặc những màu sao cho phù hợp với chiếc váy.</p><h3><strong>4.Vòng cổ</strong></h3><p>✥ Một chiếc vòng cổ sẽ giúp bé gái của bạn che bớt đi khuyết điểm bờ vai và tạo cảm giác mãnh mai cho đôi vai của bé.</p><p>✥ Những chiếc vòng cổ đơn giản, với kích thước nhỏ và mỏng sẽ giúp bé gái của bạn có một vẻ ngoài dịu dàng và đầm thấm</p><p>✥ Còn những chiếc vòng cổ to, cầu&nbsp;kì và nhiều chi tiết sẽ giúp bé có một vẻ ngoài cá tính, năng động và có phần tinh anh.</p><p>✥ Tùy vào có tính và sở thích của mỗi bé mà các mẹ cân nhắc để lựa chọn một vòng cổ phù hợp cho bé của mình nhé.</p><h3><strong>5.Vòng tay</strong></h3><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-phu-kien-8.jpg\" alt=\"\" srcset=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-phu-kien-8.jpg 730w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-phu-kien-8-300x222.jpg 300w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-phu-kien-8-600x445.jpg 600w\" sizes=\"100vw\" width=\"600\"></figure><p style=\"text-align:center;\"><br><i>Vòng đeo tay sẽ giúp bé trở nên thu hút hơn</i></p><p>✥Vòng tay không thể không nhắc đến trong bài viết của ngày hôm nay, vì những chiếc vòng tay luôn là sự lựa chọn hàng đầu bởi tính đa dạng và lại phù hợp với mọi hoàn cảnh.</p><h4><strong>Với những chiếc </strong><a href=\"https://thegioithoitrangbaby.vn/danh-muc/dam-be-gai/\"><strong>đầm bé gái</strong></a><strong> có tông màu lạnh và đơn điệu</strong></h4><p>✥ Nếu bạn chọn cho bé một chiếc đầm đơn giản và màu sắc không mấy nổi bật mà bạn lại muốn chiếc váy được nổi bật hơn thì những chiếc vòng tay có màu sắc tương phản với màu váy, thiết kế cầu kì và rực rỡ sẽ giúp con của bạn trông nổi bật và thời trang hơn.</p>', NULL, 'https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/cach-ket-hop-phu-kien-2-1024x576.jpg', NULL, 'active', NULL, NULL, '5-cach-phoi-phu-kien-cung-dam-maxi-cho-be-gai', 1, 1, 0, NULL, NULL, '0', '0', 0, '2023-05-11 16:12:46', NULL, NULL, NULL, NULL, 'open', NULL, NULL, NULL, NULL, 2, 2, '2023-05-11 09:12:46', '2023-05-11 09:12:57', NULL),
 (698, 70, 'post', 'Top 3 Đầm Phụ Dâu Bé Gái Đẹp Ngất Ngay Trong Ngày Cưới', 'Bạn đang tìm một bộ trang phục cho cô bé phụ dâu của mình? Bạn đang băn khoăn không biết phải lựa chọn trang phục như thế nào? Chọn những chiếc đầm như thế nào vừa phù hợp vừa thời trang?', '<p>Lựa chọn đầm phụ dâu cho bé gái phải cần cân nhắc rất nhiều yếu tố để làm sao cho bé gái của bạn thật xinh xắn và đáng yêu. Nhưng bên cạnh đó cũng phải cho bé gái cảm thấy thật thoải mái và dễ chịu để các bé có thể, thể hiện được vai trò phù dâu của mình trong ngày cưới. Sau đây là&nbsp;Top 3 <a href=\"https://thegioithoitrangbaby.vn/top-3-dam-phu-dau-be-gai-dep-ngat-ngay-trong-ngay-cuoi/\"><span style=\"color:rgb(0,51,102);\"><strong>Đầm Phụ Dâu Bé Gái</strong></span></a> Đẹp Nhất mà các mẹ cần tham khảo để lựa chọn trang phục phù hợp cho bé gái của mình.</p><h3><strong>1 Đầm Bé Gái Thời Trang DA37</strong></h3><p>✥ Đây là chiếc đầm vô cùng phù hợp với mọi hoàn cảnh tuy nhiên còn rất phù hợp để làm phụ dâu trong nữa đấy.</p><p>✥ Có thể nói <a href=\"https://thegioithoitrangbaby.vn/danh-muc/dam-be-gai/\"><span style=\"color:rgb(0,51,102);\"><strong>Đầm Bé Gái</strong></span></a> Thời Trang DA37 là một tuyệt tác vô cùng hoàn hảo cả về kiểu dáng và chất lượng. Là một ứng viên xứng đáng cho vị trí top 3 đầm phụ dâu bé gái đẹp nhất.</p><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2018/09/dam-be-gai-thoi-trang-da37-e.jpg\" alt=\"\" srcset=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2018/09/dam-be-gai-thoi-trang-da37-e.jpg 700w, https://thegioithoitrangbaby.vn/wp-content/uploads/2018/09/dam-be-gai-thoi-trang-da37-e-247x300.jpg 247w, https://thegioithoitrangbaby.vn/wp-content/uploads/2018/09/dam-be-gai-thoi-trang-da37-e-600x729.jpg 600w\" sizes=\"100vw\" width=\"412\"></figure><p style=\"text-align:center;\"><br><i>Đầm Bé Gái Thời Trang DA37</i></p><h4><strong>Điểm nổi bật ở chất liệu Đầm Bé Gái Thời Trang DA37</strong></h4><p>✥Đầm Bé Gái Thời Trang DA37 được làm từ chất liệu ren, một chất liệu đại diện cho sự sang trọng và quý phái.</p><p>✥Với chất liệu ren này bé của bạn sẽ trở nên vô cùng dịu dàng và thướt tha lại còn rất duyên dáng với vai trò phụ dâu trong ngày cưới.</p><p>✥Bên cạnh đó chiếc đầm còn được phủ lớp vải cotton bên bên trong đây là loại vô cùng thoáng mát và thấm hút mồ cực tốt giúp bé tự tin thể tốt vai trò của mình.</p><p>✥Các đường chỉ may của Đầm Bé Gái Thời Trang DA37 rất chắc chắn nên việc chiếc váy đột nhiên bị bung chỉ, &nbsp;là điều các mẹ không cần phải lo lắng.<br>Cách thiết kế tao nhã nhưng đầy lôi cuốn.</p><h4><strong>Đầm Bé Gái Thời Trang DA37 là một thiết kế đơn giản nhưng lôi cuốn</strong></h4><h4><strong>✥ Tuy đây là một thiết kế đơn giản nhưng lại khiến cho người khác phải nhìn đi nhìn lại nhiều lần.</strong></h4><p>✥Màu trắng xám của chiếc đầm thể hiện sự tinh khôi và thuần khiết, khi khoát lên người bé của bạn sẽ mang một vẻ đẹp vô cùng trong sáng và tinh anh.</p><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2018/09/dam-be-gai-thoi-trang-da37-f.jpg\" alt=\"\" srcset=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2018/09/dam-be-gai-thoi-trang-da37-f.jpg 800w, https://thegioithoitrangbaby.vn/wp-content/uploads/2018/09/dam-be-gai-thoi-trang-da37-f-150x150.jpg 150w, https://thegioithoitrangbaby.vn/wp-content/uploads/2018/09/dam-be-gai-thoi-trang-da37-f-300x300.jpg 300w, https://thegioithoitrangbaby.vn/wp-content/uploads/2018/09/dam-be-gai-thoi-trang-da37-f-768x768.jpg 768w, https://thegioithoitrangbaby.vn/wp-content/uploads/2018/09/dam-be-gai-thoi-trang-da37-f-600x600.jpg 600w, https://thegioithoitrangbaby.vn/wp-content/uploads/2018/09/dam-be-gai-thoi-trang-da37-f-100x100.jpg 100w\" sizes=\"100vw\" width=\"500\"></figure><p style=\"text-align:center;\"><br><i>Đầm Bé Gái Thời Trang DA37</i></p><p>✥Với những chi tiết hình hoa được thêu nổi trên chiếc đầm đã làm cho chiếc đầm càng trở nên lộng lẫy nhưng lại không quá cầu kì.</p><p>✥ Bên cạnh đó Đầm Bé Gái Thời Trang DA37 còn được nhấn eo một cách kĩ lưỡng tạo độ phồng cho chiếc váy, khi bé của bạn di chuyển sẽ tạo cảm giác rất thước tha và uyển chuyển.</p><p>✥Những điều tinh tế đó sẽ giúp cho bé gái của bạn trở thành một nàng thơ thật sự khi khoác lên mình chiếc Đầm Bé Gái Thời Trang DA37. Vậy thì tại sao các mẹ lại không lựa chọn chiếc đầm này cho bé gái của mình nhỉ!</p><h3><strong>2.Đầm Hoa Dây Bé Gái DA101</strong></h3><p>✥Đây là một chiếc đầm không thể không nhắc đến trong top 3 đầm phụ dâu bé gái đẹp nhất của ngày hôm nay.</p><p>✥Không nhất thiết trang phục phụ dâu phải là màu trắng, chúng ta có thể chọn những màu khác miễn là phù hợp với buổi tiệc.</p><p>✥ Với Đầm Hoa Dây Bé Gái DA101 màu hồng này ắc hẳn đây &nbsp;là một lựa chọn thú vị giúp cho bé gái thật sự tỏa sáng với vai trò là phụ dâu đấy.</p><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-hoa-day-be-gai-DA101-4.jpg\" alt=\"\" srcset=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-hoa-day-be-gai-DA101-4.jpg 800w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-hoa-day-be-gai-DA101-4-150x150.jpg 150w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-hoa-day-be-gai-DA101-4-300x300.jpg 300w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-hoa-day-be-gai-DA101-4-768x768.jpg 768w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-hoa-day-be-gai-DA101-4-600x600.jpg 600w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-hoa-day-be-gai-DA101-4-100x100.jpg 100w\" sizes=\"100vw\" width=\"500\"></figure><p style=\"text-align:center;\"><br><i>Đầm Hoa Dây Bé Gái DA101</i></p><h4><strong>Điểm thú vị của chiếc</strong></h4><p>✥Chất vải Đầm Hoa Dây Bé Gái DA101 được sử chất liệu mỏng nhẹ đảm bảo thoáng mát, mềm mại và tuyệt đối an toàn cho làn da nhạy cảm của bé.</p><p>✥ Chất liệu ren cũng là chất liệu được lựa chọn nhiều nhất bởi sự quý phái và sang trọng mà nó mang lại.</p><p>✥ phần thân váy được tinh tế xếp ly nhiều nếp bắt từ eo kéo dài đến hết chân váy tạo nên một tầng vải xếp lớp lớp chồng nhau có bồng bềnh, nhẹ nhàng.</p><p>✥ Để tạo sự thông thoáng tuyệt đối cho bé của bạn, chiếc đầm Đầm Hoa Dây Bé Gái DA101 chọn thiết kế cổ tròn và tay sát nách giúp bé luôn có thể dễ dàng thể hiện tốt vai trò là phụ dâu của mình.</p><h4><strong>Vẻ đẹp đến từ các chi tiết</strong></h4><p>✥ Điểm nhấn và cũng là yếu tố đặc biệt nhất của chiếc đầm này chính là những chi tiết hoa rơi thoắt ẩn thoắt hiện được đặc lồng ghép giữa các lớp váy, tạo nên cảm giác vô cùng huyền ảo.</p><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-hoa-day-be-gai-DA101-5.jpg\" alt=\"\" srcset=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-hoa-day-be-gai-DA101-5.jpg 800w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-hoa-day-be-gai-DA101-5-150x150.jpg 150w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-hoa-day-be-gai-DA101-5-300x300.jpg 300w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-hoa-day-be-gai-DA101-5-768x768.jpg 768w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-hoa-day-be-gai-DA101-5-600x600.jpg 600w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-hoa-day-be-gai-DA101-5-100x100.jpg 100w\" sizes=\"100vw\" width=\"500\"></figure><p style=\"text-align:center;\"><i>Đầm Hoa Dây Bé Gái DA101</i></p><p>✥Các chi tiết hoa vô cùng phù hợp với ngày cưới bởi nó là đại diện cho sự hạnh phúc và bình an.</p><p>✥ Thử tưởng với thông điệp và chiếc đầm này mang lại thì cô dâu,chú rể nào mà không thích chứ, bé của bạn sẽ rất được chú ý cho mà xem.</p><p>✥ Chi tiết ruy băng được gắn sau eo của Đầm Hoa Dây Bé Gái DA101, vừa tạo điểm nhấn cho mặt sau, vừa giúp các mẹ có thể co dãn váy sao cho vừa vặn với bé nhất.</p><p>✥ Đây chắc chắn sẽ là gợi ý vô cùng tốt dành cho các bé và xứng đáng là Top 3 Đầm Phụ Dâu Bé Gái Đẹp Nhất đúng không nào!</p><h3><strong>3.Đầm Dạ Tiệc Sang Trọng DA69</strong></h3><p>✥Đầm Dạ Tiệc Sang Trọng DA69- nghe tên có vẻ như chiếc đầm này chỉ thích hợp cho những buổi tiệc. Không phải thế mà đây sẽ lựa chọn hoàn hảo nhất cho buổi tiệc cưới với vai trò là phụ dâu đấy.</p><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/01/dam-da-hoi-be-gai-da69.jpg\" alt=\"\" srcset=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/01/dam-da-hoi-be-gai-da69.jpg 1052w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/01/dam-da-hoi-be-gai-da69-150x150.jpg 150w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/01/dam-da-hoi-be-gai-da69-300x300.jpg 300w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/01/dam-da-hoi-be-gai-da69-768x768.jpg 768w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/01/dam-da-hoi-be-gai-da69-1024x1024.jpg 1024w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/01/dam-da-hoi-be-gai-da69-600x600.jpg 600w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/01/dam-da-hoi-be-gai-da69-100x100.jpg 100w\" sizes=\"100vw\" width=\"500\"></figure><p style=\"text-align:center;\"><br><i>Đầm Dạ Tiệc Sang Trọng DA69</i></p><h4><strong>Điểm thú vị từ chất liệu</strong></h4><p>Chiếc váy có tông màu trắng được Lấy ý tưởng thiết kế từ váy công chúa và pha lẫn chút sự thơ ngây và trong sáng như một thiên thần.</p><p>Vì thế mà khi mặc lên người chiếc đầm này bé của bạn sẽ trông rất nổi bật giữa buổi lễ bởi vẻ đẹp thuần khiết mà nó mang lại.</p><p>Đầm Dạ Tiệc Sang Trọng DA69- được làm từ vải ren một chất liệu thoáng mát vô cùng phù hợp với thời tiết nóng ẩm của nước ta.Với chất liệu này thì bé sẽ vô cùng thoải mái và dễ dịu trong các buổi tiệc cưới ngoài trời hay trong cả trong nhà.</p><h4><strong>Vẻ đẹp đến từ cách thiết kế</strong></h4><p>✥ Đầm Dạ Tiệc Sang Trọng DA69 còn được cổ tròn cùng tay sát nách tạo cho bé một hình ảnh vô cùng sang trọng và quý phái.Bên cạnh đó còn vô cùng thoải mái, dễ chịu, không bị gò bó, bé có thể tự tin làm tốt trách nhiệm của mình.</p><p style=\"text-align:center;\">&nbsp;</p><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/01/dam-da-hoi-be-gai-da69-e.jpg\" alt=\"\" srcset=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/01/dam-da-hoi-be-gai-da69-e.jpg 1000w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/01/dam-da-hoi-be-gai-da69-e-150x150.jpg 150w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/01/dam-da-hoi-be-gai-da69-e-300x300.jpg 300w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/01/dam-da-hoi-be-gai-da69-e-768x768.jpg 768w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/01/dam-da-hoi-be-gai-da69-e-600x600.jpg 600w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/01/dam-da-hoi-be-gai-da69-e-100x100.jpg 100w\" sizes=\"100vw\" width=\"500\"></figure><p style=\"text-align:center;\"><br><i>Đầm Dạ Tiệc Sang Trọng DA69</i></p><p>✥ Điểm nhấn quan trọng là phần chiết eo được điểm phối bằng ruy băng bản to kết nổi bật sẽ càng làm tăng thêm phần đáng yêu cho cô công chúa nhỏ của bạn.</p><p>✥Đặc biệt nhất là phần eo được tô điểm thêm họa tiết hoa nổi bật làm điểm nhấn cho cả chiếc đầm giúp bé của bạn càng trở nên xinh đẹp như một nàng công chúa trong truyện cổ tích.</p><p>✥Tất cả những điều trên đã tạo nên một tuyệt tác vô cùng hoàn hảo. Thế mới nói Đầm Dạ Tiệc Sang Trọng DA69 là một lựa chọn vô cùng phù hợp cho bé gái của bạn trong buổi tiệc cưới với vai trò là phụ dâu.</p>', NULL, 'https://thegioithoitrangbaby.vn/wp-content/uploads/2019/01/dam-da-hoi-be-gai-da69.jpg', NULL, 'active', NULL, NULL, 'top-3-dam-phu-dau-be-gai-dep-ngat-ngay-trong-ngay-cuoi', 1, 1, 0, NULL, NULL, '1', '0', 0, '2023-05-11 16:13:37', NULL, NULL, NULL, NULL, 'open', NULL, NULL, NULL, NULL, 2, 2, '2023-05-11 09:13:37', '2023-05-12 01:42:31', NULL),
 (699, 70, 'post', 'Top 3 Mẫu Đầm Voan Cho Bé Gái Đẹp Nhất', 'Những chiếc đầm luôn đóng vai trò rất quan trọng trong việc tôn lên vẻ đẹp của các bé . Các mẫu đầm được làm từ các chất liệu khác nhau, như lụa, cotton, đũi,..,', '<h3><strong>1.Đầm Nơ Eo Phối Voan DA104</strong></h3><p><span style=\"color:rgb(255,0,255);\">✥</span> Đầm Nơ Eo Phối Voan DA104 là mẫu đầm voan cho bé gái vô cùng xinh xắn mà <a href=\"https://thegioithoitrangbaby.vn/\"><span style=\"color:rgb(0,51,102);\"><strong>Thế Giới Thời Trang Baby</strong></span></a> muốn gửi tới các gia đình.</p><p><span style=\"color:rgb(255,0,255);\">✥</span> Chắc chắn chiếc đầm Đầm Nơ Eo Phối Voan DA104 &nbsp;sẽ là là một gợi ý vô cùng phù hợp dành cho các bé gái của bạn đây</p><figure class=\"image image-style-align-center\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-no-eo-phoi-voan-DA104-1.jpg\" alt=\"\" srcset=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-no-eo-phoi-voan-DA104-1.jpg 750w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-no-eo-phoi-voan-DA104-1-150x150.jpg 150w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-no-eo-phoi-voan-DA104-1-300x300.jpg 300w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-no-eo-phoi-voan-DA104-1-600x600.jpg 600w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-no-eo-phoi-voan-DA104-1-100x100.jpg 100w\" sizes=\"100vw\" width=\"500\"></figure><p style=\"text-align:center;\"><br><i>Đầm Nơ Eo Phối Voan DA104</i></p><p><span style=\"color:rgb(255,0,255);\">✥</span> Đầm Nơ Eo Phối Voan DA104-là một thiết kế hài hòa và đầy tinh tế giữa chất lượng và kiểu dáng.</p><p><span style=\"color:rgb(255,0,255);\">✥</span> Bên cạnh đó chiếc đầm có rất nhiều size, phù hợp với mỗi lứa tuổi để cho các mẹ tha hồ mà lựa chọn kích cỡ phù hợp cho con em của mình.</p><p><span style=\"color:rgb(255,0,255);\">✥</span> &nbsp;Với chất liệu vải voan thích hợp cho thời tiết nóng ẩm của nước ta. Giúp các bé sẽ không bị đổ quá nhiều mồ hôi khi tham gia các hoạt động ngoài trời.</p><p><span style=\"color:rgb(255,0,255);\">✥</span> &nbsp;Đầm Nơ Eo Phối Voan DA104-có màu sắc trắng và họa tiết hình hoa làm chủ đạo phù hợp với mọi màu da của các bé.</p><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-no-eo-phoi-voan-DA104-4.jpg\" alt=\"\" srcset=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-no-eo-phoi-voan-DA104-4.jpg 750w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-no-eo-phoi-voan-DA104-4-150x150.jpg 150w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-no-eo-phoi-voan-DA104-4-300x300.jpg 300w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-no-eo-phoi-voan-DA104-4-600x600.jpg 600w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-no-eo-phoi-voan-DA104-4-100x100.jpg 100w\" sizes=\"100vw\" width=\"500\"></figure><p style=\"text-align:center;\"><br><i>Đầm Nơ Eo Phối Voan DA104</i></p><p><span style=\"color:rgb(255,0,255);\">✥</span> Trên chiếc đầm còn tô điểm thêm chiếc nơ xanh đen xinh xắn làm điểm nhấn cho chiếc đầm giúp bé có một phong cách thời trang, thời thượng hơn.</p><p><span style=\"color:rgb(255,0,255);\">✥</span>&nbsp;Thêm chân váy được thiết kế xếp ly thêm viền xanh bên dưới tạo cảm giác bồng bềnh và sang trọng. Bé của bạn sẽ đáng yêu và xinh xắn vô cùng. Vậy nên&nbsp;Đầm Nơ Eo Phối Voan DA104 rất xứng đáng nằm trong vị trí top 3 mẫu đầm voan đẹp nhất cho bé gái.</p><h3><strong>2.Váy Voan Mỏng Thêu Dứa Nổi DA96</strong></h3><p><span style=\"color:rgb(255,0,255);\">✥</span> Váy Voan Mỏng Thêu Dứa Nổi DA96 sản phẩm được thiết kế cự kỳ thu hút, tông màu sang trọng, chất voan mềm mịn.</p><p><span style=\"color:rgb(255,0,255);\">✥</span>&nbsp;Đây là một sản phẩm mà các bà mẹ sẽ rất thích phú và vô cùng phù hợp cho các bé gái của bạn đấy.</p><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/vay-voan-mong-theu-dua-noi-DA96.jpg\" alt=\"\" srcset=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/vay-voan-mong-theu-dua-noi-DA96.jpg 600w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/vay-voan-mong-theu-dua-noi-DA96-150x150.jpg 150w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/vay-voan-mong-theu-dua-noi-DA96-300x300.jpg 300w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/vay-voan-mong-theu-dua-noi-DA96-100x100.jpg 100w\" sizes=\"100vw\" width=\"500\"></figure><p style=\"text-align:center;\"><br><i>Sản phẩm Váy Voan Mỏng Thêu Dứa Nổi DA96</i></p><h4><strong>Điểm đặc biệt của chiếc áo là gì?</strong></h4><p><span style=\"color:rgb(255,0,0);\">♦</span> Váy Voan Mỏng Thêu Dứa Nổi DA96 có chất liệu voan mỏng, thoáng mát, thấm mồ hôi cực kì tốt, giúp các bé thoải mái vui chơi, hay đi tham dự những buổi tiệc tùng mà không có cảm giác khó chịu.</p><p><span style=\"color:rgb(255,0,0);\">♦</span> Màu hồng &nbsp;phấn nhẹ nhàng của chiếc là màu mà đa số các bé gái đều yêu thích, vì thế bé gái của bạn sẽ rất hạnh phúc khi được mẹ tặng cho chiếc đầm này cho mà xem.</p><p><span style=\"color:rgb(255,0,0);\">♦</span> Bên cạnh đó màu hồng còn làm nổi bật lên tông da của bé giúp bé trở nên tỏa sáng hơn khi mặc chiếc váy này.</p><p><span style=\"color:rgb(255,0,0);\">♦</span> Váy Voan Mỏng Thêu Dứa Nổi DA96 còn có những họa tiết dễ thương cùng với những cái nơ được tính trên áo một cách tinh tế &nbsp;giúp các bé trông thật thời trang và năng động.</p><p><span style=\"color:rgb(255,0,0);\">♦</span> Điểm cộng của chiếc váy là tôn lên sự dịu dàng của các đem đến sự hài lòng cho các bà mẹ, và là sự lựa chọn đáng tin cậy dành cho các gia đình.</p><p><span style=\"color:rgb(255,0,0);\">♦</span> Sự giản dị của Váy Voan Mỏng Thêu Dứa Nổi DA96 đã mang đến sự nhã nhặn không cầu kỳ rất thích hợp đi chơi, du lịch ngay cả các bữa tiệc.</p><h3><strong>3.Đầm Bé Gái Tay Cải Kẻ Phối Voan DA105</strong></h3><p><span style=\"color:rgb(255,0,255);\">✥</span> Đầm Bé Gái Tay Cải Kẻ Phối Voan DA105 là sản phẩm và Thế Giới Thời Trang Baby muốn gửi đến các mẹ yêu.</p><p><span style=\"color:rgb(255,0,255);\">✥</span> Đầm Bé Gái Tay Cải Kẻ Phối Voan DA105 là sản phẩm vừa hợp thời trang, vừa hợp túi tiền mà chất lượng lại vô cùng tuyệt&nbsp;vời.</p><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-be-gai-tay-cai-ke-phoi-voan-DA105-1.jpg\" alt=\"\" srcset=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-be-gai-tay-cai-ke-phoi-voan-DA105-1.jpg 1280w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-be-gai-tay-cai-ke-phoi-voan-DA105-1-150x150.jpg 150w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-be-gai-tay-cai-ke-phoi-voan-DA105-1-300x300.jpg 300w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-be-gai-tay-cai-ke-phoi-voan-DA105-1-768x768.jpg 768w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-be-gai-tay-cai-ke-phoi-voan-DA105-1-1024x1024.jpg 1024w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-be-gai-tay-cai-ke-phoi-voan-DA105-1-600x600.jpg 600w, https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/dam-be-gai-tay-cai-ke-phoi-voan-DA105-1-100x100.jpg 100w\" sizes=\"100vw\" width=\"500\"></figure><p style=\"text-align:center;\"><br><a href=\"https://thegioithoitrangbaby.vn/danh-muc/dam-be-gai/\"><span style=\"color:rgb(0,51,102);\"><i><strong>Đầm Bé Gái</strong></i></span></a><i> Tay Cải Kẻ Phối Voan DA105</i></p><p><span style=\"color:rgb(255,0,255);\">✥</span> Với thiết kế đơn giản, nhẹ nhàng cùng chất liệu voan mịn màng ở chân váy đảm bảo sẽ mang đến cho các bé nhà bạn một tinh thần thoải mái, mát mẻ trong những chuyến du lịch hè nóng bức.</p><p><span style=\"color:rgb(255,0,255);\">✥</span> Phần trên thân áo được thiết kế vô cùng đơn giản nhưng không kém phần năng động, đáng yêu cho các bé gái.</p>', NULL, 'https://thegioithoitrangbaby.vn/wp-content/uploads/2019/04/vay-voan-mong-theu-dua-noi-DA96.jpg', NULL, 'active', NULL, NULL, 'top-3-mau-dam-voan-cho-be-gai-dep-nhat', 1, 1, 0, NULL, NULL, '20', '0', 0, '2023-05-11 16:39:14', NULL, NULL, NULL, NULL, 'open', NULL, NULL, NULL, NULL, 2, 2, '2023-05-11 09:39:14', '2023-06-03 04:29:37', NULL);
@@ -354,9 +369,9 @@ CREATE TABLE `tb_cms_taxonomys` (
   `parent_id` int(11) DEFAULT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `url_part` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `brief` text COLLATE utf8mb4_unicode_ci,
-  `content` text COLLATE utf8mb4_unicode_ci,
-  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `brief` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `is_featured` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `iorder` int(11) DEFAULT NULL,
   `hienthi` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -375,18 +390,9 @@ CREATE TABLE `tb_cms_taxonomys` (
 
 INSERT INTO `tb_cms_taxonomys` (`id`, `taxonomy`, `parent_id`, `title`, `url_part`, `brief`, `content`, `json_params`, `is_featured`, `iorder`, `hienthi`, `status`, `news_position`, `admin_created_id`, `admin_updated_id`, `created_at`, `updated_at`, `number_view`) VALUES
 (70, 'tin-tuc', NULL, 'Tin tức', 'tin-tuc', NULL, NULL, '{\"image\":null,\"image_background\":null,\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', '0', NULL, ';;', 'active', NULL, 2, 2, '2023-04-28 07:03:49', '2023-04-28 07:03:49', NULL),
-(102, 'san-pham', NULL, 'Khuyến Mãi Tháng 5', 'khuyen-mai-thang-5', NULL, NULL, '{\"image\":\"\\/public\\/upload\\/admin\\/quan-ao-be-trai-dep.jpg\",\"image_background\":null,\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', '0', 1, ';;', 'active', 0, 2, 2, '2023-05-10 02:21:28', '2023-05-10 02:21:28', NULL),
-(103, 'san-pham', NULL, 'Quần Áo Bé Trai', 'quan-ao-be-trai', NULL, '<h2 style=\"text-align:center;\"><span style=\"color:rgb(40,40,40);\"><strong>Hút Mắt Thời Trang Bé Trai | Quần Áo Bé Trai | Đồ Bé Trai Đẹp Rạng Ngời</strong></span></h2><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2018/11/quan-ao-be-trai-sanh-dieu-dep-thegioithoitrangbabyvn.png\" alt=\"\"></figure><p><span style=\"color:rgb(40,40,40);\">Đứa bé trai chào đời, niềm vui của cha mẹ , niềm hân hoan của cả dòng họ…..rằng rồi đây sẽ có người nối dõi…..một niềm tin, niềm vui sướng nhen nhóm từ thuở ấy. Rồi những năm tháng sơ sinh, quấy khóc, nuôi con khổ cực từ thuở lọt lòng cho tới lúc lớn. Rồi cũng đến những ngày Tết, ngày giỗ, ba mẹ lại phải lo chuyện ăn mặc, quần áo cho bé trai của mình. Mặc sao cho đẹp, cho trở nên sành điệu.</span></p><h3><strong>Tại sao nên lựa chọn quần áo bé trai sành điệu tại Thế Giới Thời Trang Baby?</strong></h3><p><span style=\"color:rgb(0,132,167);\">✫</span><span style=\"color:rgb(40,40,40);\"> Và không đâu hết, cửa hàng Thế Giới Thời Trang Baby chúng tôi ngoài quần áo bé trai nói chung còn bán rất nhiều loại </span><a href=\"https://thegioithoitrangbaby.vn/danh-muc/quan-ao-be-trai/\"><span style=\"color:rgb(0,51,102);\"><strong>quần áo bé trai sành điệu</strong></span></a><span style=\"color:rgb(40,40,40);\"> khác. Với những bộ cánh ấy, con bạn sẽ được biến hóa…..Không còn là cậu bé lấm lem, hôi sữa, nước mắt nước mũi lòng thòng nữa….mà sẽ là một cậu bé tươm tất, thơm tho, sáng sủa….mà đến bạn cũng không nhận ra…..</span></p><p><span style=\"color:rgb(0,132,167);\">✫</span><span style=\"color:rgb(40,40,40);\"> Chỉ cần đến với cửa hàng thời trang bé trai sành điệu của chúng tôi. Nhưng nếu bạn thiên về kiểu người truyền thống, thích đằm thắm, nhẹ nhàng,….không màu mè, mà vẫn đẹp….Chúng tôi cũng không ngại.</span></p>', '{\"image\":\"\\/public\\/upload\\/admin\\/quan-ao-be-trai-dep.jpg\",\"image_background\":null,\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', 'active', 2, ';;', 'active', 1, 2, 2, '2023-05-10 02:22:14', '2023-05-10 10:38:54', NULL),
-(104, 'san-pham', NULL, 'Quần Áo Bé Gái', 'quan-ao-be-gai', NULL, '<h2 style=\"text-align:center;\"><span style=\"color:rgb(0,0,0);\"><strong>1000+ Mẫu Thời Trang Bé Gái | Quần Áo Bé Gái | Đồ Cho Bé Gái Đẹp Giá Rẻ</strong></span></h2><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2018/11/quan-ao-be-gai-de-thuong-thegioithoitrangbabyvn.jpg\" alt=\"\"></figure><p><span style=\"color:rgb(0,0,0);\">Năm cũ sắp qua, năm mới lại về…và còn Tết nữa chứ…Cuộc sống tuy bộn bề, mệt mỏi và áp lực, xin các mẹ đừng quên khoảng thời gian cuối năm này nhé. Chẳng lẽ cứ để con gái yêu của mình lấm lem mãi sao. Ngắm nhìn con tỏa sáng trong bộ </span><a href=\"https://thegioithoitrangbaby.vn/danh-muc/quan-ao-be-gai/\"><span style=\"color:rgb(0,51,102);\"><strong>quần áo bé gái</strong></span></a><span style=\"color:rgb(0,0,0);\"> đẹp mình chọn, vui chơi cùng bạn bè cũng là một niềm hạnh phúc của cha mẹ đấy. Những tia nắng sớm mai kia cũng không thể làm bé yêu của bạn tỏa sáng được…</span></p><h3><span style=\"color:rgb(0,0,0);\"><strong>Làm sao để con yêu tỏa sáng với những bộ đồ quần áo bé gái dễ thương nhất?</strong></span></h3><p><span style=\"color:rgb(0,0,0);\">Bạn muốn tìm được những bộ đồ cho bé gái dễ thương của mình chứ ? Hãy đến với </span><a href=\"https://thegioithoitrangbaby.vn/\"><span style=\"color:rgb(0,51,102);\"><strong>Thế Giới Thời Trang Baby</strong></span></a><span style=\"color:rgb(0,0,0);\">. Với đầy đủ và ngập tràn nhiều loại quần áo cho bé gái, bạn sẽ như được sống lại thời thơ ấu của mình. Đừng để bé phải thiệt thòi nhé…Cửa hàng chúng tôi chuyên bán </span><a href=\"https://thegioithoitrangbaby.com/danh-muc/quan-ao-be-gai\"><span style=\"color:rgb(0,0,0);\"><strong>thời trang bé gái</strong></span></a><span style=\"color:rgb(0,0,0);\"> đẹp giá rẻ…Hàng ẩu, chúng tôi trả lại tiền. Với nguồn hàng cần quen biết, giá cả ở chỗ chúng tôi sẽ thoải mái hơn. Thích hợp nếu bạn là người thường cân nhắc trong chi tiêu, hay vừa trải qua một năm làm ăn không tốt lắm.</span></p><p><span style=\"color:rgb(0,0,0);\">Chúng tôi vẫn có những bộ quần áo cho bé gái giá rẻ nhưng không hề sứt mẻ. Đặc biệt hơn, cửa hàng chúng tôi cũng thường xuyên có những sự kiện khuyến mãi, giảm giá cho các mẹ đấy. Nhanh tay, không lại bay mất. Con chần chờ gì mà không đến ngay với Thế Giới Thời Trang Baby của chúng tôi ngay !!!</span></p>', '{\"image\":\"\\/public\\/upload\\/admin\\/quan-ao-be-gai-dep.jpg\",\"image_background\":null,\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', 'deactive', 3, ';;', 'active', 1, 2, 2, '2023-05-10 02:23:11', '2023-05-10 10:40:33', NULL),
-(105, 'san-pham', NULL, 'Quần Áo Sơ Sinh', 'quan-ao-so-sinh', NULL, '<h2 style=\"text-align:center;\"><strong>Đồ Sơ Sinh Cho Bé Trọn Gói | Quần Áo Trẻ Sơ Sinh Cao Cấp Đẹp &amp; Giá Rẻ</strong></h2><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2018/11/do-so-sinh-quan-ao-tre-so-sinh.jpg\" alt=\"\"></figure><p><span style=\"color:rgb(0,0,0);\">Em bé chào đời, biết bao vấn đề phát sinh. Những tháng đầu, bé đái ị suốt ngày, tùy vào điều kiện về kinh tế, thời gian và phương pháp mà mỗi mẹ chọn cho mình từng loại tã cho con của mình. Mà khi các mẹ đã mệt mọi với việc thay tã, giặt bỉm cho bé suốt ngày. Lại còn việc mặc </span><a href=\"https://thegioithoitrangbaby.vn/danh-muc/quan-ao-so-sinh/\"><span style=\"color:rgb(0,51,102);\"><strong>quần áo trẻ sơ sinh</strong></span></a><span style=\"color:rgb(0,0,0);\"> đẹp cho con của mình nữa thì lại làm cho các mẹ đau đầu…hãy đến với thế giới thời trang của chúng tôi.</span></p><h3><span style=\"color:rgb(0,0,0);\"><strong>Để mẹ không còn phải bận tâm cho quần áo sơ sinh với đứa con đầu lòng của mình nữa…</strong></span></h3><p><span style=\"color:rgb(0,0,0);\">Quần áo sơ sinh (hay đồ sơ sinh cho bé) ở Thế Giới Thời Trang Baby làm từ những loại vải cotton đã được lựa chọn kỹ từ các cánh đồng tạo cảm giác mềm mại, dễ chịu, không kích ứng với làn da non nớt của bé. Ở chúng tôi có rất nhiều quần áo trẻ sơ sinh đẹp giá rẻ với đủ loại từ những loại quần ngắn mặc chung với bỉm tới những bộ body chip hoặc body toàn thân với nhiều họa tiết đơn giản mà dễ thương thuận tiện cho mẹ mỗi khi muốn ẵm bé ra ngoài.</span></p><p><span style=\"color:rgb(0,0,0);\">Còn nếu các mẹ muốn mua cho bé những loại đồ sơ sinh cho bé trọn gói cao cấp, thì chúng tôi cũng vẫn có thể làm vừa lòng các mẹ, </span><a href=\"https://thegioithoitrangbaby.vn/\"><span style=\"color:rgb(0,51,102);\"><strong>Thế Giới Thời Trang Baby</strong></span></a><span style=\"color:rgb(0,0,0);\"> mà. Với những loại quần áo sơ sinh cao cấp, như là các loại quần áo trẻ em sơ sinh Hàn Quốc hay Nhật Bản. Hàng ngoại nhưng giá cả cũng phải chăng. Ngoài ra, bên chúng tôi còn có những bộ body dài, giữ ấm tốt cho bé vào những mùa lạnh cuối năm. Vì vậy, còn chờ gì nữa mà hãy liên hệ ngay với Thế Giới Thời Trang Baby của chúng tôi.</span></p>', '{\"image\":\"\\/public\\/upload\\/admin\\/quan-ao-so-sinh-570x420.jpg\",\"image_background\":null,\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', 'deactive', 4, ';;', 'active', 1, 2, 2, '2023-05-10 02:24:09', '2023-05-10 10:40:40', NULL),
-(106, 'san-pham', NULL, 'Phụ Kiện Cho Bé', 'phu-kien-cho-be', NULL, '<h2 style=\"text-align:center;\"><span style=\"color:rgb(0,0,0);\"><strong>Săn Tìm Các Mẫu Phụ Kiện Cho Bé Đẹp Nhật Hiện Nay</strong></span></h2><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2018/11/phu-kien-cho-be-thegioi-thoitrangbabyvn.jpg\" alt=\"\"></figure><p><span style=\"color:rgb(0,0,0);\">Xin chào các mẹ, khi bé con nhỏ hoặc chưa định hình được cái đẹp, phải ăn mặc như thế nào thì chính các mẹ chính là người tạo ra diện mạo bên ngoài cho bé yêu của mình. Một bộ quần áo đẹp tất nhiên sẽ giúp cho bé thêm đẹp. Nhưng nếu có thêm những món </span><a href=\"https://thegioithoitrangbaby.vn/danh-muc/phu-kien-cho-be/\"><span style=\"color:rgb(0,51,102);\"><strong>phụ kiện cho bé</strong></span></a><span style=\"color:rgb(0,0,0);\">, cục cưng của bạn sẽ trở nên nổi bật hơn với những điểm nhấn tuy nhỏ nhưng hiệu quả thật to.</span></p><h3><span style=\"color:rgb(0,0,0);\"><strong>Tìm đâu những món phụ kiện cho bé độc, đẹp tạo nên dấu ấn cho con yêu của bạn?</strong></span></h3><p><span style=\"color:rgb(0,0,0);\">Hãy đến ngay với Thế Giới Thời Trang Baby, các mẹ sẽ hài lòng. Với một Thế Giới phụ kiện bé trai lẫn bé gái, chúng tôi sẽ mang đến cho các mẹ nhiều sự lựa chọn nhất có thể. Từ những con thú nhồi bông như gấu Teddy, Hello Kitty, Nhím Hồng,….đến những bộ nơ, băng đô dành cho phụ kiện bé gái màu sắc cho các mẹ chọn để phối đồ cho con yêu của mình.</span></p><p><span style=\"color:rgb(0,0,0);\">Nếu bé yêu của các mẹ đang trong tuổi tập đi, hãy tham khảo những loại giày tập đi ngộ nghĩnh, sắc màu của chúng tôi. Với những đôi giày đáng yêu, bé của các mẹ sẽ hứng thú tập đi hơn đấy. Con chần chờ gì nữa, muốn bé tỏa sáng nổi bật, hãy ghé ngay </span><a href=\"https://thegioithoitrangbaby.vn/\"><span style=\"color:rgb(0,51,102);\"><strong>Thế Giới Thời Trang Baby</strong></span></a><span style=\"color:rgb(0,0,0);\"> của chúng tôi.</span></p>', '{\"image\":\"\\/public\\/upload\\/admin\\/quan-ao-be-gai-dep.jpg\",\"image_background\":null,\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', 'deactive', 5, ';;', 'active', 1, 2, 2, '2023-05-10 02:25:22', '2023-05-10 10:40:51', NULL),
-(107, 'san-pham', NULL, 'Hàng Mới Về', 'hang-moi-ve', NULL, '<h2 style=\"text-align:center;\"><span style=\"color:rgb(0,0,0);\"><strong>BST Quần Áo Trẻ Em Xuất Khẩu Cao Cấp Đẹp Giá Rẻ Nhất</strong></span></h2><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2018/11/quan-ao-tre-em-thegioithoitrangbabyvn.jpg\" alt=\"\"></figure><p><span style=\"color:rgb(0,0,0);\">Bé yêu của các mẹ đã bắt đầu lớn rồi. Những bộ quần áo bé mặc bấy lâu nay đã sờn cũ, úa màu, hay đã bị giãn…Các mẹ cần mua quần áo trẻ em mới cho bé nhưng những shop quần áo quen thuộc lại không có loại mà mẹ cần, hoặc đơn giản là bạn muốn thử tìm </span><a href=\"https://thegioithoitrangbaby.vn/danh-muc/quan-ao-tre-em-moi/\"><span style=\"color:rgb(0,51,102);\"><strong>quần áo trẻ em đẹp</strong></span></a><span style=\"color:rgb(0,0,0);\"> tại một cửa hàng mới. Vậy thì các mẹ đã đến đúng nơi rồi đấy.</span></p><h3><span style=\"color:rgb(0,0,0);\"><strong>Thế Giới Thời Trang Baby® – Hệ thống quần áo trẻ em chất nhất Sài Gòn</strong></span></h3><p><span style=\"color:rgb(0,0,0);\">Đến với cửa hàng chúng tôi, các mẹ sẽ được đắm mình trong Thế Giới quần áo trẻ em đẹp với đa dạng các loại, mẫu mã từ những món đồ bộ mặc ở nhà cho đến những mẫu áo dài cách tân, quân Jean rách gối cho các bé mỗi dịp dạo phố, đi lễ, ăn tiệc.</span></p><p><span style=\"color:rgb(0,0,0);\">Như đã giới thiệu bên trên, bên chúng tôi có từ những bộ quần áo trẻ em giá rẻ nhưng chất lượng không hề bị sứt mẻ nếu như các mẹ muốn tiết kiệm chút ít để mua tã sữa cho con….Đến những bộ quần áo trẻ em cao cấp, dành cho những buổi tiệc sang trọng, lễ cưới, hay những dịp hiếm có trong năm.</span></p><p><span style=\"color:rgb(0,0,0);\">Đặc biệt hơn, bên chúng tôi còn có hàng quần áo trẻ em xuất khẩu. Với chất lượng như mơ, trong khi giá thì mỏng như tờ, đáp ứng nhu cầu của các mẹ chuộng hàng vnxk. Vì vậy, hãy đến với cửa hàng </span><a href=\"https://thegioithoitrangbaby.vn/\"><span style=\"color:rgb(0,51,102);\"><strong>Thế Giới Thời Trang Baby</strong></span></a><span style=\"color:rgb(0,0,0);\"> của chúng tôi ngay hôm nay nhá !</span></p>', '{\"image\":\"\\/public\\/upload\\/admin\\/quan-ao-be-trai-dep.jpg\",\"image_background\":null,\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', '0', 6, ';;', 'active', 0, 2, 2, '2023-05-10 02:26:09', '2023-05-10 02:26:09', NULL),
-(108, 'san-pham', 103, 'Áo Sơ Mi Bé Trai', 'ao-so-mi-be-trai', NULL, '<h2 style=\"text-align:center;\"><span style=\"color:rgb(0,0,0);\"><strong>Sôi Sục Với Các Mẫu Áo Sơ Mi Bé Trai Xuất Khẩu Đẹp Mới Nhất</strong></span></h2><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2018/11/ao-so-mi-be-trai-xuat-khau-thegioithoitrangbabyvn.png\" alt=\"\"></figure><p><span style=\"color:rgb(0,0,0);\">Những dịp cuối tuần, đi chơi, lễ hay Tết, có bao giờ các mẹ nghĩ tới áo sơ mi cho bé trai yêu của mình không. Trải qua những thăng trầm của lịch sử, chiếc áo sơ mi giờ đây đã là biểu tượng của sự lịch sự…sang trọng…”Đi đám cưới mà mặc áo ba lỗ à” hay “Mày mặc áo thun mà đi phỏng vấn, nhà tuyển dụng nhìn thấy là rớt rồi”…Vì vậy, áo sơ mi thường là sự lựa chọn cho các quý ông trong mỗi dịp quan trọng. Nhưng đấy là khi họ đã lớn. Còn lúc họ còn nhỏ thì có </span><a href=\"https://thegioithoitrangbaby.vn/danh-muc/ao-so-mi-be-trai/\"><span style=\"color:rgb(0,51,102);\"><strong>áo sơ mi bé trai</strong></span></a><span style=\"color:rgb(0,0,0);\"> hay không ?</span></p><h3><span style=\"color:rgb(0,0,0);\"><strong>Làm sao để tìm được những chiếc áo sơ mi bé trai đẹp nhất TP. Hồ Chí Minh ?</strong></span></h3><p><span style=\"color:rgb(0,0,0);\">Đến với </span><a href=\"https://thegioithoitrangbaby.vn/\"><span style=\"color:rgb(0,51,102);\"><strong>Thế Giới Thời Trang Baby</strong></span></a><span style=\"color:rgb(0,0,0);\">, các mẹ sẽ tìm được những chiếc áo sơ mi phù hợp cho con trai yêu của mình trong các dịp lễ Tết, cưới hỏi. Chúng tôi cam kết hàng ở Thế Giới là những chiếc áo sơ mi bé trai xuất khẩu với chất lượng như hàng nhập. Áo sơ mi bé trai ngoài dùng để mặc còn có thể dùng làm phụ kiện áo khoác lúc phối đồ, rất sành điệu và đẹp đấy nhá. Còn nếu các mẹ muốn có một bộ vừa quần vừa áo sơ mi cho bé trai đẹp,…các mẹ đã chọn đúng chỗ rồi đấy.</span></p>', '{\"image\":\"\\/public\\/upload\\/admin\\/quan-ao-be-trai-dep.jpg\",\"image_background\":null,\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', '0', 1, ';;', 'active', 1, 2, 2, '2023-05-10 02:26:44', '2023-05-11 01:54:04', NULL),
-(109, 'san-pham', 103, 'Áo Thun Bé Trai', 'ao-thun-be-trai', NULL, '<h2 style=\"text-align:center;\"><strong>Áo Phông Bé | Áo Thun Bé Trai Xuất Khẩu Đẹp &amp; Giá Rẻ</strong></h2><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2018/11/ao-thun-be-trai-xuat-khai-dep-thegioithoitrangbabyvn.jpg\" alt=\"\"></figure><p><span style=\"color:rgb(0,0,0);\">Mùa mưa đã qua, để lại những đợt nắng đã nóng nay còn nóng hơn. Cộng với việc các bé trai hay chơi đùa, chạy nhảy làm bạn thấy mệt mỏi khi quần áo con trai yêu bạn mặc cứ hay hư, rách mỗi lần đi chơi về. Vì vậy, các mẹ nên chọn cho con yêu của mình các loại </span><a href=\"https://thegioithoitrangbaby.vn/danh-muc/ao-thun-be-trai/\"><span style=\"color:rgb(0,51,102);\"><strong>áo thun bé trai</strong></span></a><span style=\"color:rgb(0,0,0);\"> phù hợp nhất.</span></p><h3><span style=\"color:rgb(0,0,0);\"><strong>Biết tìm đâu những địa điểm mua áo thun bé trai đẹp nhất Sài Gòn ?</strong></span></h3><p><span style=\"color:rgb(0,0,0);\">Hãy đến ngay với Thế Giới Thời Trang Baby của chúng tôi. Với những chiếc áo thun bé trai xuất khẩu được may từ những sợi cotton bền và tốt nhất được chắt chiu kỹ trên cánh đồng.</span></p><p><span style=\"color:rgb(0,0,0);\">Theo cách nói của người Ấn Độ, bất cứ điều gì xảy ra thì đó là điều nên xảy ra. Lẽ ra những chiếc áo thun bé trai (áo phông bé trai) này đã được xuất khẩu nhưng vì một lí do tình cờ nào đó nên chúng có thể đến được tay của các mẹ đấy. Và tất nhiên vẫn là hàng xịn nhé. Xịn như vua nhưng giá không hề chua. Những chiếc áo thun bé trai giá rẻ của chúng tôi với khả năng hút ẩm tối đa sẵn sàng để thử thách qua những đợt vui chơi, chạy nhảy của các bé trai. Sẵn sàng để đối phó với những đợt nắng nóng sắp tới. Với độ co giãn tốt nhất, dù bé có mau lớn, những chiếc áo phông cho bé trai của chúng tôi cũng giúp bé mặc được lâu hơn.</span></p><p><span style=\"color:rgb(0,0,0);\">Còn nếu các mẹ hay bé muốn một cái áo để diện cho những ngay lễ, cuối tuần…ngày Tết thì chúng tôi cũng không ngần ngại. Với những chiếc áo thun bé trai đẹp với nhiều kích cỡ, nhiều nguồn hàng khác nhau từ VNXK tới hàng Quảng Châu, các mẹ sẽ ngập tràn trong </span><a href=\"https://thegioithoitrangbaby.vn/\"><span style=\"color:rgb(0,51,102);\"><strong>Thế Giới Thời Trang Baby</strong></span></a><span style=\"color:rgb(0,0,0);\"> của chúng tôi. Nào còn chờ gì nữa!</span></p>', '{\"image\":\"\\/public\\/upload\\/admin\\/quan-ao-be-trai-dep.jpg\",\"image_background\":null,\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', '0', 2, ';;', 'active', 1, 2, 2, '2023-05-10 02:27:11', '2023-05-11 01:54:12', NULL),
-(110, 'san-pham', 103, 'Áo Khoác Bé Trai', 'ao-khoac-be-trai', NULL, '<h2 style=\"text-align:center;\"><span style=\"color:rgb(0,0,0);\"><strong>Ngất Ngây Với 100+ Áo Khoác Bé Trai Xuất Khẩu (VNXK) Cực Đẹp</strong></span></h2><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2018/11/ao-khoac-be-trai-vnxk-dep-thegioithoitrangbabyvn.png\" alt=\"\"></figure><p><span style=\"color:rgb(0,0,0);\">Chiếc áo khoác phương đã theo chân người phương Tây cập bến nước Đại Việt vào thế kỉ 19. Đến nay, áo khoác đã trở thành một món đồ phổ biến hàng ngày của mọi người. Tùy vào thời tiết từng miền, mà chiếc áo khoác có độ dày mỏng khác nhau tùy vào mục đích che mưa hay che nắng. Ví như </span><a href=\"https://thegioithoitrangbaby.vn/danh-muc/ao-khoac-be-trai/\"><span style=\"color:rgb(0,51,102);\"><strong>áo khoác bé trai tphcm</strong></span></a><span style=\"color:rgb(0,0,0);\"> sẽ chủ yếu là chống gió, chống nắng nên thường được gọi là áo gió.</span></p><p><span style=\"color:rgb(0,0,0);\">Vào những dịp cuối năm, trời se lạnh, mà chiếc áo khoác của con bạn thì đã cũ. Vì vậy việc sắm một cái áo khoác cho bé trai của bạn là điều cần thiết bây giờ.</span></p><h3><span style=\"color:rgb(0,0,0);\"><strong>Làm thế nào để tìm mua được một chiếc áo khoác bé trai vừa tốt vừa đẹp tại TP. HCM ?</strong></span></h3><p><span style=\"color:rgb(0,0,0);\">Cửa hàng </span><a href=\"https://thegioithoitrangbaby.vn/\"><span style=\"color:rgb(0,51,102);\"><strong>Thế Giới Thời Trang Baby</strong></span></a><span style=\"color:rgb(0,0,0);\"> của chúng tôi sẽ giúp các mẹ có nhiều lựa chọn hơn. Chúng tôi có cả hàng áo khoác bé trai vnxk, hàng ngoại giá nội, nhưng số lượng có hạn thôi nhé. Chiếc áo khoác vào tay các nhà thiết kế ngoài công dụng giữ ấm, chống nắng nay đã trở nên góc cạnh, tinh tế, chi tiết hoa văn hơn. Bên những chiếc áo khoác bé trai xuất khẩu, chúng tôi còn mang đến những chiếc áo khoác bé trai đẹp, sành điệu các bé trai hóa quý ông trong các dịp lễ Tết. Hãy đến ngày với cửa hàng chúng tôi để được tận mắt ngắm nhìn thế giới áo khoác bé trai tốt nhất TP. HCM.</span></p>', '{\"image\":\"\\/public\\/upload\\/admin\\/quan-ao-be-trai-dep.jpg\",\"image_background\":null,\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', '0', 3, ';;', 'active', 1, 2, 2, '2023-05-10 02:29:28', '2023-05-11 01:54:18', NULL),
-(111, 'san-pham', 104, 'Áo Sơ Mi Bé Gái', 'ao-so-mi-be-gai', NULL, '<h2 style=\"text-align:center;\"><span style=\"color:rgb(0,0,0);\"><strong>Các Mẫu Áo Sơ Mi Cho Bé Gái Đẹp Làm Xao Xuyến Các Bà Mẹ</strong></span></h2><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2018/11/ao-so-mi-be-gai-dep-nhat-thegioithoitrangbabyvn.png\" alt=\"\"></figure><p><span style=\"color:rgb(0,0,0);\">Với các bé gái, tất nhiên là các mẹ sẽ thường cho các bé mặc váy, mặc đầm…Nhưng nếu một ngày thức dậy, các mẹ đã thấy chán ngán khi cứ phải lặp đi lặp lại hết váy rồi lại đến đầm, muốn đổi gió cho cho con gái yêu nhưng cũng thực chất là cho chính mình thì hãy tham khảo ngay danh mục </span><a href=\"https://thegioithoitrangbaby.vn/danh-muc/ao-so-mi-be-gai/\"><span style=\"color:rgb(0,51,102);\"><strong>áo sơ mi bé gái</strong></span></a><span style=\"color:rgb(0,0,0);\"> của chúng tôi.</span></p><h3><span style=\"color:rgb(0,0,0);\"><strong>Áo sơ mi bé gái đẹp cho con yêu của bạn, tại sao không ?</strong></span></h3><p><span style=\"color:rgb(0,0,0);\">Đâu phải chỉ có bé trai mặc áo sơ mi mới hợp. Chiếc áo sơ mi nam vốn cứng và dày vào tay các nhà thiết kế với chút biến hóa, rung chuyển đã khiến nó trở nên mỏng, mềm mại và uyển chuyển nữ tính hơn. Ngoài ra, với những tông màu sắc nhẹ cùng họa tiết trang trí phong phú càng giúp cho chiếc áo sơ mi cho bé gái thêm đẹp, dịu dàng hơn.</span></p><p><span style=\"color:rgb(0,0,0);\">Thế Giới áo sơ mi bé gái chúng tôi có rất nhiều kiểu dáng thiết kế từ kẻ sọc ca-rô, kiểu cà-vạt…tới hoa lá cành, thoải mái cho các mẹ lựa chọn. Như đoạn nhạc nào cũng cần có đoạn cao trào, như bức tranh nào cũng có trọng tâm, điểm nhấn. Các mẹ hãy cùng đến </span><a href=\"https://thegioithoitrangbaby.vn/\"><span style=\"color:rgb(0,51,102);\"><strong>Thế Giới Thời Trang Baby</strong></span></a><span style=\"color:rgb(0,0,0);\"> khám phá những chiếc áo sơ mi bé gái đẹp của chúng tôi để tạo điểm nhấn cho con gái yêu của mình nhé !</span></p>', '{\"image\":\"\\/public\\/upload\\/admin\\/quan-ao-be-gai-dep.jpg\",\"image_background\":null,\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', '0', 1, ';;', 'active', 0, 2, 2, '2023-05-10 02:29:53', '2023-05-10 02:29:53', NULL),
-(112, 'san-pham', 104, 'Áo Thun Bé Gái', 'ao-thun-be-gai', NULL, '<h2 style=\"text-align:center;\"><span style=\"color:rgb(0,0,0);\"><strong>Mỏi Mắt Ngắm Áo Phông Bé Gái | Áo Thun Bé Gái Xuất Khẩu&nbsp; Đẹp Mê Ly</strong></span></h2><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2018/11/ao-thun-be-gai-dep-thegioithoitrangbabyvn.png\" alt=\"\"></figure><p><span style=\"color:rgb(0,0,0);\">Nếu các mẹ đang cùng bé trải qua những ngày nắng oi bức nóng nực thì với chiếc váy hay những chiếc áo dày sẽ khiến cho con bạn mệt mỏi vì bị nóng bức. Vì thế, các mẹ hãy nghĩ ngay đến chiếc áo thun. Những chiếc </span><a href=\"https://thegioithoitrangbaby.vn/danh-muc/ao-thun-be-gai/\"><span style=\"color:rgb(0,51,102);\"><strong>áo thun bé gái</strong></span></a><span style=\"color:rgb(0,0,0);\"> vốn nhỏ gọn, mỏng, hút ẩm, thoáng mát chính là phương án tốt nhất cho bé gái yêu của bạn vào những ngày nắng nóng.</span></p><h3><span style=\"color:rgb(0,0,0);\"><strong>Áo thun cho bé gái năng động trong ngày nắng nóng, tại sao không ?</strong></span></h3><p><span style=\"color:rgb(0,0,0);\">Hoặc nếu con gái yêu của bạn năng động, thích vui đùa, chạy nhảy với bao trẻ khác trong xóm, thì chiếc áo thun cho bé gái (hay áo phông cho bé gái) lại là một lựa chọn cực kỳ hợp lý cho các mẹ trong trường hợp này. Với phần lớn chất liệu làm từ sợi cotton, chiếc áo phông bé gái ở chỗ chúng tôi có độ hút ẩm tốt, co giãn vừa phải, bé sẽ thoải mái vận động mà không cảm thấy vướng víu gì.</span></p><p><span style=\"color:rgb(0,0,0);\">Còn nếu các mẹ muốn sắm cho bé gái yêu của những chiếc áo thun để ra ngoài đi chơi, đi dự tiệc thì cửa hàng chúng tôi cũng có những loại áo thun bé gái xuất khẩu hàng công ty, số lượng thì có hạn nhưng chất lượng thì vô cùng. Với nhiều màu sắc và hoa tiết trang trí phong phú, các mẹ tha hồ lựa chọn. Hãy ghé ngay trang </span><a href=\"https://thegioithoitrangbaby.vn/\"><span style=\"color:rgb(0,51,102);\"><strong>Thế Giới Thời Trang Baby</strong></span></a><span style=\"color:rgb(0,0,0);\">, chúng tôi sẽ hóa thiên thần con gái yêu của các bạn !</span></p>', '{\"image\":\"\\/public\\/upload\\/admin\\/quan-ao-be-gai-dep.jpg\",\"image_background\":null,\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', '0', 2, ';;', 'active', 0, 2, 2, '2023-05-10 02:30:18', '2023-05-10 02:30:18', NULL),
-(113, 'san-pham', 104, 'Đầm Bé Gái', 'dam-be-gai', NULL, '<h2 style=\"text-align:center;\"><span style=\"color:rgb(0,0,0);\"><strong>Đầm Bé Gái Cao Cấp | Váy Bé Gái Đẹp &amp; Giá Rẻ Nhất Thị Trường</strong></span></h2><figure class=\"image\"><img src=\"https://thegioithoitrangbaby.vn/wp-content/uploads/2018/11/dam-be-gai-dep-gia-re-thegioithoitrangbabyvn.png\" alt=\"\"></figure><p><span style=\"color:rgb(0,0,0);\">Xin chào các mẹ, cuộc sống của các mẹ và bé gái yêu của mình không chỉ có ở nhà. Cuối tuần, các dịp lễ Tết mẹ và bé vẫn ra ngoài, đi chơi hay đi dự tiệc. Những lúc như vậy, những bộ đầm bé gái (hay váy bé gái) là rất cần thiết, chẳng lẽ các mẹ vẫn để bé gái yêu của mình ra ra ngoài với những bộ quần áo đã cũ, lấm lem, úa màu như thường ngày sao ? Hãy để con gái yêu của mình tỏa sáng trong những mẫu </span><a href=\"https://thegioithoitrangbaby.vn/danh-muc/dam-be-gai/\"><span style=\"color:rgb(0,51,102);\"><strong>đầm bé gái đẹp</strong></span></a><span style=\"color:rgb(0,0,0);\"> nhất ở cửa hàng chúng tôi nhé.</span></p><h3><span style=\"color:rgb(0,0,0);\"><strong>Đầm bé gái (váy bé gái) giúp con yêu của mẹ tỏa sáng trong bữa tiệc</strong></span></h3><p><span style=\"color:rgb(0,0,0);\">Đến với Thế Giới Thời Trang Baby đầm bé gái cao cấp của chúng tôi, với nhiều loại thiết kế, mẫu mã đa dạng từ Đông sang Tây đáp ứng mọi nhu cầu của các mẹ. Với những loại váy bé gái đẹp, hàng ngoại giá nội, những bộ đầm của chúng tôi sẽ hóa thiên nga bé gái của bạn trong bữa tiệc hay trong những buổi đi chơi dã ngoại.</span></p><p><span style=\"color:rgb(0,0,0);\">Còn nếu các mẹ muốn những loại váy, đầm nhẹ hơn, chúng tôi cũng không ngần ngại. Chúng tôi cung cấp các loại đầm bé gái giá rẻ (váy bé gái giá rẻ), giúp các mẹ tiết kiệm tiền hơn cho những mua sắm khác của mình, hàng rẻ những không hề tẻ nhạt nhé. Nào, xin mời đến với cửa hàng </span><a href=\"https://thegioithoitrangbaby.vn/\"><span style=\"color:rgb(0,51,102);\"><strong>Thế Giới Thời Trang Baby</strong></span></a><span style=\"color:rgb(0,0,0);\"> của chúng tôi !</span></p>', '{\"image\":\"\\/public\\/upload\\/admin\\/quan-ao-be-gai-dep.jpg\",\"image_background\":null,\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', '0', 3, ';;', 'active', 0, 2, 2, '2023-05-10 02:30:47', '2023-05-10 02:30:47', NULL);
+(114, 'san-pham', NULL, 'Starters', 'starters', NULL, NULL, '{\"image\":null,\"image_background\":null,\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', 'active', NULL, ';0;', 'active', 1, 2, 2, '2024-03-22 04:53:02', '2024-03-22 09:21:27', NULL),
+(115, 'san-pham', NULL, 'Sea Food', 'sea-food', NULL, NULL, '{\"image\":null,\"image_background\":null,\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', 'active', NULL, ';0;', 'active', 1, 2, 2, '2024-03-22 04:53:53', '2024-03-22 09:21:17', NULL),
+(116, 'san-pham', NULL, 'Main Course', 'main-course', NULL, NULL, '{\"image\":null,\"image_background\":null,\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', 'active', NULL, ';1;', 'active', 1, 2, 2, '2024-03-22 04:54:26', '2024-03-22 09:20:06', NULL);
 
 -- --------------------------------------------------------
 
@@ -399,9 +405,9 @@ CREATE TABLE `tb_components` (
   `component_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `brief` text COLLATE utf8mb4_unicode_ci,
-  `content` longtext COLLATE utf8mb4_unicode_ci,
-  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `brief` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image_background` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `iorder` int(11) DEFAULT NULL,
@@ -435,10 +441,10 @@ INSERT INTO `tb_components` (`id`, `component_code`, `parent_id`, `title`, `brie
 CREATE TABLE `tb_component_configs` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `component_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
-  `is_config` tinyint(1) NOT NULL DEFAULT '1',
+  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `is_config` tinyint(1) NOT NULL DEFAULT 1,
   `iorder` int(11) DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
@@ -468,17 +474,20 @@ CREATE TABLE `tb_contacts` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `seats` int(11) DEFAULT NULL,
   `subject` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `content` text COLLATE utf8mb4_unicode_ci,
-  `admin_note` text COLLATE utf8mb4_unicode_ci,
-  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `admin_note` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `iorder` int(11) DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `department_id` bigint(20) DEFAULT NULL
+  `department_id` bigint(20) DEFAULT NULL,
+  `booking_date` date NOT NULL,
+  `booking_time` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -534,11 +543,11 @@ CREATE TABLE `tb_logs` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `url_referer` text COLLATE utf8mb4_unicode_ci,
-  `url` text COLLATE utf8mb4_unicode_ci,
+  `url_referer` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `url` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `method` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `params` text COLLATE utf8mb4_unicode_ci,
-  `logged_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `params` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `logged_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -551,11 +560,11 @@ CREATE TABLE `tb_menus` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `parent_id` int(11) DEFAULT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `url_link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `menu_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `system_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `iorder` int(11) DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
@@ -571,10 +580,16 @@ CREATE TABLE `tb_menus` (
 INSERT INTO `tb_menus` (`id`, `parent_id`, `name`, `description`, `url_link`, `menu_type`, `system_code`, `json_params`, `iorder`, `status`, `admin_created_id`, `admin_updated_id`, `created_at`, `updated_at`) VALUES
 (45, NULL, 'Menu chính', NULL, NULL, 'header', NULL, NULL, 1, 'active', 2, 2, '2023-04-28 07:16:29', '2023-04-28 07:16:29'),
 (46, 45, 'Trang chủ', NULL, '/', NULL, NULL, '{\"icon\":null,\"target\":\"_self\"}', 1, 'active', 2, 2, '2023-04-28 07:16:46', '2023-04-28 07:27:44'),
-(47, 45, 'Thông tin cửa hàng', NULL, '/chi-tiet/doi-net-ve-thong-tin-showroom-the-gioi-thoi-trang-baby.html', NULL, NULL, '{\"icon\":null,\"target\":\"_self\"}', 2, 'active', 2, 2, '2023-04-28 07:17:03', '2023-05-12 02:11:48'),
-(50, 45, 'Tin tức', NULL, '/tin-tuc/tin-tuc.html', NULL, NULL, '{\"icon\":null,\"target\":\"_self\"}', 3, 'active', 2, 2, '2023-04-28 07:17:51', '2023-05-10 02:08:54'),
-(55, 45, 'Thanh toán & vận chuyển', NULL, '/chi-tiet/phuong-thuc-thanh-toan-va-cach-thuc-van-chuyen-khi-mua-hang.html', NULL, NULL, '{\"icon\":null,\"target\":\"_self\"}', 4, 'active', 2, 2, '2023-04-28 07:19:48', '2023-05-12 02:12:05'),
-(58, 45, 'Liên hệ', NULL, '/lien-he', NULL, NULL, '{\"icon\":null,\"target\":\"_self\"}', 5, 'active', 2, 2, '2023-04-28 07:21:00', '2023-05-12 03:44:16');
+(47, 45, 'Menu', NULL, '/chi-tiet/doi-net-ve-thong-tin-showroom-the-gioi-thoi-trang-baby.html', NULL, NULL, '{\"icon\":null,\"target\":\"_self\"}', 2, 'active', 2, 2, '2023-04-28 07:17:03', '2024-03-20 07:53:32'),
+(55, 45, 'About us', NULL, 'about-us', NULL, NULL, '{\"icon\":null,\"target\":\"_self\"}', 4, 'active', 2, 2, '2023-04-28 07:19:48', '2024-03-26 15:52:08'),
+(58, 45, 'Contact', NULL, '/lien-he', NULL, NULL, '{\"icon\":null,\"target\":\"_self\"}', 5, 'active', 2, 2, '2023-04-28 07:21:00', '2024-03-20 07:55:00'),
+(59, 47, 'Khai vị', NULL, '/san-pham/starters.html', NULL, NULL, '{\"icon\":null,\"target\":\"_self\"}', 1, 'active', 2, 2, '2024-03-20 07:56:15', '2024-03-24 19:49:46'),
+(60, 47, 'Món chính', NULL, '/san-pham/main-course.html', NULL, NULL, '{\"icon\":null,\"target\":\"_self\"}', 2, 'active', 2, 2, '2024-03-20 07:56:29', '2024-03-24 19:49:59'),
+(61, NULL, 'Menu footer', NULL, NULL, 'footer', NULL, NULL, 2, 'active', 2, 2, '2024-03-26 18:13:15', '2024-03-26 18:13:15'),
+(62, 61, 'Home', NULL, '/', NULL, NULL, '{\"icon\":null,\"target\":\"_self\"}', 1, 'active', 2, 2, '2024-03-26 18:13:35', '2024-03-26 18:13:35'),
+(63, 61, 'About us', NULL, 'about-us', NULL, NULL, '{\"icon\":null,\"target\":\"_self\"}', 2, 'active', 2, 2, '2024-03-26 18:13:59', '2024-03-26 18:13:59'),
+(64, 61, 'Menu', NULL, '/san-pham/main-course.html', NULL, NULL, '{\"icon\":null,\"target\":\"_self\"}', 3, 'active', 2, 2, '2024-03-26 18:14:16', '2024-03-26 18:14:16'),
+(65, 61, 'Contact', NULL, 'lien-he', NULL, NULL, '{\"icon\":null,\"target\":\"_self\"}', 4, 'active', 2, 2, '2024-03-26 18:14:33', '2024-03-26 18:14:33');
 
 -- --------------------------------------------------------
 
@@ -586,7 +601,7 @@ CREATE TABLE `tb_modules` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `module_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `iorder` int(11) DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
@@ -613,7 +628,7 @@ CREATE TABLE `tb_module_functions` (
   `module_id` bigint(20) UNSIGNED NOT NULL,
   `function_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `iorder` int(11) DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
@@ -644,13 +659,13 @@ CREATE TABLE `tb_online_exchange` (
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image_thumb` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `brief` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `content` longtext COLLATE utf8mb4_unicode_ci,
+  `content` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `start_date` datetime NOT NULL,
   `end_date` datetime NOT NULL,
   `member` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Thành viên viết bài',
   `manage` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Người duyệt',
   `experts` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Chuyên gia',
-  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'waiting',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
@@ -678,7 +693,7 @@ CREATE TABLE `tb_online_exchange_detail` (
   `experts_id` bigint(20) UNSIGNED DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL COMMENT 'Trả lời bình luận',
   `author` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Tác giả câu hỏi',
-  `content` longtext COLLATE utf8mb4_unicode_ci,
+  `content` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'waiting',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
@@ -707,8 +722,8 @@ CREATE TABLE `tb_options` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `option_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `option_value` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
-  `is_system_param` tinyint(1) DEFAULT '1',
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_system_param` tinyint(1) DEFAULT 1,
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -720,11 +735,11 @@ CREATE TABLE `tb_options` (
 --
 
 INSERT INTO `tb_options` (`id`, `option_name`, `option_value`, `description`, `is_system_param`, `admin_created_id`, `admin_updated_id`, `created_at`, `updated_at`) VALUES
-(2, 'information', '{\"site_name\":\"TH\\u1ebe GI\\u1edaI TH\\u1edcI TRANG BABY\",\"hotline\":\"0902.993.286\",\"phone\":\"0902.993.286\",\"email\":\"THEGIOITHOITRANGBABY@GMAIL.COM\",\"address\":null,\"brief\":\"TH\\u1ebe GI\\u1edaI TH\\u1edcI TRANG BABY - N\\u01a0I THI\\u00caN TH\\u1ea6N T\\u1eceA S\\u00c1NG, THI\\u00caN \\u0110\\u01af\\u1edcNG QU\\u1ea6N \\u00c1O TR\\u1eba EM CAO C\\u1ea4P\",\"copyright\":\"B\\u1ea3n quy\\u1ec1n \\u00a9 2021 Th\\u1ebf gi\\u1edbi th\\u1eddi trang Baby\",\"seo_title\":\"TH\\u1ebe GI\\u1edaI TH\\u1edcI TRANG BABY\",\"seo_keyword\":null,\"seo_description\":\"TH\\u1ebe GI\\u1edaI TH\\u1edcI TRANG BABY\",\"contacts\":null}', 'Các dữ liệu cấu trúc liên quan đến thông tin liên hệ của hệ thống website', 0, 1, 2, '2021-10-01 22:06:00', '2023-05-10 01:55:25'),
-(5, 'image', '{\"logo_header\":\"\\/public\\/upload\\/admin\\/logo.png\",\"logo_footer\":\"\\/public\\/upload\\/admin\\/logo.png\",\"favicon\":\"\\/public\\/upload\\/admin\\/favicon.png\",\"seo_og_image\":\"\\/public\\/upload\\/admin\\/logo.png\"}', 'Danh sách các hình ảnh cấu hình trên hệ thống tại các vị trí', 0, 1, 2, '2021-10-11 02:22:56', '2023-05-09 14:38:26'),
-(6, 'social', '{\"facebook\":\"https:\\/\\/www.facebook.com\\/\",\"youtube\":\"https:\\/\\/www.youtube.com\\/\",\"zalo\":\"https:\\/\\/zalo.me\\/\",\"messenger\":\"https:\\/\\/m.me\\/\"}', 'Danh sách các Social network của hệ thống', 0, 1, 2, '2022-02-14 03:35:40', '2023-05-04 04:04:17'),
+(2, 'information', '{\"site_name\":\"RESTAURANT\",\"hotline\":\"0902.993.286\",\"phone\":\"0902.993.286\",\"email\":\"RESTAURANT@GMAIL.COM\",\"address\":\"732\\/21 Second Street, Manchester, King Street, Kingston United Kingdom\",\"brief\":\"Dolor church-key veniam, fap Bushwick mumblecore irure Vice consectetur 3 wolf moon sapiente literally quinoa.\",\"copyright\":\"B\\u1ea3n quy\\u1ec1n \\u00a9 2024 Restaurant\",\"seo_title\":\"Nh\\u00e0 h\\u00e0ng cao c\\u1ea5p\",\"seo_keyword\":null,\"seo_description\":\"Nh\\u00e0 h\\u00e0ng cao c\\u1ea5p\",\"contacts\":null}', 'Các dữ liệu cấu trúc liên quan đến thông tin liên hệ của hệ thống website', 0, 1, 2, '2021-10-01 22:06:00', '2024-03-24 17:52:15'),
+(5, 'image', '{\"logo_header_dark\":\"\\/public\\/upload\\/admin\\/logo\\/logo2x.png\",\"logo_header_light\":\"\\/public\\/upload\\/admin\\/logo\\/logo2x_white.png\",\"logo_footer\":\"\\/public\\/upload\\/admin\\/logo\\/logo2x_white.png\",\"favicon\":\"\\/public\\/upload\\/admin\\/favicon.png\",\"seo_og_image\":\"\\/public\\/upload\\/admin\\/logo.png\",\"banner\":\"\\/public\\/upload\\/admin\\/image\\/assorted-chinese-dishes-42WBYHV-1.jpg\"}', 'Danh sách các hình ảnh cấu hình trên hệ thống tại các vị trí', 0, 1, 2, '2021-10-11 02:22:56', '2024-03-24 17:50:55'),
+(6, 'social', '{\"facebook\":\"https:\\/\\/www.facebook.com\\/\",\"youtube\":\"https:\\/\\/www.youtube.com\\/\",\"zalo\":\"https:\\/\\/zalo.me\\/\",\"messenger\":\"https:\\/\\/m.me\\/\",\"instagram\":\"\",\"twitter\":\"\",\"yelp\":\"yelp.com\"}', 'Danh sách các Social network của hệ thống', 0, 1, 2, '2022-02-14 03:35:40', '2023-05-04 04:04:17'),
 (7, 'page', '{\r\n\"frontend.home\":  1\r\n}', NULL, 0, 1, 1, '2022-05-26 04:03:52', '2022-06-08 21:03:39'),
-(8, 'source_code', '{\"css\":null,\"javascript\":null,\"map\":\"<iframe src=\\\"https:\\/\\/www.google.com\\/maps\\/embed?pb=!1m18!1m12!1m3!1d3109.5914043665716!2d105.8276159664243!3d21.002854330161327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac7dc5bab827%3A0xc076d880a1dc5828!2zQuG7h25oIHZp4buHbiDEkOG6oWkgaOG7jWMgWSBIw6AgTuG7mWk!5e0!3m2!1svi!2s!4v1683169690480!5m2!1svi!2s\\\" width=\\\"600\\\" height=\\\"450\\\" style=\\\"border:0;\\\" allowfullscreen=\\\"\\\" loading=\\\"lazy\\\" referrerpolicy=\\\"no-referrer-when-downgrade\\\"><\\/iframe>\",\"fanpage\":null}', NULL, 0, 1, 2, '2022-06-06 19:24:11', '2023-05-04 03:08:23');
+(8, 'source_code', '{\"css\":null,\"javascript\":null,\"map\":\"<iframe src=\\\"https:\\/\\/www.google.com\\/maps\\/embed?pb=!1m18!1m12!1m3!1d59594.097774465314!2d105.7210902216797!3d21.007419199999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab55cdd10bf1%3A0x30858e944b154a88!2sBig%20C%20Th%C4%83ng%20Long!5e0!3m2!1svi!2s!4v1711601188741!5m2!1svi!2s\\\" width=\\\"600\\\" height=\\\"450\\\" style=\\\"border:0;\\\" allowfullscreen=\\\"\\\" loading=\\\"lazy\\\" referrerpolicy=\\\"no-referrer-when-downgrade\\\"><\\/iframe>\",\"fanpage\":null}', NULL, 0, 1, 2, '2022-06-06 19:24:11', '2024-03-28 04:46:42');
 
 -- --------------------------------------------------------
 
@@ -740,9 +755,9 @@ CREATE TABLE `tb_orders` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `customer_note` text COLLATE utf8mb4_unicode_ci,
-  `admin_note` text COLLATE utf8mb4_unicode_ci,
-  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `customer_note` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `admin_note` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'new',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
@@ -768,7 +783,8 @@ INSERT INTO `tb_orders` (`id`, `is_type`, `customer_id`, `name`, `email`, `phone
 (12, 'product', NULL, 'Quản', 'Quản', 'Quản', '4F28 XRC, Unnamed Road, Thanh Mỹ, Sơn Tây, Hà Nội, Việt Nam', 'etryu', NULL, NULL, 'new', NULL, NULL, '2023-06-03 03:02:42', '2023-06-03 03:02:42'),
 (13, 'product', NULL, 'Nhânưqrewtry', 'Nhân', 'Nhân', 'sgrdhtf', 'qeagrstdfh', NULL, NULL, 'new', NULL, NULL, '2023-06-03 03:04:37', '2023-06-03 03:04:37'),
 (14, 'product', NULL, 'Nguyễn Hữu123', 'Nguyễn Hữu', 'Nguyễn Hữu6986', 'Yên Bình, Thạch Thất, Hà Nội', 'fxhgchvjbn', NULL, NULL, 'new', NULL, NULL, '2023-06-03 03:07:16', '2023-06-03 03:07:16'),
-(15, 'product', NULL, 'Nhân', 'Nhân', 'Nhân', 'qeaFszgrthg', '', NULL, NULL, 'new', NULL, NULL, '2023-06-03 03:10:34', '2023-06-03 03:10:34');
+(15, 'product', NULL, 'Nhân', 'Nhân', 'Nhân', 'qeaFszgrthg', '', NULL, NULL, 'new', NULL, NULL, '2023-06-03 03:10:34', '2023-06-03 03:10:34'),
+(16, 'product', NULL, 'Nguyễn', 'admin@gmail.com', '0836675886', 'Chọn tỉnh thành', 'adadadad', NULL, NULL, 'new', NULL, NULL, '2024-03-26 03:21:28', '2024-03-26 03:21:28');
 
 -- --------------------------------------------------------
 
@@ -783,9 +799,9 @@ CREATE TABLE `tb_order_details` (
   `quantity` int(11) DEFAULT NULL,
   `price` double(20,2) DEFAULT NULL,
   `discount` double(20,2) DEFAULT NULL,
-  `customer_note` text COLLATE utf8mb4_unicode_ci,
-  `admin_note` text COLLATE utf8mb4_unicode_ci,
-  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `customer_note` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `admin_note` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
@@ -817,7 +833,9 @@ INSERT INTO `tb_order_details` (`id`, `order_id`, `item_id`, `quantity`, `price`
 (26, 12, 20, 1, 89000.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (27, 13, 20, 1, 89000.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (28, 14, 21, 2, 160000.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(29, 15, 21, 1, 160000.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(29, 15, 21, 1, 160000.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(30, 16, 29, 4, 10.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(31, 16, 26, 3, 20.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -829,12 +847,12 @@ CREATE TABLE `tb_pages` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `keyword` text COLLATE utf8mb4_unicode_ci,
-  `description` text COLLATE utf8mb4_unicode_ci,
-  `content` longtext COLLATE utf8mb4_unicode_ci,
+  `keyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `route_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `iorder` int(11) DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
@@ -875,8 +893,8 @@ CREATE TABLE `tb_post_comment` (
   `member_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_user` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image_comment` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content` text COLLATE utf8mb4_unicode_ci,
-  `status` int(11) DEFAULT '1' COMMENT '1: chờ duyệt',
+  `content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` int(11) DEFAULT 1 COMMENT '1: chờ duyệt',
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -911,9 +929,9 @@ CREATE TABLE `tb_post_history` (
   `taxonomy_id` bigint(20) UNSIGNED DEFAULT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `brief` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `content` text COLLATE utf8mb4_unicode_ci,
+  `content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `is_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'post',
-  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image_thumb` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `iorder` int(11) DEFAULT NULL,
@@ -982,23 +1000,25 @@ CREATE TABLE `tb_products` (
   `alias` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `gia` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `giakm` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `donvitien` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `mota` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Mô tả',
-  `chitiet` longtext COLLATE utf8mb4_unicode_ci COMMENT 'Nội dung',
-  `diemban` longtext COLLATE utf8mb4_unicode_ci COMMENT 'Điểm bán',
+  `chitiet` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Nội dung',
+  `diemban` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Điểm bán',
   `giayto` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Giấy tờ sản phẩm',
   `hienthi` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Vị trí hiển thị sản phẩm',
+  `noibat` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image_thumb` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `view` int(11) NOT NULL DEFAULT '0' COMMENT 'Lượt xem',
+  `view` int(11) NOT NULL DEFAULT 0 COMMENT 'Lượt xem',
   `iorder` int(11) DEFAULT NULL,
-  `tinhtrang` int(11) NOT NULL DEFAULT '1',
-  `status` int(11) NOT NULL DEFAULT '1',
+  `tinhtrang` int(11) NOT NULL DEFAULT 1,
+  `status` int(11) NOT NULL DEFAULT 1,
   `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `soluong` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -1009,9 +1029,15 @@ CREATE TABLE `tb_products` (
 -- Dumping data for table `tb_products`
 --
 
-INSERT INTO `tb_products` (`id`, `taxonomy_id`, `title`, `alias`, `gia`, `giakm`, `mota`, `chitiet`, `diemban`, `giayto`, `hienthi`, `image`, `image_thumb`, `view`, `iorder`, `tinhtrang`, `status`, `meta_title`, `meta_keyword`, `meta_description`, `admin_created_id`, `admin_updated_id`, `json_params`, `created_at`, `updated_at`, `soluong`, `soluongconlai`) VALUES
-(20, 103, 'Áo Thun Chú Hề – Xám AT40', 'ao-thun-chu-he-–-xam-at40', '89000', NULL, 'Áo Thun Chú Hề – Xám AT40 là sản phẩm được thiết kế cực kỳ dễ thương với họa tiết chú hề ngộ nghĩnh đáng yêu, tạo điểm nhấn thu hút cho bé. Với chất liệu cotton cao cấp sẽ giúp cho bé thoải mái nhất khi mặc.', '<figure class=\"table\"><table><tbody><tr><td><strong>Tên Sản Phẩm</strong></td><td>Áo Thun Chú Hề – Xám AT40</td></tr><tr><td><strong>Xuất Xứ</strong></td><td>Quảng Châu</td></tr><tr><td><strong>Giới Tính</strong></td><td>Nam</td></tr><tr><td><strong>Số Ký</strong></td><td>8kg -25kg</td></tr><tr><td><strong>Chất Liệu</strong></td><td>Cotton</td></tr><tr><td><strong>Màu Sắc</strong></td><td>Xám</td></tr></tbody></table></figure><p><br>&nbsp;</p>', NULL, NULL, ';0;1;', '/public/upload/admin/aothunnam/ao-thun-chu-he-xam-AT40.jpg', NULL, 0, NULL, 1, 1, NULL, NULL, NULL, 2, 2, NULL, '2023-05-10 10:02:55', '2023-06-03 03:04:37', '19', '19'),
-(21, 103, 'Bộ Bé Trai Khủng Long Áo Kẻ B80', 'bo-be-trai-khung-long-ao-ke-b80', '175000', '160000', 'Bộ Bé Trai Khủng Long Áo Kẻ B80 là mẫu đồ bộ hè mặc ở nhà đi chơi hay đi học cho bé trai từ 10-22kg. Được thiết kế năng động với chất liệu vải cotton 4 chiều, chất mềm mịn thấm hút mồ hôi tốt, giúp trẻ thoái mái trong những hoạt động hằng ngày. Màu sắc và', '<figure class=\"table\"><table><tbody><tr><td><strong>Tên Sản Phẩm</strong></td><td>Bộ Bé Trai Khủng Long Áo Kẻ B80</td></tr><tr><td><strong>Xuất Xứ</strong></td><td>Quảng Châu</td></tr><tr><td><strong>Giới Tính</strong></td><td>Nam</td></tr><tr><td><strong>Số Ký</strong></td><td>10kg – 22kg</td></tr><tr><td><strong>Chất Liệu</strong></td><td>Cotton</td></tr><tr><td><strong>Màu Sắc</strong></td><td>Xanh</td></tr></tbody></table></figure>', NULL, NULL, ';0;', '/public/upload/admin/aothunnam/bo-be-trai-khung-long-ao-ke-B80-6.jpg', NULL, 0, NULL, 1, 1, NULL, NULL, NULL, 2, 2, NULL, '2023-05-10 10:05:34', '2023-06-03 03:22:26', '10', '10');
+INSERT INTO `tb_products` (`id`, `taxonomy_id`, `title`, `alias`, `gia`, `giakm`, `donvitien`, `mota`, `chitiet`, `diemban`, `giayto`, `hienthi`, `noibat`, `image`, `image_thumb`, `view`, `iorder`, `tinhtrang`, `status`, `meta_title`, `meta_keyword`, `meta_description`, `admin_created_id`, `admin_updated_id`, `json_params`, `created_at`, `updated_at`, `soluong`, `soluongconlai`) VALUES
+(22, 116, 'Italian Source Mushroom', 'italian-source-mushroom', '19.9', NULL, 'VNĐ', 'Mushroom / Garlic / Veggies', NULL, NULL, NULL, ';0;', '0', '/public/upload/admin/image/toa-heftiba-MSxw2vpQzx4-unsplash-400x400.jpg', NULL, 0, NULL, 1, 1, NULL, NULL, NULL, 2, 2, NULL, '2024-03-22 08:13:08', '2024-03-22 08:13:08', '10', '10'),
+(23, 116, 'Tuna Roast Source', 'tuna-roast-source', '24.5', NULL, 'Dollar', 'Tuna / Potatoes / Rice', NULL, NULL, NULL, ';0;', '0', '/public/upload/admin/image/asian-food-menu-C3LK68P-400x400.jpg', NULL, 0, NULL, 1, 1, NULL, NULL, NULL, 2, 2, NULL, '2024-03-22 08:14:56', '2024-03-22 08:14:56', '10', '10'),
+(24, 114, 'Roast Pork (4 Sticks)', 'roast-pork-4-sticks', '15.5', NULL, 'Dollar', 'Pork / Veggies / Shoyu', NULL, NULL, NULL, ';0;', '3', '/public/upload/admin/image/chiles-en-nogada-dish-on-mexican-independence-day-PVRJURW-400x400.jpg', NULL, 0, NULL, 1, 1, NULL, NULL, NULL, 2, 2, NULL, '2024-03-22 08:15:53', '2024-03-23 07:39:22', '10', '10'),
+(25, 116, 'Fried Potatoes With Garlic', 'fried-potatoes-with-garlic', '12', NULL, 'Dollar', 'Potatoes / Olive Oil / Garlic', NULL, NULL, NULL, ';0;', '0', '/public/upload/admin/image/bern-fresen-jr3YNY2T2xI-unsplash-400x400.jpg', NULL, 0, NULL, 1, 1, NULL, NULL, NULL, 2, 2, NULL, '2024-03-22 08:18:00', '2024-03-22 08:18:00', '10', '10'),
+(26, 114, 'Salted Fried Chicken', 'salted-fried-chicken', '20', NULL, 'Dollar', 'Chicken / Olive Oil / Salt', NULL, NULL, NULL, ';0;', '0', '/public/upload/admin/image/wesual-click-SrX3-GldyL0-unsplash-400x400.jpg', NULL, 0, NULL, 1, 1, NULL, NULL, NULL, 2, 2, NULL, '2024-03-22 08:19:04', '2024-03-26 03:21:28', '10', '7'),
+(27, 115, 'Crab With Curry Sources', 'crab-with-curry-sources', '24', NULL, 'Dollar', 'Crab / Potatoes / Rice', NULL, NULL, NULL, ';0;', '1', '/public/upload/admin/image/irina-89UsTc5bjsw-unsplash-400x400.jpg', NULL, 0, NULL, 1, 1, NULL, NULL, NULL, 2, 2, NULL, '2024-03-22 08:19:36', '2024-03-22 08:19:36', '10', '10'),
+(28, 116, 'Imported Salmon Steak', 'imported-salmon-steak', '17', NULL, 'Dollar', 'Salmon / Veggies / Oil', NULL, NULL, NULL, ';0;', '0', '/public/upload/admin/image/pasta-with-tomato-sauce-and-cheese-ZA26W6C-400x400.jpg', NULL, 0, NULL, 1, 1, NULL, NULL, NULL, 2, 2, NULL, '2024-03-22 08:20:38', '2024-03-28 07:52:21', '10', '10'),
+(29, 116, 'Baked Potato Pizza', 'baked-potato-pizza', '10', NULL, 'Dollar', 'Potato / Bread / Cheese', NULL, NULL, NULL, ';0;', '2', '/public/upload/admin/image/salad-with-baby-spinach-arugula-and-fresh-cherry-t-BCNQ6AU-400x400.jpg', NULL, 0, NULL, 1, 1, NULL, NULL, NULL, 2, 2, NULL, '2024-03-22 08:21:34', '2024-03-28 07:48:32', '10', '6');
 
 -- --------------------------------------------------------
 
@@ -1022,8 +1048,8 @@ INSERT INTO `tb_products` (`id`, `taxonomy_id`, `title`, `alias`, `gia`, `giakm`
 CREATE TABLE `tb_roles` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
-  `json_access` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `json_access` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `iorder` int(11) DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
@@ -1070,11 +1096,11 @@ CREATE TABLE `tb_royaltie` (
 CREATE TABLE `tb_user_role` (
   `id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
-  `json_action` longtext COLLATE utf8mb4_unicode_ci,
+  `json_action` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `admin_created_id` int(11) NOT NULL,
   `admin_updated_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1537,8 +1563,8 @@ CREATE TABLE `tb_widgets` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `widget_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `brief` text COLLATE utf8mb4_unicode_ci,
-  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `brief` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `iorder` int(11) DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
@@ -1565,10 +1591,10 @@ INSERT INTO `tb_widgets` (`id`, `widget_code`, `title`, `brief`, `json_params`, 
 CREATE TABLE `tb_widget_configs` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `widget_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
-  `is_config` tinyint(1) NOT NULL DEFAULT '1',
+  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `is_config` tinyint(1) NOT NULL DEFAULT 1,
   `iorder` int(11) DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
@@ -1604,20 +1630,20 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `user_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email_verified` tinyint(1) NOT NULL DEFAULT '0',
+  `email_verified` tinyint(1) NOT NULL DEFAULT 0,
   `email_verification_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
-  `is_super_user` tinyint(1) NOT NULL DEFAULT '0',
+  `is_super_user` tinyint(1) NOT NULL DEFAULT 0,
   `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `birthday` date DEFAULT NULL,
   `sex` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `count_view_info` int(11) NOT NULL DEFAULT '0',
+  `count_view_info` int(11) NOT NULL DEFAULT 0,
   `country_id` int(11) DEFAULT NULL,
   `city_id` int(11) DEFAULT NULL,
   `district_id` int(11) DEFAULT NULL,
-  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
-  `json_profiles` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `json_profiles` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1935,13 +1961,13 @@ ALTER TABLE `tb_admin_menus`
 -- AUTO_INCREMENT for table `tb_blocks`
 --
 ALTER TABLE `tb_blocks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `tb_block_contents`
 --
 ALTER TABLE `tb_block_contents`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
 -- AUTO_INCREMENT for table `tb_cms_posts`
@@ -1953,7 +1979,7 @@ ALTER TABLE `tb_cms_posts`
 -- AUTO_INCREMENT for table `tb_cms_taxonomys`
 --
 ALTER TABLE `tb_cms_taxonomys`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
 -- AUTO_INCREMENT for table `tb_components`
@@ -1971,7 +1997,7 @@ ALTER TABLE `tb_component_configs`
 -- AUTO_INCREMENT for table `tb_contacts`
 --
 ALTER TABLE `tb_contacts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_experts`
@@ -1995,7 +2021,7 @@ ALTER TABLE `tb_logs`
 -- AUTO_INCREMENT for table `tb_menus`
 --
 ALTER TABLE `tb_menus`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `tb_modules`
@@ -2031,13 +2057,13 @@ ALTER TABLE `tb_options`
 -- AUTO_INCREMENT for table `tb_orders`
 --
 ALTER TABLE `tb_orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tb_order_details`
 --
 ALTER TABLE `tb_order_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `tb_pages`
@@ -2073,7 +2099,7 @@ ALTER TABLE `tb_post_image`
 -- AUTO_INCREMENT for table `tb_products`
 --
 ALTER TABLE `tb_products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `tb_roles`
