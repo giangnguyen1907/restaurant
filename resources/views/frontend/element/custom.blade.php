@@ -124,7 +124,7 @@
 		</div>
 	</div>
 
-	<div id="option_wrapper">
+	<!-- <div id="option_wrapper">
 		<div class="inner">
 			<div style="text-align:center">
 				<div class="purchase_theme_button">
@@ -371,4 +371,4 @@
 				</ul>
 			</div>
 		</div>
-	</div>
+	</div> -->

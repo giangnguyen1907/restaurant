@@ -30,7 +30,7 @@
 											}
 										@endphp
 										<ul id="nav_menu13" class="nav">
-										
+										 
 											<?php foreach($menu as $item){
                      					   		if($item->parent_id == $main_menu->id){
 													if(in_array($item->id,$array_cate)) {
